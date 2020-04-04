@@ -43,7 +43,7 @@ def update_file(conf_file, real_file):
     """
     if os.path.exists(real_file):
         # Continue if conf file is already linked
-        if (os.path.realpath(real_file) == conf_file):
+        if (os.path.samefile(real_file, conf_file)):
             return
         # Else backup existing file
         else:
