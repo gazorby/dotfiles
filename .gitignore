@@ -6,4 +6,4 @@ logs.txt
 .vscode
 .build
 **/TODO
-config/home/user/.ssh
+config/home/user/.ssh/config
