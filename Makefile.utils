@@ -1,0 +1,136 @@
+#!/usr/bin/make -f
+
+mkfile_path := $(abspath $(lastword $(MAKEFILE_LIST)))
+current_dir := $(patsubst %/,%,$(dir $(mkfile_path)))
+build_dir := $(current_dir)/.build
+SHELL := /bin/bash
+PATH := $(PATH):$(HOME)/.cargo/bin
+DATE := "$$(date '+%Y-%m-%d--%H:%M:%S')"
+xfer_cmd := XferCommand = \/usr\/bin\/aria2c --allow-overwrite=true --continue=true --file-allocation=none --log-level=error --max-tries=2 --max-connection-per-server=2 --max-file-not-found=5 --min-split-size=5M --no-conf --remote-time=true --summary-interval=60 --timeout=5 --dir=\/ --out %o %u
+nvidia := 'nvidia-settings --assign CurrentMetaMode="nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }"'
+
+.PHONY: clean deps set-build-dir git help python python3
+
+all: help
+
+common-tools: deps starship exa fd ripgrep
+
+rust-install: clean
+	$(current_dir)/install-package.sh --dep cargo/rust,rustc
+
+fish-install:
+	@$(current_dir)/install-package.sh --dep fish
+
+aria2-install:
+	$(info Check aria2)
+	@$(current_dir)/install-package.sh --dep aria2c/aria2
+
+python-install:
+	$(info Check python)
+	@$(current_dir)/install-package.sh --dep python3 pip3/python3-pip
+zsh-install:
+	@$(current_dir)/install-package.sh --dep zsh
+
+
+deps: python-install
+	$(info Checking required dependencies)
+	@$(current_dir)/install-package.sh --dep-file $(current_dir)/dependencies.txt
+
+set-build-dir:
+	$(info Create build directory)
+	@mkdir -p $(build_dir)
+
+fish-setup: fisher
+	$(info Backup existing conf.fish)
+	@if [[ -f $(HOME)/.config/fish/config.fish ]]; then \
+		rm --force $(HOME)/.config/fish/config_[$(DATE)].old.fish; \
+		mv $(HOME)/.config/fish/config.fish $(HOME)/.config/fish/config.old.fish; \
+	fi
+
+	$(info Linking fish functions and configuration files)
+	@ln --symbolic --force $(current_dir)/shell/fish/config.fish $(HOME)/.config/fish/config.fish
+	@ln --symbolic --force $(current_dir)/shell/fish/functions/* $(HOME)/.config/fish/functions
+
+prezto-install: zplugin
+	$(info Install / Update zprezto)
+	@(cd $(HOME)/.zprezto && git pull) >> $(current_dir)/logs.txt || \
+	git clone --quiet --recursive https://github.com/sorin-ionescu/prezto.git "$(HOME)/.zprezto"
+
+	$(info Install / Update zprezto contrib)
+	@(cd $(HOME)/.zprezto/contrib && git pull >> $(current_dir)/logs.txt) || \
+	git clone --quiet --recurse-submodules https://github.com/belak/prezto-contrib "$(HOME)/.zprezto/contrib"
+
+	$(info Linking zsh config files)
+	@ln --symbolic --force $(current_dir)/shell/zsh/.zpreztorc "$(HOME)/.zprezto/runcoms/zpreztorc"
+	@ln --symbolic --force $(current_dir)/shell/zsh/.zshrc "$(HOME)/.zprezto/runcoms/zshrc"
+	@ln --symbolic --force $(current_dir)/shell/zsh/.zshenv "$(HOME)/.zprezto/runcoms/zshenv"
+
+	@for rcfile in "$${ZDOTDIR:-$$HOME}"/.zprezto/runcoms/*; do \
+		if ! [[ $$rcfile =~ .*README.md$$ ]]; then \
+			ln --symbolic --force "$${rcfile:t}" "$${ZDOTDIR:-$$HOME}"/".$$(awk -F '/' '{print $$NF}' <<< "$$rcfile")"; \
+		fi \
+	done
+
+	$(info Linking zsh functions)
+	@mkdir -p "$(HOME)/.zfuncs" && ln --symbolic --force $(current_dir)/shell/zsh/functions/* "$(HOME)/.zfuncs"
+
+zplugin:
+	$(info Install zplugin)
+	@wget -qO- https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh | bash >> $(current_dir)/logs.txt
+
+starship:
+	@if ! $(current_dir)/install-package.sh --dep starship/starship-bin,starship; then \
+		curl -fsSL https://starship.rs/install.sh | sudo bash -s -- --yes; \
+	fi
+
+exa:
+	$(info Check exa)
+	@if ! $(current_dir)/install-package.sh --dep exa; then \
+		$(MAKE) rust-install; \
+		cargo install exa; \
+	fi
+
+fd:
+	$(info Check fd)
+	@if ! $(current_dir)/install-package.sh --dep fd,fdfind/fd; then \
+		$(MAKE) rust-install; \
+		cargo install fd-find; \
+	fi
+
+ripgrep:
+	$(info Check ripgrep)
+	@if ! $(current_dir)/install-package.sh --dep rg/ripgrep; then \
+		make rust-install; \
+		cargo install ripgrep; \
+	fi
+
+clone-fzf:
+	$(info Install / Update fzf)
+	@(cd $(HOME)/.fzf && git pull -q) ||	git clone --quiet --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+
+fish-fzf: clone-fzf
+	$(info Install / Update fzf)
+	~/.fzf/install --64 --no-bash --no-zsh --all >> $(current_dir)/logs.txt
+
+zsh-fzf: clone-fzf
+	$(info Install / Update fzf)
+	@~/.fzf/install --64 --no-bash --no-fish --all >> $(current_dir)/logs.txt
+
+
+fisher:
+	$(info Install fisher)
+	@curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish >> $(current_dir)/logs.txt
+	$(info Install fisher plugins)
+	@fish --command "fisher add <$(current_dir)/shell/fish/fisher.txt"
+
+gogh: set-build-dir
+	wget -qO $(build_dir)/gogh https://git.io/vQgMr
+	chmod +x $(build_dir)/gogh
+	$(build_dir)/gogh
+
+clean:
+	$(info Clean build directory)
+	@sudo rm --recursive --force --dir $(build_dir)
+
+help: ##-Show this help.
+	@sed -e '/#\{2\}-/!d; s/\\$$//; s/:[^#\t]*/::/; s/#\{2\}- *//' $(MAKEFILE_LIST) | column -t -s ':' | sed -e 's/^/ /'

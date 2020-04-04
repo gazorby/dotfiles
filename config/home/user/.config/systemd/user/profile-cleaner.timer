@@ -1,0 +1,10 @@
+[Unit]
+Description=Run profile-cleaner daily
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+RandomizedDelaySec=2
+
+[Install]
+WantedBy=timers.target

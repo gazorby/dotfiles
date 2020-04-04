@@ -1,0 +1,11 @@
+laughedelic/pisces
+b4b4r07/enhancd
+oh-my-fish/plugin-sudope
+decors/fish-colored-man
+jhillyerd/plugin-git
+oh-my-fish/plugin-python
+oh-my-fish/plugin-direnv
+Gazorby/fish-autols
+Gazorby/fish-git-emojis
+Gazorby/fish-git-check-id
+Gazorby/fish-finders

@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  dotfiles-test-ubuntu:
+    build:
+      dockerfile: test/Dockerfile.ubuntu
+      context: ./
+  dotfiles-test-fedora:
+    build:
+      dockerfile: test/Dockerfile.fedora
+      context: ./

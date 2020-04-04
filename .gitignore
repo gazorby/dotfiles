@@ -1,0 +1,9 @@
+node_modules
+git/.git-remotes
+.vscode
+logs.txt
+.backups
+.vscode
+.build
+**/TODO
+config/home/user/.ssh

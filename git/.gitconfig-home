@@ -1,0 +1,16 @@
+[includeIf "gitdir:~/git/perso/"]
+  path = ~/git/perso/.gitconfig
+[includeIf "gitdir:~/git/pro/"]
+  path = ~/git/pro/.gitconfig
+
+[commit]
+  gpgSign = true
+
+[pull]
+  rebase = true
+
+[rebase]
+  autoStash = true
+
+[core]
+  editor = vim

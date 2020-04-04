@@ -1,0 +1,21 @@
+FROM ubuntu:latest
+
+WORKDIR /dotfiles
+
+VOLUME [ "/etc/apt/apt.conf.d" ]
+
+RUN apt-get update && apt-get upgrade -y && \
+    apt-get install -y sudo make git curl
+
+RUN  useradd -m docker -u 1000
+
+RUN echo "docker ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/user && \
+    chmod 0440 /etc/sudoers.d/user
+
+WORKDIR /home/docker/dotfiles
+
+COPY . ./
+
+RUN chown -R docker: ./
+
+USER docker

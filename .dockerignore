@@ -1,0 +1,8 @@
+yarn.lock
+package.json
+README.md
+.pre-commit-config.yaml
+commitlint.config.js
+**Dockerfile*
+docker-compose.yaml
+.gitignore

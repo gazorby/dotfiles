@@ -1,0 +1,6 @@
+[user]
+	name =
+	email =
+	signingKey =
+[core]
+	autocrlf = input
