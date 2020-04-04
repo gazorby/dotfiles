@@ -7,18 +7,8 @@ from subprocess import call
 import sys
 
 
-if os.getenv('DOTFILES') is None:
-    DOTFILES_PATH = os.getenv('HOME') + '/.dotfiles'
-else:
-    DOTFILES_PATH = os.getenv('DOTFILES')
-
-CONFIG_PATH = DOTFILES_PATH + '/config'
-BACKUP_PATH = DOTFILES_PATH + '/.backups'
 PATH_METAVAR = 'PATH'
 DIR_METAVAR = 'DIRECTORY'
-
-backup_dir = (DOTFILES_PATH + '/.backups/' +
-              datetime.now().strftime('%d-%m-%Y--%H:%M:%S'))
 
 
 def update(arg_paths):
@@ -28,7 +18,7 @@ def update(arg_paths):
         path {str} -- path to lookup
     """
     for arg_path in arg_paths:
-        conf_path = CONFIG_PATH + arg_path.replace(os.getenv('USER'), "user")
+        conf_path = os.path.expanduser(os.path.normpath(DOT_DIR + arg_path.replace(os.getenv('USER'), "user")))
         if os.path.isfile(conf_path):
             update_file(conf_path, arg_path)
         else:
@@ -36,8 +26,11 @@ def update(arg_paths):
                 for r, d, f in os.walk(path):
                     for file in f:
                         conf_file = os.path.join(r, file)
-                        real_file = (conf_file.replace(CONFIG_PATH, "")
-                                    .replace("user", os.getenv('USER')))
+                        real_file = os.path.normpath(
+                            conf_file
+                            .replace(DOT_DIR, "/")
+                            .replace("user", os.getenv('USER'))
+                        )
                         update_file(conf_file, real_file)
 
 
@@ -54,8 +47,8 @@ def update_file(conf_file, real_file):
             return
         # Else backup existing file
         else:
-            os.makedirs(backup_dir + os.path.dirname(real_file), exist_ok=True)
-            mv_to_config(real_file, backup_dir + real_file)
+            os.makedirs(DOT_BACKUPS + os.path.dirname(real_file), exist_ok=True)
+            mv_to_config(real_file, DOT_BACKUPS + real_file)
 
     # Create dirs and symlink the file
     if not os.path.exists(os.path.dirname(real_file)):
@@ -84,7 +77,7 @@ def add(arg_path):
             files.append(path)
 
         for file in files:
-            config_path = CONFIG_PATH + file.replace(os.getenv('USER'), "user")
+            config_path = DOT_DIR + file.replace(os.getenv('USER'), "user")
             # exit if file is already in config path
             if os.path.exists(config_path):
                 continue
@@ -103,7 +96,7 @@ def real_path(conf_path):
     Returns:
         str -- the real path
     """
-    return (conf_path.replace(CONFIG_PATH, "")
+    return (conf_path.replace(DOT_DIR, "")
             .replace("user", os.getenv('USER')))
 
 
@@ -141,18 +134,23 @@ if __name__ == "__main__":
     parser.add_argument('-u', '--update', type=str, nargs='+', metavar=PATH_METAVAR,
                         help=f"recursively update all links from files under {PATH_METAVAR}. Root permissions will be asked if needed")
 
-    parser.add_argument('-d', '--dotfile', type=str, nargs=1, help="specify dotfile directory", metavar=DIR_METAVAR)
+    parser.add_argument('-d', '--dotfile', type=str, nargs=1, help="specify dotfile directory", metavar=DIR_METAVAR, default=os.getenv('HOME') + '/.dotfiles')
 
     args = parser.parse_args()
 
-    if args.dotfile is not None:
-        DOTFILES_PATH = args.dotfile[0]
-        if not os.path.exists(DOTFILES_PATH):
-            print(f"dotfile path {DOTFILES_PATH} doesn't exist."
-                  + " You can set it via DOTFILES environement variable,"
-                  + " or using --dotfile option",
-                  file=sys.stderr)
-            exit(1)
+    global DOT_ROOT, DOT_DIR, DOT_BACKUPS
+    DOT_ROOT = args.dotfile[0]
+
+    if not os.path.exists(DOT_ROOT):
+        print(f"dotfile path {DOT_ROOT} doesn't exist."
+              + " You can set it via DOTFILES environement variable,"
+              + " or using --dotfile option",
+              file=sys.stderr)
+        exit(1)
+
+    DOT_DIR = os.path.join(DOT_ROOT, 'config/')
+    DOT_BACKUPS = os.path.join(DOT_ROOT, '.backups/', datetime.now().strftime('%d-%m-%Y--%H:%M:%S'))
+
     if args.update is not None:
         update(args.update)
     if args.add is not None:
