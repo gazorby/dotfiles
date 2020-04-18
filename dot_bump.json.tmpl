@@ -1,0 +1,36 @@
+{
+  "files": {
+    "README.md": [
+      ["\\/badge\\/Version-v(.*)-(?=.*.svg\\)\\]\\(https:\\/\\/.*\\))", "/Version-v[version]-"]
+    ]
+  },
+
+  "changelog": {
+    "open": false,
+    "version": "## [version] ([version_date])",
+    "commit": "- [message]"
+  },
+
+  "tag": {
+    "enabled": false,
+    "name": "[version]"
+  },
+
+  "release": {
+    "enabled": true,
+    "github": {
+      "enabled": true,
+      "token": {{ .token_github_repo }}
+    }
+  },
+
+ "commit": {
+    "message": "🔖 chore(bump) v[version]"
+  },
+
+  "scripts": {
+    "precommit": "git add README.md",
+    "postchangelog": "sed -ri '/(docs(\\(.*\\){0,1})|chore\\(bump\\)):?\\s*.*$/d' CHANGELOG.md",
+    "postrelease": "git push origin HEAD --tags"
+  }
+}

@@ -1,0 +1,10 @@
+[Unit]
+Description=Vacuum and reindex sqlite databases used by browsers
+Documentation=https://github.com/graysky2/profile-cleaner
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/profile-cleaner c
+
+[Install]
+WantedBy=default.target

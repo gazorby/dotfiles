@@ -1,0 +1,20 @@
+# source : https://wiki.archlinux.org/index.php/OpenSSH
+
+# Make all sessions to the same host share a single connection using the three following options :
+
+ControlMaster auto
+# Specifies how long the master should wait in the background for new clients after the initial client connection has been closed
+# Possible values are either :
+# - no to close the connection immediately after the last client disconnects,
+# - a time in seconds,
+# - yes to wait forever, the connection will never be closed automatically.
+ControlPersist yes
+# ~/.ssh/sockets can be any directory not writable by other users
+ControlPath ~/.ssh/sockets/socket-%C
+
+# Use a faster cipher: on modern CPUs with AESNI instructions
+Ciphers aes128-gcm@openssh.com,aes256-gcm@openssh.com,chacha20-poly1305@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr
+
+# Keep ssh connectio nalive by sending a keep-alive signal to the server if no data has been received for some time
+# ServerAliveInterval Controls the interval between the requests for response sent from the client to the server
+ServerAliveInterval 120
