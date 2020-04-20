@@ -101,13 +101,20 @@ bind \cH backward-kill-path-component
 alias cf 'fzf-bcd-widget'
 
 # exa aliases
-alias l 'exa'
-alias ll 'exa --long --all --group --header'
-alias la 'exa --long --all --header --binary --group --links --inode --blocks'
-alias ld 'exa --list-dirs'
-alias lt 'exa --tree --level'
-alias lg 'exa --long --git'
-alias le 'exa --long --extended'
+if type -q exa
+    alias l 'exa'
+    alias ll 'exa --long --all --group --header'
+    alias la 'exa --long --all --header --binary --group --links --inode --blocks'
+    alias ld 'exa --list-dirs'
+    alias lt 'exa --tree --level'
+    alias lg 'exa --long --git'
+    alias le 'exa --long --extended'
+else
+    alias l 'ls'
+    alias ll 'ls --all --color -l --human-readable'
+    alias la 'ls --all --color -l --human-readable --inode'
+    alias ld 'ls --all --color -l --human-readable --directory'
+end
 
 alias cl 'clear'
 
