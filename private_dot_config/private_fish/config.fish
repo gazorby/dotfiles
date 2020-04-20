@@ -53,9 +53,9 @@ if type -q fzf
     # fzf aliases
     alias cf 'fzf-bcd-widget'
 
-else if ! test -d ~/.fzf
-    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-    ~/.fzf/install
+else if ! test -d $HOME/.fzf
+    git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
+    $HOME/.fzf/install --no-bash --no-zsh --all --64
 end
 
 ###################################
@@ -88,7 +88,7 @@ end
 # on a fresh install
 ###################################
 if not functions -q fisher
-    set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
+    set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME $HOME/.config
     curl https://git.io/fisher --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
     fish -c fisher
 end
@@ -128,8 +128,8 @@ else
 end
 
 if test -f $HOME/.asdf/asdf.fish
-    source ~/.asdf/asdf.fish
+    source $HOME/.asdf/asdf.fish
 else
-    git clone https://github.com/asdf-vm/asdf.git ~/.asdf
+    git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf
     git --git-dir=$HOME/.asdf/.git checkout (git --git-dir=$HOME/.asdf/.git describe --abbrev=0 --tags)
 end
