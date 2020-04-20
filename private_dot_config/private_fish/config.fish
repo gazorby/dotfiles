@@ -107,8 +107,8 @@ if type -q exa
     alias la 'exa --long --all --header --binary --group --links --inode --blocks'
     alias ld 'exa --list-dirs'
     alias lt 'exa --tree --level'
-    alias lg 'exa --long --git'
-    alias le 'exa --long --extended'
+    alias lg 'exa --long --header --git'
+    alias le 'exa --long --header --extended'
 else
     alias l 'ls'
     alias ll 'ls --all --color -l --human-readable'
