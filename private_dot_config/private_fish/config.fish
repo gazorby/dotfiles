@@ -124,4 +124,9 @@ else
     curl -fsSL https://starship.rs/install.sh | bash
 end
 
-test -f $HOME/.asdf/asdf.fish; and source ~/.asdf/asdf.fish
+if test -f $HOME/.asdf/asdf.fish
+    source ~/.asdf/asdf.fish
+else
+    git clone https://github.com/asdf-vm/asdf.git ~/.asdf
+    git --git-dir=$HOME/.asdf/.git checkout (git --git-dir=$HOME/.asdf/.git describe --abbrev=0 --tags)
+end
