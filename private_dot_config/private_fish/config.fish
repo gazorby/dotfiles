@@ -2,8 +2,6 @@
 # Variables
 ###################################
 
-set default_user $USER
-
 # Sometimes this is not in PATH
 set -ag fish_user_paths "$HOME"/.local/bin
 set -ag fish_user_paths /lib/passenger/bin
@@ -12,8 +10,6 @@ set -ag fish_user_paths $HOME/.cargo/bin
 set -ag fish_user_paths $HOME/.dotnet
 set -ag fish_user_paths $HOME/.yarn/bin
 
-# prettier prompt when using pipenv
-set -x PIPENV_SHELL_FANCY "false"
 
 # Go
 if type -q go
