@@ -49,6 +49,10 @@ if type -q fzf
 
     # fzf keybindings
     bind \cx 'fzf-complete'
+
+    # fzf aliases
+    alias cf 'fzf-bcd-widget'
+
 end
 
 ###################################
@@ -95,8 +99,6 @@ bind \cH backward-kill-path-component
 ###################################
 # Aliases
 ###################################
-
-alias cf 'fzf-bcd-widget'
 
 # exa aliases
 if type -q exa
