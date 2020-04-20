@@ -1,10 +1,10 @@
 #!/bin/sh
 {{ if eq .chezmoi.osRelease.id "arch" -}}
-pacman -Q ripgrep fd fzf exa fish yarn || sudo pacman -S ripgrep fd fzf exa fish yarn
+pacman -Q ripgrep fd fzf exa fish yarn || sudo pacman -S ripgrep fd fzf exa fish bat yarn
 {{ end -}}
 
 {{ if eq .chezmoi.osRelease.id "manjaro" -}}
-pacman -Q ripgrep fd fzf exa fish yarn || sudo pacman -S ripgrep fd fzf exa fish yarn
+pacman -Q ripgrep fd fzf exa fish yarn || sudo pacman -S ripgrep fd fzf exa fish bat yarn
 {{ end -}}
 
 {{ if eq .chezmoi.osRelease.id "fedora" -}}

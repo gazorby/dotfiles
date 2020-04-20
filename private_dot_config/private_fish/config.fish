@@ -40,7 +40,7 @@ if type -q fzf
     set -x FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
 
     # preview files on the right side
-    set -x FZF_CTRL_T_OPTS "--preview 'highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {} 2> /dev/null | head -200' \
+    set -x FZF_CTRL_T_OPTS "--preview 'bat --style=numbers --color=always {} | head -500' \
                             $FZF_CUSTOM_OPTIONS"
 
 
