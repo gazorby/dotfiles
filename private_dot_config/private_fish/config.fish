@@ -46,6 +46,9 @@ if type -q fzf
 
     # preview directory sub tree
     set -x FZF_ALT_C_OPTS "--preview 'tree -C {} | head -200' $FZF_CUSTOM_OPTIONS"
+
+    # fzf keybindings
+    bind \cx 'fzf-complete'
 end
 
 ###################################
@@ -87,7 +90,6 @@ end
 # Keybindings
 ###################################
 
-bind \cx 'fzf-complete'
 bind \cH backward-kill-path-component
 
 ###################################
