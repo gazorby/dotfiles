@@ -118,6 +118,8 @@ end
 
 alias cl 'clear'
 
-eval (starship init fish)
+if type -q starship
+    eval (starship init fish)
+end
 
-source ~/.asdf/asdf.fish
+test -f $HOME/.asdf/asdf.fish; and source ~/.asdf/asdf.fish
