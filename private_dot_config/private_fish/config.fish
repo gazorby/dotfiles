@@ -10,13 +10,18 @@ set -ag fish_user_paths $HOME/.cargo/bin
 set -ag fish_user_paths $HOME/.dotnet
 set -ag fish_user_paths $HOME/.yarn/bin
 
-
 # Go
 if type -q go
     set -gx GOPATH "$HOME/go"
     set -gx GOBIN "$GOPATH/bin"
     set -gx GO111MODULE "on"
     set -ag fish_user_paths "$GOBIN"
+end
+
+# Colorize manpages using bat
+if type -q bat
+    if ! set -q MANPAGER; set -Ux MANPAGER 'sh -c "col -bx | bat --language=man --style=grid --color=always --decorations=always"'; end
+    if ! set -q MANROFFOPT set -Ux MANROFFOPT '-c'; end
 end
 
 # fzf
