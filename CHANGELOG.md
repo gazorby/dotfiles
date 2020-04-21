@@ -1,3 +1,55 @@
+## 1.0.0 (2020-04-21)
+- Initial commit
+- 🐛 fix: add missing quotes
+- 👷 chore: add bump.json
+- ♻️ ref(bump): use v0.1.0 as initial version
+- ♻️ refactor: update bump config
+- ♻️ refactor: use exa aliases if exa is detected
+- ♻️ refactor: update exa aliases
+- ♻️ refactor: check if starship and asdf are present
+- ♻️ refactor: remove unused environment variables
+- ♻️ refactor: add fzf keybinding if fzf is present
+- ♻️ ref: check fzf existence to set fzf alias
+- ✨ feat: install starship if not present
+- ✨ feat: install asdf if not present
+- ✨ feat: install fzf if not present
+- ✨ feat: add more distro in install script
+- ♻️ ref: use same logic for debian and ubuntu
+- ♻️ ref: try installing fzf last
+- 🐛 fix: fix infinite loop while installing fzf
+- ♻️ refactor: use HOME instead of ~
+- ♻️ ref: use bat instead of highlight
+- ✨ feat: use bat to colorize man pages
+- ♻️ ref(fif): use bat instead of highlight
+- ✨ feat: add monitor function
+- ✨ feat: add bat to install script
+- 🐛 fix: use don't reinstall packages with pacman'
+- 🐛 fix: fix typo in install script
+- ♻️ ref: update install script
+- ♻️ ref: move fzf installation to install script
+- 🐛 fix: improve ubuntu installation
+- ♻️ ref: move asdf install to install script
+- 🐛 fix: asdf install
+- ♻️ ref: update fishfile
+- ✨ feat: add exa installation for ubuntu
+- ♻️ ref: install exa first on ubuntu
+- 🐛 fix: fix node installation in ubuntu
+- 🐛 fix: fix if template condition
+- 🐛 fix: node install again
+- 👷 chore: update .chezmoiignore
+- ♻️ ref: clean exa files after install
+- ✅ test: add docker testing environment
+- ✅ test: remove vim installation from test image
+- 🐛 fix: install latest fosh version on fedora
+- ♻️ ref: assumes yes for fedora commands
+- ♻️ ref: assume yes for starship installation
+- ♻️ ref: prefer installing fzf with git
+- 🐛 fix: ensure find is installed on fedora
+- 🐛 fix: fix find installation on fedora
+- ✅ test: add fedora image
+- 🐛 fix: typo
+- ✨ feat: add bump
+
 ## 0.1.0 (2020-04-19)
 - Initial commit
 - 🐛 fix: add missing quotes
