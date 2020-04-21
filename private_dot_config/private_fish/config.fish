@@ -130,7 +130,4 @@ end
 
 if test -f $HOME/.asdf/asdf.fish
     source $HOME/.asdf/asdf.fish
-else
-    git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf
-    git --git-dir=$HOME/.asdf/.git checkout (git --git-dir=$HOME/.asdf/.git describe --abbrev=0 --tags)
 end
