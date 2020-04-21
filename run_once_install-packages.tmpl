@@ -6,7 +6,7 @@ yarn global add @fabiospampinato/bump
 git clone https://aur.archlinux.org/starship-bin.git $HOME/starship \
 && cd $HOME/starship \
 && makepkg --clean --install --syncdeps --noconfirm \
-&& rm -rfd $HOME/starship
+&& cd $HOME && rm -rfd $HOME/starship
 {{ end -}}
 
 {{ if eq .chezmoi.osRelease.id "fedora" -}}
