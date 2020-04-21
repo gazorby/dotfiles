@@ -15,6 +15,7 @@ sudo dnf distro-sync fish
 sudo dnf install bash git ripgrep fd-find exa fish npm bat bash findutils
 npm install -g yarn
 yarn global add @fabiospampinato/bump
+curl -fsSL https://starship.rs/install.sh | bash -s -- -y
 git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf && $HOME/.fzf/install --no-bash --no-zsh --all --64
 {{ end -}}
 
@@ -22,6 +23,7 @@ git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf && $HOME/.fzf
 sudo apt-get install git bash fish npm curl unzip
 npm install -g yarn
 yarn global add @fabiospampinato/bump
+curl -fsSL https://starship.rs/install.sh | bash -s -- -y
 curl -o $HOME/exa -LO https://github.com/ogham/exa/releases/download/v0.9.0/exa-linux-x86_64-0.9.0.zip \
 && sudo unzip $HOME/exa -d $HOME && sudo mv $HOME/exa-linux-x86_64 /usr/bin/exa && rm -rf $HOME/exa
 sudo apt-get install fd-find \

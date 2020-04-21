@@ -124,8 +124,6 @@ alias cl 'clear'
 
 if type -q starship
     eval (starship init fish)
-else
-    curl -fsSL https://starship.rs/install.sh | bash -s -- -y
 end
 
 if test -f $HOME/.asdf/asdf.fish
