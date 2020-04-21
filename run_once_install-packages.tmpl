@@ -9,6 +9,8 @@ sudo pacman -S --needed ripgrep bash git fd fzf exa fish bat yarn bash
 {{ end -}}
 
 {{ if eq .chezmoi.osRelease.id "fedora" -}}
+sudo dnf module disable fish
+sudo dnf distro-sync fishga
 sudo dnf install bash git ripgrep fd-find fzf exa fish npm bat bash
 npm install -g yarn
 {{ end -}}
