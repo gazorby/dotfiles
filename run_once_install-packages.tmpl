@@ -1,7 +1,7 @@
 #!/bin/sh
 
 {{ if eq .chezmoi.osRelease.id "arch" "manjaro" -}}
-sudo pacman -S --needed ripgrep bash git fd fzf exa fish bat yarn
+sudo pacman -S --needed ripgrep bash git fd fzf exa fish bat yarn fakeroot binutils
 yarn global add @fabiospampinato/bump
 git clone https://aur.archlinux.org/starship-bin.git $HOME/starship \
 && cd $HOME/starship \
