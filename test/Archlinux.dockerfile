@@ -12,12 +12,12 @@ RUN pacman -Syu --noconfirm && pacman -Scc --noconfirm && pacman -S --needed --n
 RUN useradd -m -s /bin/bash -d /build build  \
 && echo "build ALL=NOPASSWD: ALL" >> /etc/sudoers
 
-COPY ./test/chezmoi.toml ./test/entrypoint.sh /
-
-RUN chmod +x /entrypoint.sh
-
 USER build
 
-ENTRYPOINT [ "./entrypoint.sh" ]
+COPY ./test/chezmoi.toml ./test/entrypoint.sh /build/
 
-CMD ["chezmoi", "apply", "--config", "/chezmoi.toml"]
+RUN sudo chmod +x /build/entrypoint.sh
+
+ENTRYPOINT [ "/build/entrypoint.sh" ]
+
+CMD ["sh", "-c", "chezmoi apply --config ~/chezmoi.toml && fish"]
