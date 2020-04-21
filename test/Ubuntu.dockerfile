@@ -15,4 +15,4 @@ RUN chmod +x /entrypoint.sh
 
 ENTRYPOINT [ "./entrypoint.sh" ]
 
-CMD ["sh", "-c", "chezmoi apply --config ~/chezmoi.toml && fish"]
+CMD ["sh", "-c", "chezmoi apply --config /chezmoi.toml && fish"]
