@@ -20,7 +20,6 @@ sudo dnf install bash git ripgrep fd-find exa fish npm bat bash fzf findutils
 npm install -g yarn
 yarn global add @fabiospampinato/bump
 curl -fsSL https://starship.rs/install.sh | bash -s -- -y
-echo "source /usr/share/fzf/shell/key-bindings.fish" >> $HOME/.config/fish/config.fish
 {{ end -}}
 
 {{ if eq .chezmoi.osRelease.id "ubuntu" "debian" -}}

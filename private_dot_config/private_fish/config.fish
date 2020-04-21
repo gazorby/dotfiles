@@ -57,6 +57,11 @@ if type -q fzf
 
     # fzf aliases
     alias cf 'fzf-bcd-widget'
+
+    # Needed on fedora
+    if test -f /usr/share/fzf/shell/key-bindings.fish
+        source /usr/share/fzf/shell/key-bindings.fish
+    end
 end
 
 ###################################
@@ -128,4 +133,6 @@ end
 
 if test -f $HOME/.asdf/asdf.fish
     source $HOME/.asdf/asdf.fish
+else if test -f /opt/asdf-vm/asdf.fish
+    source /opt/asdf-vm/asdf.fish
 end
