@@ -38,7 +38,7 @@ sudo apt-get install ripgrep \
 sudo apt-get install bat \
 || (curl -o $HOME/bat -LO https://github.com/sharkdp/bat/releases/download/v0.13.0/bat_0.13.0_amd64.deb \
     && sudo dpkg -i $HOME/bat; rm $HOME/bat)
-sudo apt-get install fzf
+sudo apt-get install fzf \
 || (git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf && $HOME/.fzf/install --no-bash --no-zsh --all --64)
 {{ end -}}
 
