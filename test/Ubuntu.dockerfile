@@ -5,7 +5,6 @@ RUN apt-get update && apt-get -y install \
     git \
     sudo \
     sed \
-    vim \
     software-properties-common
 
 RUN add-apt-repository ppa:fish-shell/release-3 && apt-get update && apt-get -y install fish
