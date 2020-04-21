@@ -57,10 +57,6 @@ if type -q fzf
 
     # fzf aliases
     alias cf 'fzf-bcd-widget'
-
-else if ! test -d $HOME/.fzf
-    git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
-    $HOME/.fzf/install --no-bash --no-zsh --all --64
 end
 
 ###################################
