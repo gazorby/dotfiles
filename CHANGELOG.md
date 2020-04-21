@@ -1,3 +1,6 @@
+## 1.1.1 (2020-04-21)
+- ✅ test: remove alpine dockerfile
+
 ## 1.1.0 (2020-04-21)
 - ♻️ ref: install starship with aur in arch
 - ✅ test: add arch image
