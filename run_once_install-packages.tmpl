@@ -1,16 +1,17 @@
 #!/bin/sh
 
 {{ if eq .chezmoi.osRelease.id "arch" "manjaro" -}}
+aur_install() {
+    git clone "$1" $HOME/.aur_install
+    cd $HOME/.aur_install
+    makepkg --clean --install --syncdeps --noconfirm
+    cd $HOME
+    rm -rfd $HOME/.aur_install
+}
 sudo pacman -S --needed ripgrep bash git fd fzf exa fish bat yarn fakeroot binutils
 yarn global add @fabiospampinato/bump
-git clone https://aur.archlinux.org/starship-bin.git $HOME/starship \
-&& cd $HOME/starship \
-&& makepkg --clean --install --syncdeps --noconfirm \
-&& cd $HOME && rm -rfd $HOME/starship
-git clone https://aur.archlinux.org/asdf-vm.git $HOME/asdf \
-&& cd $HOME/asdf \
-&& makepkg --clean --install --syncdeps --noconfirm \
-&& cd $HOME && rm -rfd $HOME/asdf
+aur_install https://aur.archlinux.org/starship-bin.git
+aur_install https://aur.archlinux.org/asdf-vm.git
 {{ end -}}
 
 {{ if eq .chezmoi.osRelease.id "fedora" -}}
@@ -23,21 +24,26 @@ curl -fsSL https://starship.rs/install.sh | bash -s -- -y
 {{ end -}}
 
 {{ if eq .chezmoi.osRelease.id "ubuntu" "debian" -}}
+apt_or_git() {
+    sudo apt-get install $1 \
+    || (
+            curl -o $HOME/.curled_package -LO $2 \
+            && sudo dpkg -i --force-overwrite $HOME/.curled_package
+            rm $HOME/.curled_package
+        )
+}
+
 sudo apt-get install git bash fish npm curl unzip
 npm install -g yarn
 yarn global add @fabiospampinato/bump
 curl -fsSL https://starship.rs/install.sh | bash -s -- -y
 curl -o $HOME/exa -LO https://github.com/ogham/exa/releases/download/v0.9.0/exa-linux-x86_64-0.9.0.zip \
 && sudo unzip $HOME/exa -d $HOME && sudo mv $HOME/exa-linux-x86_64 /usr/bin/exa && rm -rf $HOME/exa
-sudo apt-get install fd-find \
-|| (curl -o $HOME/fd -LO https://github.com/sharkdp/fd/releases/download/v8.0.0/fd-musl_8.0.0_amd64.deb \
-    && sudo dpkg -i $HOME/fd; rm $HOME/fd)
-sudo apt-get install ripgrep \
-|| (curl -o $HOME/rg -LO https://github.com/BurntSushi/ripgrep/releases/download/11.0.2/ripgrep_11.0.2_amd64.deb \
-    && sudo dpkg -i --force-overwrite $HOME/rg; rm $HOME/rg)
-sudo apt-get install bat \
-|| (curl -o $HOME/bat -LO https://github.com/sharkdp/bat/releases/download/v0.13.0/bat_0.13.0_amd64.deb \
-    && sudo dpkg -i $HOME/bat; rm $HOME/bat)
+
+apt_or_git fd-find https://github.com/sharkdp/fd/releases/download/v8.0.0/fd-musl_8.0.0_amd64.deb
+apt_or_git ripgrep https://github.com/BurntSushi/ripgrep/releases/download/11.0.2/ripgrep_11.0.2_amd64.deb
+apt_or_git bat https://github.com/sharkdp/bat/releases/download/v0.13.0/bat_0.13.0_amd64.deb
+
 sudo apt-get install fzf \
 || (git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf && $HOME/.fzf/install --no-bash --no-zsh --all --64)
 {{ end -}}
