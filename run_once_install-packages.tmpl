@@ -11,7 +11,7 @@ sudo pacman -S --needed ripgrep bash git fd fzf exa fish bat yarn bash
 {{ if eq .chezmoi.osRelease.id "fedora" -}}
 sudo dnf module -y disable fish
 sudo dnf distro-sync fishga
-sudo dnf install bash git ripgrep fd-find exa fish npm bat bash find
+sudo dnf install bash git ripgrep fd-find exa fish npm bat bash findutils
 npm install -g yarn
 git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf && $HOME/.fzf/install --no-bash --no-zsh --all --64
 {{ end -}}
