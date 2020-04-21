@@ -14,3 +14,5 @@ COPY ./test/chezmoi.toml ./test/entrypoint.sh /
 RUN chmod +x /entrypoint.sh
 
 ENTRYPOINT [ "./entrypoint.sh" ]
+
+CMD ["chezmoi", "apply", "--config", "/chezmoi.toml"]

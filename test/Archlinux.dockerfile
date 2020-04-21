@@ -19,3 +19,5 @@ RUN chmod +x /entrypoint.sh
 USER build
 
 ENTRYPOINT [ "./entrypoint.sh" ]
+
+CMD ["chezmoi", "apply", "--config", "/chezmoi.toml"]
