@@ -12,11 +12,10 @@ git clone https://aur.archlinux.org/starship-bin.git $HOME/starship \
 {{ if eq .chezmoi.osRelease.id "fedora" -}}
 sudo dnf module -y disable fish
 sudo dnf distro-sync fish
-sudo dnf install bash git ripgrep fd-find exa fish npm bat bash findutils
+sudo dnf install bash git ripgrep fd-find exa fish npm bat bash fzf findutils
 npm install -g yarn
 yarn global add @fabiospampinato/bump
 curl -fsSL https://starship.rs/install.sh | bash -s -- -y
-git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf && $HOME/.fzf/install --no-bash --no-zsh --all --64
 {{ end -}}
 
 {{ if eq .chezmoi.osRelease.id "ubuntu" "debian" -}}
@@ -35,7 +34,8 @@ sudo apt-get install ripgrep \
 sudo apt-get install bat \
 || (curl -o $HOME/bat -LO https://github.com/sharkdp/bat/releases/download/v0.13.0/bat_0.13.0_amd64.deb \
     && sudo dpkg -i $HOME/bat; rm $HOME/bat)
-git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf && $HOME/.fzf/install --no-bash --no-zsh --all --64
+sudo apt-get install fzf
+|| (git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf && $HOME/.fzf/install --no-bash --no-zsh --all --64)
 {{ end -}}
 
 git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf
