@@ -9,6 +9,8 @@ set -ag fish_user_paths /usr/lib/passenger/bin
 set -ag fish_user_paths $HOME/.cargo/bin
 set -ag fish_user_paths $HOME/.dotnet
 set -ag fish_user_paths $HOME/.yarn/bin
+set -ag fish_user_paths /home/linuxbrew/.linuxbrew/bin
+set -ag fish_user_paths $HOME/.linuxbrew/bin
 
 # Go
 if type -q go
