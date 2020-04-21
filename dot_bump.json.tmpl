@@ -32,7 +32,6 @@
   },
 
   "scripts": {
-    "precommit": "git add README.md",
     "postchangelog": "sed -ri '/(docs(\\(.*\\){0,1})|chore\\(bump\\)):?\\s*.*$/d' CHANGELOG.md",
     "postrelease": "git push origin HEAD --tags"
   }
