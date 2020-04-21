@@ -1,3 +1,26 @@
+## 1.1.0 (2020-04-21)
+- ♻️ ref: install starship with aur in arch
+- ✅ test: add arch image
+- 🐛 fix: ensure to install chezmoi using sudo
+- 🐛 fix: fix shell syntax
+- ♻️ refactor: add default commands to dockerfiles
+- ♻️ ref: install starship in install script
+- ✨ feat: add fzf keybindings
+- 🐛 fix: cd ~/ after removing starship build dir
+- 🎨 style: rename monitor.fish to watcher.fish
+- ♻️ ref: try installing fzf with package manager
+- 🐛 fix: enable fzf keybindings on fedora
+- ✅ test: spawn a fish shell to test installation
+- ✅ test: fix archlinux image
+- 🐛 fix: fix watcher function name
+- ♻️ ref: install asdf with aur on arch
+- ♻️ ref: ensure makepkg deps are installed on arch
+- ♻️ ref: handle sourcing logic in config.fish
+- 🐛 fix: fix shell syntax
+- 🐛 fix: fix arch detection for asdf
+- ✅ test: spawn a fish in ubuntu image
+- 👷 chore: update .chezmoiignore
+
 ## 1.0.0 (2020-04-21)
 - Initial commit
 - 🐛 fix: add missing quotes
