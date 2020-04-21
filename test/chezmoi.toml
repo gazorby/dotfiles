@@ -1,0 +1,8 @@
+[data]
+  email_perso = "example@pm.me"
+  email_pro = "example.pro@company.com"
+  username_pro = "FirstName LastName"
+  username_perso = "perso_usnermae"
+  signing_key_perso = "AZQESDFQSDF654SDFQSDF654QSDFQSDF"
+  signing_key_pro = "QSDFQSDFSDFQSD654654QSDFQSDFQSDSDQSD"
+  token_github_repo = "65654dsqd54654sdfsds655eef65ef4"
