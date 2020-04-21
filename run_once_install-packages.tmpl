@@ -1,4 +1,5 @@
 #!/bin/sh
+
 {{ if eq .chezmoi.osRelease.id "arch" -}}
 sudo pacman -S --needed ripgrep bash git fd fzf exa fish bat yarn
 {{ end -}}
@@ -16,11 +17,14 @@ npm install -g yarn
 sudo apt-get install git bash fish npm curl
 npm install -g yarn
 sudo apt-get install fd-find \
-|| $(curl -LO https://github.com/sharkdp/fd/releases/download/v8.0.0/fd-musl_8.0.0_amd64.deb && sudo dpkg -i fd-musl_8.0.0_amd64.deb && rm fd-musl_8.0.0_amd64.deb)
+|| (curl -o $HOME/fd -LO https://github.com/sharkdp/fd/releases/download/v8.0.0/fd-musl_8.0.0_amd64.deb \
+    && sudo dpkg -i $HOME/fd; rm $HOME/fd)
 sudo apt-get install ripgrep \
-|| $(curl -LO https://github.com/BurntSushi/ripgrep/releases/download/11.0.2/ripgrep_11.0.2_amd64.deb && sudo dpkg -i ripgrep_11.0.2_amd64.deb && rm ripgrep_11.0.2_amd64.deb)
+|| (curl -o $HOME/rg -LO https://github.com/BurntSushi/ripgrep/releases/download/11.0.2/ripgrep_11.0.2_amd64.deb \
+    && sudo dpkg -i --force-overwrite $HOME/rg; rm $HOME/rg)
 sudo apt-get install bat \
-|| $(curl -LO https://github.com/sharkdp/bat/releases/download/v0.13.0/bat_0.13.0_amd64.deb && sudo dpkg -i bat_0.13.0_amd64.deb && rm bat_0.13.0_amd64.deb)
+|| (curl -o $HOME/bat -LO https://github.com/sharkdp/bat/releases/download/v0.13.0/bat_0.13.0_amd64.deb \
+    && sudo dpkg -i $HOME/bat; rm $HOME/bat)
 sudo apt-get install fzf \
-|| $(git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && $HOME/.fzf/install --no-bash --no-zsh --all --64)
+|| (git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf && $HOME/.fzf/install --no-bash --no-zsh --all --64)
 {{ end -}}
