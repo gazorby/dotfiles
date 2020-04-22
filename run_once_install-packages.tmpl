@@ -1,6 +1,22 @@
 #!/bin/sh
 
+dialog_yes_no() {
+    echo -en "\n$1 (y/n)? "
+    read answer
+    if [ "$answer" != "${answer#[Yy]}" ] ;then
+        return 0
+    else
+        return 1
+    fi
+}
+
 install_homebrew() {
+    if dialog_yes_no "$1 cannot be installed with your default pasckage manager. Do you want to install homebrew"; then
+        HOMEBREW=1
+    else
+        HOMEBREW=0
+        return
+    fi
     {{ if eq .chezmoi.osRelease.id "ubuntu" "debian" -}}
         sudo apt-get install build-essential curl file git
     {{ end -}}
@@ -19,10 +35,16 @@ brew_wrapper() {
         /home/linuxbrew/.linuxbrew/bin/brew install $1
     elif [ -f $HOME/.linuxbrew/bin/brew ]; then
         $HOME/.linuxbrew/bin/brew install $1
-    else
-        install_homebrew
+    elif [ "$HOMEBREW" == 1 ] || [ -z ${HOMEBREW+x} ]; then
+        install_homebrew "$1"
     fi
 }
+
+
+if ! dialog_yes_no "Do you want to run the install script"; then
+    exit 0
+fi
+
 
 {{ if eq .chezmoi.osRelease.id "arch" "manjaro" -}}
 aur_install() {
