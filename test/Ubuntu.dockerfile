@@ -9,10 +9,15 @@ RUN apt-get update && apt-get -y install \
 
 RUN add-apt-repository ppa:fish-shell/release-3 && apt-get update && apt-get -y install fish
 
-COPY ./test/chezmoi.toml ./test/entrypoint.sh /
+RUN useradd -m -s /bin/bash -d /docker docker  \
+&& echo "docker ALL=NOPASSWD: ALL" >> /etc/sudoers
 
-RUN chmod +x /entrypoint.sh
+COPY ./test/chezmoi.toml ./test/entrypoint.sh /docker/
 
-ENTRYPOINT [ "./entrypoint.sh" ]
+RUN chmod +x /docker/entrypoint.sh
 
-CMD ["sh", "-c", "chezmoi apply --config /chezmoi.toml && fish"]
+USER docker
+
+ENTRYPOINT [ "/docker/entrypoint.sh" ]
+
+CMD ["sh", "-c", "chezmoi apply --config ~/chezmoi.toml && fish"]
