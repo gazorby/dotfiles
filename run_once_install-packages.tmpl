@@ -48,11 +48,17 @@ fi
 
 {{ if eq .chezmoi.osRelease.id "arch" "manjaro" -}}
 aur_install() {
-    git clone "$1" $HOME/.aur_install
-    cd $HOME/.aur_install
-    makepkg --clean --install --syncdeps
-    cd $HOME
-    rm -rfd $HOME/.aur_install
+    local tmp="${1##https://*/}"
+    local package_name="${tmp%.git}"
+    if pacman -Q $package_name; then
+        return
+    else
+        git clone "$1" $HOME/.aur_install
+        cd $HOME/.aur_install
+        makepkg --clean --install --syncdeps
+        cd $HOME
+        rm -rfd $HOME/.aur_install
+    fi
 }
 sudo pacman -S --needed ripgrep bash git fd fzf exa fish bat neovim yarn fakeroot binutils
 yarn config set prefix $HOME/.yarn
@@ -86,4 +92,3 @@ sudo apt-get install bat || brew_wrapper bat
 brew_wrapper asdf
 brew_wrapper starship
 {{ end -}}
-
