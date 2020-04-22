@@ -1,3 +1,7 @@
+## 1.3.0 (2020-04-22)
+- ♻️ ref: always ask user before installing
+- ✨ feat: ignore install script or homebrew
+
 ## 1.2.0 (2020-04-22)
 - 🐛 fix: remove git add from precommit hook in bump conf
 - ♻️ ref: refactor code
