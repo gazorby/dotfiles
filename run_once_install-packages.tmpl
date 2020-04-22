@@ -1,7 +1,7 @@
 #!/bin/sh
 
 dialog_yes_no() {
-    echo -en "\n$1 (y/n)? "
+    echo "\n$1 (y/n)? "
     read answer
     if [ "$answer" != "${answer#[Yy]}" ] ;then
         return 0
@@ -15,7 +15,7 @@ install_homebrew() {
         HOMEBREW=1
     else
         HOMEBREW=0
-        return
+        return 1
     fi
     {{ if eq .chezmoi.osRelease.id "ubuntu" "debian" -}}
         sudo apt-get install build-essential curl file git
@@ -35,8 +35,8 @@ brew_wrapper() {
         /home/linuxbrew/.linuxbrew/bin/brew install $1
     elif [ -f $HOME/.linuxbrew/bin/brew ]; then
         $HOME/.linuxbrew/bin/brew install $1
-    elif [ "$HOMEBREW" == 1 ] || [ -z ${HOMEBREW+x} ]; then
-        install_homebrew "$1"
+    elif [ "$HOMEBREW" = 1 ] || [ -z "${HOMEBREW+x}" ]; then
+        install_homebrew "$1" && brew_wrapper $1
     fi
 }
 
@@ -78,7 +78,7 @@ sudo npm install -g yarn
 yarn config set prefix $HOME/.yarn
 yarn global add @fabiospampinato/bump
 
-sudo apt-get install fzf || (brew_wrapper fzf && $(/home/linuxbrew/.linuxbrew/bin/brew --prefix)/opt/fzf/install --all --no-zsh --no-bash --64)
+sudo apt-get install fzf || brew_wrapper fzf && $(/home/linuxbrew/.linuxbrew/bin/brew --prefix)/opt/fzf/install --all --no-zsh --no-bash --64
 sudo apt-get install fd-find || brew_wrapper fd
 sudo apt-get install exa || brew_wrapper exa
 sudo apt-get install ripgrep || brew_wrapper ripgrep
