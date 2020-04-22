@@ -1,3 +1,8 @@
+## 1.3.1 (2020-04-22)
+- ♻️  ref(install): fix shell syntax
+- ♻️ ref(install): remove uninterpreted newline
+- ♻️ ref(install): fix newline
+
 ## 1.3.0 (2020-04-22)
 - ♻️ ref: always ask user before installing
 - ✨ feat: ignore install script or homebrew
