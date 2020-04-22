@@ -28,7 +28,7 @@ brew_wrapper() {
 aur_install() {
     git clone "$1" $HOME/.aur_install
     cd $HOME/.aur_install
-    makepkg --clean --install --syncdeps --noconfirm
+    makepkg --clean --install --syncdeps
     cd $HOME
     rm -rfd $HOME/.aur_install
 }
@@ -40,7 +40,7 @@ aur_install https://aur.archlinux.org/asdf-vm.git
 {{ end -}}
 
 {{ if eq .chezmoi.osRelease.id "fedora" -}}
-sudo dnf module -y disable fish
+sudo dnf module disable fish
 sudo dnf distro-sync fish
 sudo dnf install bash git ripgrep fd-find exa fish npm bat bash fzf findutils
 sudo npm install -g yarn
