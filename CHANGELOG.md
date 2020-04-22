@@ -1,3 +1,10 @@
+## 1.2.0 (2020-04-22)
+- 🐛 fix: remove git add from precommit hook in bump conf
+- ♻️ ref: refactor code
+- ♻️ refactor: add linuxbrew bin folder to path
+- ♻️ ref: use homebrew
+- ♻️ ref: don't use root as default user
+
 ## 1.1.1 (2020-04-21)
 - ✅ test: remove alpine dockerfile
 
