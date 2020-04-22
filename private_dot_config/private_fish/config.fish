@@ -12,11 +12,13 @@ set -ag fish_user_paths $HOME/.yarn/bin
 set -ag fish_user_paths /home/linuxbrew/.linuxbrew/bin
 set -ag fish_user_paths $HOME/.linuxbrew/bin
 
+set -gx EDITOR "nvim"
+
 # Go
 if type -q go
-    set -gx GOPATH "$HOME/go"
-    set -gx GOBIN "$GOPATH/bin"
-    set -gx GO111MODULE "on"
+    set -Ux GOPATH "$HOME/go"
+    set -Ux GOBIN "$GOPATH/bin"
+    set -Ux GO111MODULE "on"
     set -ag fish_user_paths "$GOBIN"
 end
 
@@ -28,39 +30,45 @@ end
 
 # fzf
 if type -q fzf
-    set -x FZF_DEFAULT_OPTS "--margin 0,1 --layout reverse --height 60%"
-
+    # Default command
     if type -q rg
-        set -x FZF_DEFAULT_COMMAND 'rg --files --no-ignore --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
+        set -gx FZF_DEFAULT_COMMAND 'rg --files --hidden --follow -g "!**/{.git,node_modules}/**" 2> /dev/null'
     else
-        set -x FZF_DEFAULT_COMMAND 'find -L . \( -path ./.git -prune -path ./node_modules -prune \) -o -print -type f 2> /dev/null'
+        set -gx FZF_DEFAULT_COMMAND 'find -L . \( -path ./.git -prune -path ./node_modules -prune \) -o -print -type f 2> /dev/null'
     end
 
     # search for a file in the home directory
     if type -q fd
-        set -x FZF_ALT_C_COMMAND "fd -t d --full-path './'"
+        set -gx FZF_ALT_C_COMMAND "fd -t d --full-path './'"
     else
-        set -x FZF_ALT_C_COMMAND "find . -type d"
+        set -gx FZF_ALT_C_COMMAND "find . -type d"
     end
-
     # search for a file in the current dierctory
-    set -x FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
+    set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
 
+    # margin, height and color
+    set -gx FZF_DEFAULT_OPTS "--margin 0,1 --layout reverse --height 60% --color 'fg:#bbccdd,fg+:#ddeeff,bg:#334455,preview-bg:#223344,border:#778899'"
     # preview files on the right side
-    set -x FZF_CTRL_T_OPTS "--preview 'bat --style=numbers --color=always {} | head -500' \
-                            $FZF_CUSTOM_OPTIONS"
-
-
+    set -gx FZF_CTRL_T_OPTS "--preview 'bat --style=numbers --color=always {} | head -500'"
     # preview directory sub tree
-    set -x FZF_ALT_C_OPTS "--preview 'tree -C {} | head -200' $FZF_CUSTOM_OPTIONS"
+    set -gx FZF_ALT_C_OPTS "--preview 'exa --tree --level 3 {} | head -200'"
 
-    # fzf keybindings
+    # jethrokuan/fzf fish plugin
+    set -gx FZF_FIND_FILE_COMMAND 'rg --files --hidden --follow -g "!**/{.git,node_modules}/**" . \$dir 2> /dev/null'
+    set -gx FZF_OPEN_COMMAND "$FZF_FIND_FILE_COMMAND"
+    set -gx FZF_CD_COMMAND "fd -t d --full-path './'"
+    set -gx FZF_CD_WITH_HIDDEN_COMMAND "fd -t d --hidden --full-path './'"
+    set -gx FZF_PREVIEW_DIR_CMD "exa --tree --level 3"
+    set -gx FZF_PREVIEW_FILE_CMD "bat --style=numbers --color=always"
+    set -gx FZF_ENABLE_OPEN_PREVIEW 1
+    set -gx FZF_COMPLETE 3
+
+    # fzf-complete with ctrl+x
     bind \cx 'fzf-complete'
 
-    # fzf aliases
     alias cf 'fzf-bcd-widget'
 
-    # Needed on fedora
+    # Enable keybindings on fedora
     if test -f /usr/share/fzf/shell/key-bindings.fish
         source /usr/share/fzf/shell/key-bindings.fish
     end
