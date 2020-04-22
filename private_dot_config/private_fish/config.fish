@@ -61,7 +61,7 @@ if type -q fzf
     set -gx FZF_PREVIEW_DIR_CMD "exa --tree --level 3"
     set -gx FZF_PREVIEW_FILE_CMD "bat --style=numbers --color=always"
     set -gx FZF_ENABLE_OPEN_PREVIEW 1
-    set -gx FZF_COMPLETE 3
+    if ! set -q FZF_COMPLETE; set -Ux FZF_COMPLETE 3; end
 
     # fzf-complete with ctrl+x
     bind \cx 'fzf-complete'
