@@ -143,5 +143,5 @@ end
 {{ if eq .chezmoi.osRelease.id "arch" "manjaro" -}}
 source /opt/asdf-vm/asdf.fish
 {{ else }}
-source $HOME/.asdf/asdf.fish
+source "$HOME"/.asdf/asdf.fish
 {{ end -}}
