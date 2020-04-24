@@ -68,10 +68,9 @@ if type -q fzf
 
     alias cf 'fzf-bcd-widget'
 
-    # Enable keybindings on fedora
-    if test -f /usr/share/fzf/shell/key-bindings.fish
-        source /usr/share/fzf/shell/key-bindings.fish
-    end
+    {{ if eq .chezmoi.osRelease.id "fedora" -}}
+    source /usr/share/fzf/shell/key-bindings.fish
+    {{ end -}}
 end
 
 ###################################
@@ -141,8 +140,8 @@ if type -q starship
     eval (starship init fish)
 end
 
-if test -f $HOME/.asdf/asdf.fish
-    source $HOME/.asdf/asdf.fish
-else if test -f /opt/asdf-vm/asdf.fish
-    source /opt/asdf-vm/asdf.fish
-end
+{{ if eq .chezmoi.osRelease.id "arch" "manjaro" -}}
+source /opt/asdf-vm/asdf.fish
+{{ else }}
+source $HOME/.asdf/asdf.fish
+{{ end -}}
