@@ -1,3 +1,20 @@
+## 1.4.0 (2020-04-24)
+- ✨ feat: add neovim
+- ♻️ ref: update fishfile
+- ♻️ ref: update config.fish
+- 🐛 fix: Fix varaible scope for fzf completion
+- ✨ feat: Add vim-plug to install script
+- ♻️ refactor: auto install vim-plug using init.vim conf
+- ♻️ ref: don't reinstall aur packages
+- ✨ feat: add starship config
+- ♻️ refactor: use templating in config.fish
+- 🐛 fix: don't overwrite go env variables
+- ♻️ ref(install): updates repositories before installing
+- 🐛 ref: install asdf with git, only use homebrew for ubuntu
+- ♻️ ref: update asdf sourcing
+- ♻️ ref: add asdf completions
+- ♻️ ref: try installing starship from repo on fedora
+
 ## 1.3.1 (2020-04-22)
 - ♻️  ref(install): fix shell syntax
 - ♻️ ref(install): remove uninterpreted newline
