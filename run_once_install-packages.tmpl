@@ -20,11 +20,6 @@ install_homebrew() {
     {{ if eq .chezmoi.osRelease.id "ubuntu" "debian" -}}
         sudo apt-get install build-essential curl file git
     {{ end -}}
-    {{ if eq .chezmoi.osRelease.id "fedora" -}}
-        sudo yum groupinstall 'Development Tools'
-        sudo yum install curl file git
-        sudo yum install libxcrypt-compat # needed by Fedora 30 and up
-    {{ end -}}
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 }
 
@@ -76,8 +71,7 @@ sudo dnf install bash git ripgrep fd-find exa fish npm bat neovim python3-neovim
 sudo npm install -g yarn
 yarn config set prefix $HOME/.yarn
 yarn global add @fabiospampinato/bump
-brew_wrapper asdf
-brew_wrapper starship
+curl -fsSL https://starship.rs/install.sh | bash
 {{ end -}}
 
 {{ if eq .chezmoi.osRelease.id "ubuntu" "debian" -}}
@@ -92,6 +86,12 @@ sudo apt-get install fd-find || brew_wrapper fd
 sudo apt-get install exa || brew_wrapper exa
 sudo apt-get install ripgrep || brew_wrapper ripgrep
 sudo apt-get install bat || brew_wrapper bat
-brew_wrapper asdf
 brew_wrapper starship
+{{ end -}}
+
+{{ if ne .chezmoi.osRelease.id "arch" -}}
+{{ if ne .chezmoi.osRelease.id "manjaro" -}}
+git clone https://github.com/asdf-vm/asdf.git "$HOME"/.asdf
+git --git-dir="$HOME"/.asdf/.git checkout $(git --git-dir="$HOME"/.asdf/.git describe --abbrev=0 --tags)
+{{ end -}}
 {{ end -}}
