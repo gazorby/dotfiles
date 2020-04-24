@@ -5,5 +5,5 @@ bump.json
 test/
 {{ if eq .chezmoi.osRelease.id "opensuse-tumbleweed" -}}
 # Already enabled on opensuse tumbleweed
-private_dot_config/private_fish/functions/fish_user_keybindings.fish
+private_dot_config/private_fish/functions/fish_user_key_bindings.fish
 {{ end -}}
