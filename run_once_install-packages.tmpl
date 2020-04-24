@@ -68,10 +68,10 @@ sudo dnf update
 sudo dnf module disable fish
 sudo dnf distro-sync fish
 sudo dnf install bash git ripgrep fd-find exa fish npm bat neovim python3-neovim bash fzf findutils
+sudo dnf install starship || curl -fsSL https://starship.rs/install.sh | sudo bash
 sudo npm install -g yarn
 yarn config set prefix $HOME/.yarn
 yarn global add @fabiospampinato/bump
-curl -fsSL https://starship.rs/install.sh | bash
 {{ end -}}
 
 {{ if eq .chezmoi.osRelease.id "ubuntu" "debian" -}}
