@@ -93,5 +93,6 @@ brew_wrapper starship
 {{ if ne .chezmoi.osRelease.id "manjaro" -}}
 git clone https://github.com/asdf-vm/asdf.git "$HOME"/.asdf
 git --git-dir="$HOME"/.asdf/.git checkout $(git --git-dir="$HOME"/.asdf/.git describe --abbrev=0 --tags)
+mkdir -p "$HOME"/.config/fish/completions && cp "$HOME"/.asdf/completions/asdf.fish "$HOME"/.config/fish/completions
 {{ end -}}
 {{ end -}}
