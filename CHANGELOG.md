@@ -1,3 +1,9 @@
+## 1.4.1 (2020-04-24)
+- ✨ feat: initial support for opensuse tumbleweed
+- 🐛 fix: typo in .chezmoiignore
+- 🎨 style: rename opensuse dockerfile
+- 🐛 fix(chezmoiignore): template syntax
+
 ## 1.4.0 (2020-04-24)
 - ✨ feat: add neovim
 - ♻️ ref: update fishfile
