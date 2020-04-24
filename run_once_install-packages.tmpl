@@ -60,6 +60,7 @@ aur_install() {
         rm -rfd $HOME/.aur_install
     fi
 }
+sudo pacman -Syu
 sudo pacman -S --needed ripgrep bash git fd fzf exa fish bat neovim yarn fakeroot binutils
 yarn config set prefix $HOME/.yarn
 yarn global add @fabiospampinato/bump
@@ -68,6 +69,7 @@ aur_install https://aur.archlinux.org/asdf-vm.git
 {{ end -}}
 
 {{ if eq .chezmoi.osRelease.id "fedora" -}}
+sudo dnf update
 sudo dnf module disable fish
 sudo dnf distro-sync fish
 sudo dnf install bash git ripgrep fd-find exa fish npm bat neovim python3-neovim bash fzf findutils
@@ -79,6 +81,7 @@ brew_wrapper starship
 {{ end -}}
 
 {{ if eq .chezmoi.osRelease.id "ubuntu" "debian" -}}
+sudo apt-get update
 sudo apt-get install git bash fish neovim npm curl unzip
 sudo npm install -g yarn
 yarn config set prefix $HOME/.yarn
