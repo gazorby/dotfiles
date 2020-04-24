@@ -71,6 +71,9 @@ if type -q fzf
     {{ if eq .chezmoi.osRelease.id "fedora" -}}
     source /usr/share/fzf/shell/key-bindings.fish
     {{ end -}}
+    {{ if eq .chezmoi.osRelease.id "alpine" -}}
+    source "$HOME"/.fzf/shell/key-bindings.fish
+    {{ end -}}
 end
 
 ###################################

@@ -90,6 +90,16 @@ sudo npm install -g yarn
 curl -fsSL https://starship.rs/install.sh | sudo bash
 {{ end -}}
 
+{{ if eq .chezmoi.osRelease.id "alpine" -}}
+sudo apk update
+sudo apk add --no-cache fish nodejs npm neovim fzf bash perl
+sudo apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community ripgrep exa fd
+sudo apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing bat
+sudo npm install -g yarn
+curl -fsSL https://starship.rs/install.sh | sudo bash
+mkdir -p "$HOME"/.fzf/shell && curl -o "$HOME"/.fzf/shell/key-bindings.fish -LO https://raw.githubusercontent.com/junegunn/fzf/master/shell/key-bindings.fish
+{{ end -}}
+
 {{ if ne .chezmoi.osRelease.id "arch" -}}
 {{ if ne .chezmoi.osRelease.id "manjaro" -}}
 git clone https://github.com/asdf-vm/asdf.git "$HOME"/.asdf
