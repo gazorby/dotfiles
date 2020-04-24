@@ -16,9 +16,9 @@ set -gx EDITOR "nvim"
 
 # Go
 if type -q go
-    set -Ux GOPATH "$HOME/go"
-    set -Ux GOBIN "$GOPATH/bin"
-    set -Ux GO111MODULE "on"
+    if ! set -q GOPATH; set -Ux GOPATH "$HOME/go"; end
+    if ! set -q GOBIN; set -Ux GOBIN "$GOPATH/bin"; end
+    if ! set -q GO111MODULE; set -Ux GO111MODULE "on"; end
     set -ag fish_user_paths "$GOBIN"
 end
 
