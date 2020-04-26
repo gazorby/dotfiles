@@ -1,0 +1,1 @@
+/home/gazorby/.mozilla/firefox/user-overrides.js
