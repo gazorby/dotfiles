@@ -19,7 +19,7 @@ style = "bold yellow"
 # Nerd font symbols required
 # Work well with FiraCode Nerd Font
 [aws]
-symbol = " "
+symbol = "  "
 
 [battery]
 full_symbol = " "
