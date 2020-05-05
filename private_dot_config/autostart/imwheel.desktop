@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Imwheel
+GenericName=Imwheel
+Comment=Start imwheel
+Exec="/usr/bin/imwheel"
+Terminal=false
+Type=Application
+X-GNOME-Autostart-enabled=true
