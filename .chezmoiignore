@@ -7,3 +7,7 @@ test/
 # Already enabled on opensuse tumbleweed
 .config/fish/functions/fish_user_key_bindings.fish
 {{ end -}}
+
+{{ if eq .chezmoi.hostname "smallbox" -}}
+.config/autostart/imwheel.desktop
+{{ end -}}
