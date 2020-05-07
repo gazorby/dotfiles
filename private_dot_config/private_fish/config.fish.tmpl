@@ -68,8 +68,9 @@ if type -q fzf
     set -gx FZF_ALT_C_OPTS "--preview '"{$FZF_PREVIEW_DIR_CMD}' {}\''
 
 
-    # fzf-complete with ctrl+x
-    bind \ex '__fzf_alt_x'
+    # fzf-complete with alt+d / alt+shift+d
+    bind \ed '__fzf_search_dirs'
+    bind \eD '__fzf_search_dirs hidden'
 
     alias cf 'fzf-bcd-widget'
 
