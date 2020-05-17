@@ -12,7 +12,5 @@ test/
 .config/autostart/imwheel.desktop
 {{ end -}}
 
-{{ if eq .chezmoi.hostname "smallbox" -}}
 .config/pulse/daemon.conf
-{{ end -}}
 
