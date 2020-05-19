@@ -16,4 +16,9 @@
 --enable-dom-distiller
 --enable-webgl2-compute-context
 --enable-features=WebUIDarkMode,TabGroups,ParallelDownloading,UseDownloadOfflineContentProvider,FocusMode
---force-device-scale-factor=1.21
+.config/autostart/imwheel.desktop
+{{ if eq .chezmoi.hostname "smallbox" -}}
+--force-device-scale-factor=1.2
+{{ else }}
+--force-device-scale-factor=1.1
+{{ end -}}
