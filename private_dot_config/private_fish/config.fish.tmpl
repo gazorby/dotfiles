@@ -35,7 +35,7 @@ if type -q fzf
 
     # Default command
     if type -q rg
-        set -gx _BASE_FZF_DEFAULT_COMMAND 'rg --files --hidden --follow -g "!**/{.git,node_modules}/**"'
+        set -gx _BASE_FZF_DEFAULT_COMMAND 'rg --files --hidden --glob "!**/{.git,node_modules}/**" --unrestricted'
         set -gx FZF_DEFAULT_COMMAND {$_BASE_FZF_DEFAULT_COMMAND}' $dir 2> /dev/null'
     else
         set -gx _BASE_FZF_DEFAULT_COMMAND 'find -L . \( -path ./.git -prune -path ./node_modules -prune \) -o -print -type f 2> /dev/null'
