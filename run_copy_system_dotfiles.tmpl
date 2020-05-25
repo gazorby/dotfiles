@@ -1,0 +1,13 @@
+#!/bin/sh
+# Manage files outside home direcotry.
+# Be carefull : all files inside $CHEZMOI_SYSTEM will be copied
+
+CHEZMOI_SYSTEM="$HOME/.local/chezmoi_system"
+
+for d in $(find $CHEZMOI_SYSTEM -type f); do
+    real_file="${d#$CHEZMOI_SYSTEM}"
+    real_dir="${real_file%/*}"
+    if [ -d "$real_dir" ]; then
+        sudo cp --force --verbose "${d}" "$real_dir"
+    fi
+done
