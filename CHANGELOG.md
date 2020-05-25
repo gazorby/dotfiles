@@ -1,3 +1,37 @@
+## 1.5.0 (2020-05-25)
+- ♻️ ref: use templating for fishfile
+- ♻️ refactor: update fishfile
+- ♻️ refactor: remove exa aliases from config.fish
+- ✨ feat: add ghacks config
+- ♻️ refactor: update user-overrides.js
+- ♻️ refactor: delete mozilla profile folder
+- ✨ feat: add fish-exa plugin
+- ♻️ refactor: use chromium in psd conf
+- ♻️ refactor: chromium flags
+- ♻️ refactor: add imwheel systemd service
+- ♻️ refactor: update starship config
+- ♻️ refactor: use .desktop sepc to start imwheel and protonmail
+- ♻️ refactor: don't auotstart imwheel on laptop
+- ♻️ refactor: update fzf config
+- ♻️ refactor: update fzf config
+- ✨ feat: add pulse config
+- ♻️ refactor: update imwheelrc config
+- ♻️ refactor: update bump config
+- ✨ feat: add pulse daemon.conf
+- ♻️ refactor: update pulse default.pa
+- ♻️ refactor: remove pulse default.pa
+- ♻️ refactor: use pulse daemon.conf everywhere
+- ♻️ refactor: update chromium flags
+- ♻️ refactor: fix chromium scaling
+- 🐛 fix: fix line in chromium-flags.conf
+- ♻️ refactor: increase scrolling speed on spotify
+- ♻️ refactor: update fzf default command
+- Revert "♻️ refactor: update fzf default command"
+- ♻️ refactor: fzf default cmd don't follow files
+- ♻️ refactor: enable wasm on chromium
+- ✨ feat: manage files outside home dir
+- ✨ feat: add resolved.conf and nsswitch.conf
+
 ## 1.4.1 (2020-04-24)
 - ✨ feat: initial support for opensuse tumbleweed
 - 🐛 fix: typo in .chezmoiignore
