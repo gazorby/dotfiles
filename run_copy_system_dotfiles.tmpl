@@ -5,9 +5,12 @@
 CHEZMOI_SYSTEM="$HOME/.local/chezmoi_system"
 
 for d in $(find $CHEZMOI_SYSTEM -type f); do
+    # Remove "$HOME/.local/chezmoi_system" from file path
     real_file="${d#$CHEZMOI_SYSTEM}"
+    # Equivalent to dirname "$real_file"
     real_dir="${real_file%/*}"
-    if [ -d "$real_dir" ]; then
-        sudo cp --force --verbose "${d}" "$real_dir"
+    if ! [ -d "$real_dir" ]; then
+        sudo mkdir -p "$real_dir"
     fi
+    sudo cp --force --verbose "${d}" "$real_dir"
 done
