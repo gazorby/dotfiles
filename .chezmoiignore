@@ -15,7 +15,7 @@ test/
 .config/autostart/imwheel.desktop
 {{ end -}}
 
-{{ if eq .chezmoi.hostname "bigbox" -}}
-# Bigbox doe not have intel graphics
+{{ if ne .chezmoi.hostname "smallbox" -}}
+# Only smallbox have intel graphics
 ~/.local/chezmoi_system/etc/X11/xorg.conf.d/20-intel.conf
 {{ end -}}
