@@ -5,7 +5,7 @@
 CHEZMOI_SYSTEM="$HOME/.local/chezmoi_system"
 
 dialog_yes_no() {
-    echo -e "\n$1 (y/n)? "
+    echo -e "\n$1 (y/N)? "
     read answer
     if [ "$answer" != "${answer#[Yy]}" ] ;then
         return 0
