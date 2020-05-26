@@ -18,8 +18,7 @@ RUN chmod +x /docker/entrypoint.sh
 USER docker
 
 RUN mkdir -p /docker/.config/chezmoi \
-    && curl -sfL https://git.io/chezmoi | sudo sh \
-    && /bin/chezmoi init https://github.com/Gazorby/dotfiles.git
+    && curl -sfL https://git.io/chezmoi | sudo sh
 
 COPY ./test/chezmoi.toml /docker/.config/chezmoi/
 
