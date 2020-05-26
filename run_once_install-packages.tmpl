@@ -75,7 +75,9 @@ sudo dnf install bash git ripgrep fd-find exa fish npm bat neovim python3-neovim
 sudo dnf install starship || curl -fsSL https://starship.rs/install.sh | sudo bash
 sudo npm install -g yarn
 {{ if eq .machine "desktop" -}}
-sudo dnf install cups avahi imwheel
+sudo dnf copr enable szasza/Profile-sync-daemon
+sudo dnf update
+sudo dnf install cups avahi-daemon imwheel profile-sync-daemon
 {{ end -}}
 {{ end -}}
 
@@ -90,10 +92,24 @@ sudo apt-get install exa || brew_wrapper exa
 sudo apt-get install ripgrep || brew_wrapper ripgrep
 sudo apt-get install bat || brew_wrapper bat
 brew_wrapper starship
+
 {{ if eq .machine "desktop" -}}
-sudo apt-get install cups avahi imwheel profile-sync-daemon
+{{ if eq .chezmoi.osRelease.id "ubuntu" -}}
+sudo add-apt-repository ppa:graysky/utils
 {{ end -}}
+
+{{ if eq .chezmoi.osRelease.id "debian" -}}
+echo "deb http://ppa.launchpad.net/graysky/utils/ubuntu quantal main" > /etc/apt/sources.list.d/graysky.list
+echo "deb-src http://ppa.launchpad.net/graysky/utils/ubuntu quantal main" >> /etc/apt/sources.list.d/graysky.list
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys FF7F9516
 {{ end -}}
+
+sudo apt-get update
+sudo apt-get install cups avahi imwheel profile-sync-daemon profile-cleaner
+{{ end -}}
+
+{{ end -}}
+
 
 {{ if eq .chezmoi.osRelease.id "opensuse-tumbleweed" -}}
 sudo zypper update
@@ -119,14 +135,13 @@ mkdir -p "$HOME/.local/chezmoi_system"
 
 {{ if eq .machine "desktop" -}}
 # Enable auto discovery of printers
-systemctl --user enable --now imwheel
 sudo systemctl enable --now cups-browsed.service avahi-daemon.service org.cups.cupsd.service
 
 {{ if eq .chezmoi.osRelease.id "debian" "ubuntu" "arch" "manjaro" -}}
 systemctl --user enable profile-cleaner.service profile-cleaner.timer psd.service
 {{ end -}}
 
-{{ if eq .chezmoi.osRelease.id "arch" "manjaro" -}}
+{{ if eq .chezmoi.osRelease.id "fedora" -}}
 systemctl --user enable psd.service
 {{ end -}}
 
