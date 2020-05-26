@@ -6,3 +6,6 @@
   signing_key_perso = "AZQESDFQSDF654SDFQSDF654QSDFQSDF"
   signing_key_pro = "QSDFQSDFSDFQSD654654QSDFQSDFQSDSDQSD"
   token_github_repo = "65654dsqd54654sdfsds655eef65ef4"
+  machine = "desktop"
+  intel_graphics = "false"
+  touchpad = "false"
