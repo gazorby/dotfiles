@@ -1,4 +1,4 @@
-# Speed up scrolling for chromium and pass unchanged for zoom
+# Speed up scrolling for chromium, brave, vscode and spotify
 "^chromium|brave-browser|code|spotify$"
     None, Up, Button4, 2
     None, Down, Button5, 2
