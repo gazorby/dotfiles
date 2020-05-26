@@ -1,3 +1,20 @@
+## 1.6.0 (2020-05-26)
+- 🐛 fix(system script): create dir if not exist
+- ♻️ ref(system script): more verbose
+- ✨ feat: add network tweaks
+- ✨ feat: add journald conf
+- ✨ feat: add xorg config for intel graphics
+- 👷 chore: update .chezmoiignore
+- ✨ feat(system script): add yes/no dialog
+- ♻️ ref: use intel graphics only for smallbox
+- ♻️ ref: update sysctl conf
+- ✨ feat: update ssh conf
+- 👷 chore: update .chezmoiignore
+- ♻️ ref: update yes/no prompt
+- 🐛 fix: fix ssh config
+- ♻️ ref: update sshd config
+- ✨ feat: add pacman conf for arch/manjaro
+
 ## 1.5.0 (2020-05-25)
 - ♻️ ref: use templating for fishfile
 - ♻️ refactor: update fishfile
