@@ -1,3 +1,12 @@
+## 2.0.1 (2020-05-27)
+- ✅ test: update dockerfiles
+- ♻️ ref: more compatibility for debian/fedora
+- ✅ test: always clone repo before testing
+- ✅ test: fix find install on ubuntu
+- ♻️ ref: ensure copr is installed on fedora
+- 🐛 fix: fix systemd services
+- 🐛 fix: fix avahi install on fedora/ubuntu
+
 ## 2.0.0 (2020-05-26)
 - ♻️ ref: better compatibility Stop using hostname to differenciate machines and use chezmoi config (chezmoi.toml) to specifiy some caracteristics
 
