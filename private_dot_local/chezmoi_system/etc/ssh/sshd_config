@@ -1,2 +1,2 @@
-PermitRootLogin no
+PermitRootLogin prohibit-password
 
