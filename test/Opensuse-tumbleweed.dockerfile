@@ -5,17 +5,26 @@ RUN zypper --non-interactive update && zypper --non-interactive in \
     curl \
     sudo \
     sed \
+    find \
     tar
 
 RUN useradd -m -s /bin/bash -d /docker docker  \
 && echo "docker ALL=NOPASSWD: ALL" >> /etc/sudoers
 
-COPY ./test/chezmoi.toml ./test/entrypoint.sh /docker/
+COPY ./test/entrypoint.sh /docker/
 
 RUN chmod +x /docker/entrypoint.sh
 
 USER docker
 
+RUN mkdir -p /docker/.config/chezmoi \
+    && curl -sfL https://git.io/chezmoi | sudo sh \
+    && /bin/chezmoi init https://github.com/Gazorby/dotfiles.git
+
+COPY ./test/chezmoi.toml /docker/.config/chezmoi/
+
 ENTRYPOINT [ "/docker/entrypoint.sh" ]
 
-CMD ["sh", "-c", "chezmoi apply --config ~/chezmoi.toml && fish"]
+WORKDIR /docker
+
+CMD ["sh", "-c", "chezmoi apply && fish"]
