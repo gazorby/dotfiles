@@ -1,3 +1,6 @@
+## 2.0.0 (2020-05-26)
+- ♻️ ref: better compatibility Stop using hostname to differenciate machines and use chezmoi config (chezmoi.toml) to specifiy some caracteristics
+
 ## 1.6.0 (2020-05-26)
 - 🐛 fix(system script): create dir if not exist
 - ♻️ ref(system script): more verbose
