@@ -136,9 +136,15 @@ mkdir -p "$HOME/.local/chezmoi_system"
 
 {{ if eq .machine "desktop" -}}
 # Enable auto discovery of printers
-sudo systemctl enable --now cups-browsed.service avahi-daemon.service org.cups.cupsd.service
+sudo systemctl enable --now cups-browsed.service avahi-daemon.service
 
-{{ if eq .chezmoi.osRelease.id "debian" "ubuntu" "arch" "manjaro" -}}
+{{ if eq .chezmoi.osRelease.id "arch" "manjaro" -}}
+sudo systemctl enable --now org.cups.cupsd.service
+{{ else -}}
+sudo systemctl enable --now cups.service
+{{ end -}}
+
+{{ if eq .chezmoi.osRelease.id "arch" "manjaro" -}}
 systemctl --user enable profile-cleaner.service profile-cleaner.timer psd.service
 {{ end -}}
 
