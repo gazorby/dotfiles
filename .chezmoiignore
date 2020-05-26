@@ -17,5 +17,12 @@ test/
 
 {{ if ne .chezmoi.hostname "smallbox" -}}
 # Only smallbox have intel graphics
-~/.local/chezmoi_system/etc/X11/xorg.conf.d/20-intel.conf
+.local/chezmoi_system/etc/X11/xorg.conf.d/20-intel.conf
+{{ end -}}
+
+{{ if ne .chezmoi.hostname "smallbox" -}}
+{{ if ne .chezmoi.hostname "bigbox" -}}
+# Only ignore ping requests on desktop
+.local/chezmoi_system/etc/sysctl.d/99-ignore-ping.conf
+{{ end -}}
 {{ end -}}
