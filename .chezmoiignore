@@ -26,3 +26,10 @@ test/
 .local/chezmoi_system/etc/sysctl.d/99-ignore-ping.conf
 {{ end -}}
 {{ end -}}
+
+{{ if ne .chezmoi.osRelease.id "arch" -}}
+{{ if ne .chezmoi.osRelease.id "manjaro" -}}
+.local/chezmoi_system/etc/pacman.conf
+{{ end -}}
+{{ end -}}
+
