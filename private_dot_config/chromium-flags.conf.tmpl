@@ -16,8 +16,4 @@
 --enable-webgl2-compute-context
 --enable-features=WebUIDarkMode,TabGroups,ParallelDownloading,UseDownloadOfflineContentProvider,FocusMode
 --disk-cache-dir=/tmp/cache
-{{ if eq .chezmoi.hostname "smallbox" -}}
---force-device-scale-factor=1.2
-{{ else }}
 --force-device-scale-factor=1.1
-{{ end -}}
