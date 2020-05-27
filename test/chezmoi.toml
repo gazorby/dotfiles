@@ -9,3 +9,4 @@
   machine = "desktop"
   intel_graphics = "false"
   touchpad = "false"
+  system_config = "enabled"
