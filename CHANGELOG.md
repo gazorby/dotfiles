@@ -1,3 +1,15 @@
+## 2.0.2 (2020-06-05)
+- ♻️ ref(ubuntu): install profile-cleaner last
+- ♻️ refactor: (system config): update y/n prompt
+- ♻️ refactor: store chromium cache in ram
+- ♻️ refactor: same chromium scale for all
+- ✨ feat: add option for system config
+- 🎨 style: add newline
+- ♻️ refactor: (fish): print absolute path using alt+d/alt+shift+d
+- ♻️ refactor: add fast scrolling for discord
+- ♻️ refactor: disable search engine scrapping in chromium
+- ♻️ refactor: add fast scrolling for insomnia
+
 ## 2.0.1 (2020-05-27)
 - ✅ test: update dockerfiles
 - ♻️ ref: more compatibility for debian/fedora
