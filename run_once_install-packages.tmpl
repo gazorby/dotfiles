@@ -59,13 +59,17 @@ aur_install() {
 sudo pacman-key --keyserver keys.mozilla.org -r 3056513887B78AEB
 sudo pacman-key --lsign-key 3056513887B78AEB
 sudo pacman -Syu
-sudo pacman -S --needed ripgrep bash git fd fzf exa fish bat neovim yarn fakeroot binutils ufw
+sudo pacman -S --needed ripgrep bash git fd fzf exa fish bat neovim yarn fakeroot binutils ufw htop
 aur_install https://aur.archlinux.org/starship-bin.git
 aur_install https://aur.archlinux.org/asdf-vm.git
 {{ if eq .machine "desktop" -}}
 aur_install https://aur.archlinux.org/packages/nautilus-compare.git
 aur_install https://aur.archlinux.org/packages/nautilus-copy-path.git
-sudo pacman -S --needed cups avahi imwheel profile-cleaner profile-sync-daemon meld nautilus-admin gtkhash
+aur_install https://aur.archlinux.org/packages/visual-studio-code-bin.git
+aur_install https://aur.archlinux.org/packages/bibata-cursor-theme.git
+aur_install https://aur.archlinux.org/packages/standardnotes-desktop.git
+aur_install https://aur.archlinux.org/packages/bitwarden-bin.git
+sudo pacman -S --needed cups avahi imwheel profile-cleaner profile-sync-daemon pamac-aur meld nautilus-admin gtkhash ungoogled-chromium-git insomnia insomnia-designer materia-gtk-theme gnome-tweaks snapd
 {{ end -}}
 {{ end -}}
 
@@ -73,7 +77,7 @@ sudo pacman -S --needed cups avahi imwheel profile-cleaner profile-sync-daemon m
 sudo dnf update
 sudo dnf module disable fish
 sudo dnf distro-sync fish
-sudo dnf install bash git ripgrep fd-find exa fish npm bat neovim python3-neovim bash fzf findutils ufw
+sudo dnf install bash git ripgrep fd-find exa fish npm bat neovim python3-neovim bash fzf findutils ufw htop
 sudo dnf install starship || curl -fsSL https://starship.rs/install.sh | sudo bash
 sudo npm install -g yarn
 {{ if eq .machine "desktop" -}}
@@ -86,7 +90,7 @@ sudo dnf install cups avahi imwheel profile-sync-daemon meld gtkhash
 
 {{ if eq .chezmoi.osRelease.id "ubuntu" "debian" -}}
 sudo apt-get update
-sudo apt-get install git bash fish neovim npm curl unzip ufw
+sudo apt-get install git bash fish neovim npm curl unzip ufw htop
 sudo npm install -g yarn
 
 sudo apt-get install fzf || brew_wrapper fzf && $(/home/linuxbrew/.linuxbrew/bin/brew --prefix)/opt/fzf/install --all --no-zsh --no-bash --64
@@ -117,7 +121,7 @@ sudo apt-get install profile-cleaner
 
 {{ if eq .chezmoi.osRelease.id "opensuse-tumbleweed" -}}
 sudo zypper update
-sudo zypper in bash fish git ripgrep fd exa npm bat neovim fzf ufw
+sudo zypper in bash fish git ripgrep fd exa npm bat neovim fzf ufw htop
 sudo npm install -g yarn
 curl -fsSL https://starship.rs/install.sh | sudo bash
 {{ if eq .machine "desktop" -}}
@@ -145,6 +149,7 @@ sudo systemctl enable --now cups-browsed.service avahi-daemon.service
 
 {{ if eq .chezmoi.osRelease.id "arch" "manjaro" -}}
 sudo systemctl enable --now org.cups.cupsd.service
+sudo snap install authy --beta
 {{ else -}}
 sudo systemctl enable --now cups.service
 {{ end -}}
