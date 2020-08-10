@@ -63,12 +63,12 @@ sudo pacman -S --needed ripgrep bash git fd fzf exa fish bat neovim yarn fakeroo
 aur_install https://aur.archlinux.org/starship-bin.git
 aur_install https://aur.archlinux.org/asdf-vm.git
 {{ if eq .machine "desktop" -}}
-aur_install https://aur.archlinux.org/packages/nautilus-compare.git
-aur_install https://aur.archlinux.org/packages/nautilus-copy-path.git
-aur_install https://aur.archlinux.org/packages/visual-studio-code-bin.git
-aur_install https://aur.archlinux.org/packages/bibata-cursor-theme.git
-aur_install https://aur.archlinux.org/packages/standardnotes-desktop.git
-aur_install https://aur.archlinux.org/packages/bitwarden-bin.git
+aur_install https://aur.archlinux.org/nautilus-compare.git
+aur_install https://aur.archlinux.org/nautilus-copy-path.git
+aur_install https://aur.archlinux.org/visual-studio-code-bin.git
+aur_install https://aur.archlinux.org/bibata-cursor-theme.git
+aur_install https://aur.archlinux.org/standardnotes-desktop.git
+aur_install https://aur.archlinux.org/bitwarden-bin.git
 sudo pacman -S --needed cups avahi imwheel profile-cleaner profile-sync-daemon pamac-aur meld nautilus-admin gtkhash ungoogled-chromium-git insomnia insomnia-designer materia-gtk-theme gnome-tweaks snapd
 {{ end -}}
 {{ end -}}
