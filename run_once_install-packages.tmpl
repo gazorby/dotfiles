@@ -59,11 +59,11 @@ aur_install() {
 sudo pacman-key --keyserver keys.mozilla.org -r 3056513887B78AEB
 sudo pacman-key --lsign-key 3056513887B78AEB
 sudo pacman -Syu
-sudo pacman -S --needed ripgrep bash git fd fzf exa fish bat neovim yarn fakeroot binutils ufw meld
+sudo pacman -S --needed ripgrep bash git fd fzf exa fish bat neovim yarn fakeroot binutils ufw
 aur_install https://aur.archlinux.org/starship-bin.git
 aur_install https://aur.archlinux.org/asdf-vm.git
 {{ if eq .machine "desktop" -}}
-sudo pacman -S --needed cups avahi imwheel profile-cleaner profile-sync-daemon
+sudo pacman -S --needed cups avahi imwheel profile-cleaner profile-sync-daemon meld
 {{ end -}}
 {{ end -}}
 
@@ -71,14 +71,14 @@ sudo pacman -S --needed cups avahi imwheel profile-cleaner profile-sync-daemon
 sudo dnf update
 sudo dnf module disable fish
 sudo dnf distro-sync fish
-sudo dnf install bash git ripgrep fd-find exa fish npm bat neovim python3-neovim bash fzf findutils ufw meld
+sudo dnf install bash git ripgrep fd-find exa fish npm bat neovim python3-neovim bash fzf findutils ufw
 sudo dnf install starship || curl -fsSL https://starship.rs/install.sh | sudo bash
 sudo npm install -g yarn
 {{ if eq .machine "desktop" -}}
 sudo dnf install 'dnf-command(copr)'
 sudo dnf copr enable szasza/Profile-sync-daemon
 sudo dnf update
-sudo dnf install cups avahi imwheel profile-sync-daemon
+sudo dnf install cups avahi imwheel profile-sync-daemon meld
 {{ end -}}
 {{ end -}}
 
@@ -106,7 +106,7 @@ apt-key adv --keyserver keyserver.ubuntu.com --recv-keys FF7F9516
 {{ end -}}
 
 sudo apt-get update
-sudo apt-get install cups avahi-daemon imwheel profile-sync-daemon
+sudo apt-get install cups avahi-daemon imwheel profile-sync-daemon meld
 sudo apt-get install profile-cleaner
 {{ end -}}
 
@@ -115,11 +115,11 @@ sudo apt-get install profile-cleaner
 
 {{ if eq .chezmoi.osRelease.id "opensuse-tumbleweed" -}}
 sudo zypper update
-sudo zypper in bash fish git ripgrep fd exa npm bat neovim fzf ufw meld
+sudo zypper in bash fish git ripgrep fd exa npm bat neovim fzf ufw
 sudo npm install -g yarn
 curl -fsSL https://starship.rs/install.sh | sudo bash
 {{ if eq .machine "desktop" -}}
-sudo zypper in cups avahi imwheel
+sudo zypper in cups avahi imwheel meld
 {{ end -}}
 {{ end -}}
 
