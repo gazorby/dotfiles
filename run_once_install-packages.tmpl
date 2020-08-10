@@ -65,7 +65,7 @@ aur_install https://aur.archlinux.org/asdf-vm.git
 {{ if eq .machine "desktop" -}}
 aur_install https://aur.archlinux.org/packages/nautilus-compare.git
 aur_install https://aur.archlinux.org/packages/nautilus-copy-path.git
-sudo pacman -S --needed cups avahi imwheel profile-cleaner profile-sync-daemon meld nautilus-admin
+sudo pacman -S --needed cups avahi imwheel profile-cleaner profile-sync-daemon meld nautilus-admin gtkhash
 {{ end -}}
 {{ end -}}
 
@@ -80,13 +80,13 @@ sudo npm install -g yarn
 sudo dnf install 'dnf-command(copr)'
 sudo dnf copr enable szasza/Profile-sync-daemon
 sudo dnf update
-sudo dnf install cups avahi imwheel profile-sync-daemon meld
+sudo dnf install cups avahi imwheel profile-sync-daemon meld gtkhash
 {{ end -}}
 {{ end -}}
 
 {{ if eq .chezmoi.osRelease.id "ubuntu" "debian" -}}
 sudo apt-get update
-sudo apt-get install git bash fish neovim npm curl unzip ufw meld
+sudo apt-get install git bash fish neovim npm curl unzip ufw
 sudo npm install -g yarn
 
 sudo apt-get install fzf || brew_wrapper fzf && $(/home/linuxbrew/.linuxbrew/bin/brew --prefix)/opt/fzf/install --all --no-zsh --no-bash --64
@@ -108,7 +108,7 @@ apt-key adv --keyserver keyserver.ubuntu.com --recv-keys FF7F9516
 {{ end -}}
 
 sudo apt-get update
-sudo apt-get install cups avahi-daemon imwheel profile-sync-daemon meld
+sudo apt-get install cups avahi-daemon imwheel profile-sync-daemon meld gtkhash
 sudo apt-get install profile-cleaner
 {{ end -}}
 
@@ -121,7 +121,7 @@ sudo zypper in bash fish git ripgrep fd exa npm bat neovim fzf ufw
 sudo npm install -g yarn
 curl -fsSL https://starship.rs/install.sh | sudo bash
 {{ if eq .machine "desktop" -}}
-sudo zypper in cups avahi imwheel meld
+sudo zypper in cups avahi imwheel meld gtkhash
 {{ end -}}
 {{ end -}}
 
