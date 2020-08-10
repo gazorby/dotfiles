@@ -1,12 +1,31 @@
 [data]
+  # Git config/workflow
   email_perso = "example@pm.me"
   email_pro = "example.pro@company.com"
   username_pro = "FirstName LastName"
   username_perso = "perso_usnermae"
+
+  # False keys
   signing_key_perso = "AZQESDFQSDF654SDFQSDF654QSDFQSDF"
   signing_key_pro = "QSDFQSDFSDFQSD654654QSDFQSDFQSDSDQSD"
   token_github_repo = "65654dsqd54654sdfsds655eef65ef4"
+
+  # Used to install desktop applications on desktop environment
+  # and run server specific commands/scripts
+  # values :
+  #   - desktop
+  #   - server
   machine = "desktop"
+
+  # If true, copy custom intel graphic conf (20-intel.conf)
   intel_graphics = "false"
+
+  # If true, don't copy `.imwheelrc`
   touchpad = "false"
+
+  # Control system files management (outside $HOME)
+  # values :
+  #   - enabled :   enable system management
+  #   - disabled :  disable system management
+  #   - ask :       prompt the user to copy files or not
   system_config = "enabled"
