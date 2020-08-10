@@ -1,3 +1,19 @@
+## 2.1.0 (2020-08-10)
+- ✨ feat: enable vulkan in chromium
+- Revert "✨ feat: enable vulkan in chromium"
+- ♻️ refactor: add zero copy flags to chromium
+- ♻️ refactor: remove gpu memory buffers flags
+- ✨ feat: add basic ufw rules
+- ✨ feat: install ufw
+- ✨ feat(package): add meld
+- ♻️ ref(package): install meld on desktop only
+- ✨ feat(arch): add nautilus extensions
+- ♻️ ref(arch): nautilus extensions on desktop only
+- ✨ feat(package): add gtkhash
+- ✨ feat: add more packages
+- 🐛 fix(pkgs): fix aur repo links
+- 📝 doc: add documentation
+
 ## 2.0.2 (2020-06-05)
 - ♻️ ref(ubuntu): install profile-cleaner last
 - ♻️ refactor: (system config): update y/n prompt
