@@ -1,3 +1,6 @@
+## 2.1.2 (2020-08-10)
+- 🐛 fix: fix insomnia installation
+
 ## 2.1.1 (2020-08-10)
 - ✅ tests: configure chezmoi repo
 
