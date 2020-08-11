@@ -69,8 +69,8 @@ if type -q fzf
 
 
     # fzf-complete with alt+d / alt+shift+d
-    bind \ed '__fzf_search_dirs && commandline -C 0 && commandline -i "$PWD"/ && commandline -C (string length (commandline))'    
-    bind \eD '__fzf_search_dirs hidden && commandline -C 0 && commandline -i "$PWD"/ && commandline -C (string length (commandline))'
+    bind \ed '__fzf_search_dirs && commandline -a / && commandline -C (string length (commandline))'
+    bind \eD '__fzf_search_dirs hidden && commandline -a / && commandline -C (string length (commandline))'
 
     alias cf 'fzf-bcd-widget'
 
