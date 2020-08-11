@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Action
+Name=Checksums
+Profiles=profile-zero;
+
+[X-Action-Profile profile-zero]
+MimeTypes=all/all;
+Exec=gtkhash %f
+Name=Default profile

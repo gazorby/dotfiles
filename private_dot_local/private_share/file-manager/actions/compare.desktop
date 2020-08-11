@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Action
+Name=Compare
+Profiles=profile-zero;
+
+[X-Action-Profile profile-zero]
+Exec=meld %F
+Name=Default profile
+SelectionCount==2
