@@ -29,3 +29,9 @@
   #   - disabled :  disable system management
   #   - ask :       prompt the user to copy files or not
   system_config = "enabled"
+
+  # Useful to set some scaling values (ex: chromium)
+  # values :
+  #   - desktop
+  #   - laptop
+  screen_size = "laptop"

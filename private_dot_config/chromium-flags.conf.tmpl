@@ -16,5 +16,11 @@
 --enable-webgl2-compute-context
 --enable-features=WebUIDarkMode,TabGroups,ParallelDownloading,UseDownloadOfflineContentProvider,FocusMode
 --disk-cache-dir=/tmp/cache
---force-device-scale-factor=1.25
+
+{{ if eq .screen_size "laptop" -}}
+--force-device-scale-factor=1.23
+{{ else if eq .screen_size "desktop" -}}
+--force-device-scale-factor=1.15
+{{ end -}}
+
 --disable-search-engine-collection
