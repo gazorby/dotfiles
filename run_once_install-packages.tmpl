@@ -78,15 +78,13 @@ aur_install https://aur.archlinux.org/starship-bin.git
 aur_install https://aur.archlinux.org/asdf-vm.git
 
 {{ if eq .machine "desktop" -}}
-aur_install https://aur.archlinux.org/nautilus-compare.git
-aur_install https://aur.archlinux.org/nautilus-copy-path.git
 aur_install https://aur.archlinux.org/visual-studio-code-bin.git
 aur_install https://aur.archlinux.org/bibata-cursor-theme.git
 aur_install https://aur.archlinux.org/standardnotes-desktop.git
 aur_install https://aur.archlinux.org/bitwarden-bin.git
 aur_install https://aur.archlinux.org/insomnia.git
 aur_install https://aur.archlinux.org/insomnia-designer.git
-sudo pacman -S --needed cups avahi imwheel profile-cleaner profile-sync-daemon pamac-aur meld nautilus-admin gtkhash ungoogled-chromium-git materia-gtk-theme gnome-tweaks snapd gnome-shell-extension-pop-shell-git pop-shell-shortcuts-git pcmanfm-gtk3 geany gksu
+sudo pacman -S --needed cups avahi imwheel profile-cleaner profile-sync-daemon pamac-aur meld gtkhash ungoogled-chromium-git materia-gtk-theme gnome-tweaks snapd gnome-shell-extension-pop-shell-git pop-shell-shortcuts-git pcmanfm-gtk3 geany gksu
 {{ end -}}
 
 {{ end -}}
