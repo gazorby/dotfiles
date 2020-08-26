@@ -3,12 +3,6 @@
     "initial": "0.1.0"
   },
 
-  "files": {
-    "README.md": [
-      ["\\/badge\\/Version-v(.*)-(?=.*.svg\\)\\]\\(https:\\/\\/.*\\))", "/badge/Version-v[version]-"]
-    ]
-  },
-
   "changelog": {
     "open": false,
     "version": "## [version] ([version_date])",
@@ -32,7 +26,7 @@
   },
 
   "scripts": {
-    "postchangelog": "sed -ri '/(docs(\\(.*\\)){0,1}|chore\\(bump\\)):?\\s*.*$/d' CHANGELOG.md",
+    "postchangelog": "sed -ri '/((docs|doc)(\\(.*\\)){0,1}|chore\\(bump\\)):?\\s*.*$/d' CHANGELOG.md",
     "postrelease": "git push origin HEAD --tags"
   }
 }

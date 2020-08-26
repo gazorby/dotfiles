@@ -1,7 +1,15 @@
 {
-    "release": {
+  "files": {
+    "README.md": [
+      [
+        "\\/badge\\/Version-v(.*)-(?=.*.svg\\)\\]\\(https:\\/\\/.*\\))",
+        "/badge/Version-v[version]-"
+      ]
+    ]
+  },
+  "release": {
     "github": {
-        "repo": "dotfiles"
+      "repo": "dotfiles"
     }
   }
 }
