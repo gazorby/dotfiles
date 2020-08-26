@@ -1,3 +1,3 @@
 function sudo -d "Run aliases with sudo"
-    command sudo -sE $argv
+    command sudo -E $argv
 end
