@@ -30,6 +30,13 @@
   #   - ask :       prompt the user to copy files or not
   system_config = "enabled"
 
+  # Install packages
+  # values :
+  #   - enabled :   enable install package
+  #   - disabled :  disable install package
+  #   - ask :       prompt the user to install packages
+  install_package = "enabled"
+
   # Useful to set some scaling values (ex: chromium)
   # values :
   #   - desktop
