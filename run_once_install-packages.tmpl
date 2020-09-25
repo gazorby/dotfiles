@@ -74,28 +74,21 @@ aur_install() {
 # ARCHLINUX - MANJARO
 #############################################################
 
+if ! grep --silent "Include = /etc/pacman.d/chaotic-mirrorlist" /etc/pacman.conf; then
+    aur_install https://aur.archlinux.org/chaotic-mirrorlist.git
+    echo -e "\n[chaotic-aur]\nInclude = /etc/pacman.d/chaotic-mirrorlist\n" | sudo tee -a /etc/pacman.conf
+fi
 
 # Install key to enable chaotic-aur repo (https://lonewolf.pedrohlc.com/chaotic-aur/)
 sudo pacman-key --keyserver hkp://keyserver.ubuntu.com -r 3056513887B78AEB 8A9E14A07010F7E3
 sudo pacman-key --lsign-key 3056513887B78AEB
 sudo pacman-key --lsign-key 8A9E14A07010F7E3
-sudo pacman -Syu
-sudo pacman -S --needed ripgrep bash git fd fzf exa fish bat neovim yarn fakeroot binutils ufw htop yay
-aur_install https://aur.archlinux.org/starship-bin.git
-aur_install https://aur.archlinux.org/asdf-vm.git
-aur_install https://aur.archlinux.org/chaotic-mirrorlist.git
-aur_install https://aur.archlinux.org/chaotic-keyring.git
-aur_install https://aur.archlinux.org/powerpill.git
+yay -Syu
+yay -S --needed ripgrep bash git fd fzf exa fish bat neovim yarn fakeroot binutils ufw htop yay chaotic-keyring starship-bin asdf-vm powerpill
+
 
 {{ if eq .machine "desktop" -}}
-aur_install https://aur.archlinux.org/visual-studio-code-bin.git
-aur_install https://aur.archlinux.org/bibata-cursor-theme.git
-aur_install https://aur.archlinux.org/standardnotes-desktop.git
-aur_install https://aur.archlinux.org/bitwarden-bin.git
-aur_install https://aur.archlinux.org/insomnia.git
-aur_install https://aur.archlinux.org/insomnia-designer.git
-aur_install https://aur.archlinux.org/ttf-twemoji.git
-sudo yay -S --needed cups avahi imwheel profile-cleaner profile-sync-daemon pamac-aur meld gtkhash ungoogled-chromium-git materia-gtk-theme gnome-tweaks snapd gnome-shell-extension-pop-shell-git pop-shell-shortcuts-git pcmanfm-gtk3 geany gksu ttf-bitstream-vera noto-fonts
+yay -S --needed cups avahi imwheel profile-cleaner profile-sync-daemon pamac-aur meld ungoogled-chromium materia-gtk-theme gnome-tweaks snapd gnome-shell-extension-pop-shell-git pop-shell-shortcuts-git pcmanfm-gtk3 geany gksu ttf-bitstream-vera noto-fonts visual-studio-code-bin bibata-cursor-theme standardnotes-desktop bitwarden-bin insomnia-bin insomnia-designer ttf-twemoji authy-desktop-win32-bin mellowplayer menulibre
 {{ end -}}
 
 {{ end -}}
