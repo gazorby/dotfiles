@@ -83,8 +83,8 @@ fi
 sudo pacman-key --keyserver hkp://keyserver.ubuntu.com -r 3056513887B78AEB 8A9E14A07010F7E3
 sudo pacman-key --lsign-key 3056513887B78AEB
 sudo pacman-key --lsign-key 8A9E14A07010F7E3
-aur_install https://aur.archlinux.org/yay.git
-yay -Syu
+pacman -Syyu
+pacman -S --needed yay
 yay -S --needed ripgrep bash git fd fzf exa fish bat neovim yarn fakeroot binutils ufw htop yay chaotic-keyring starship-bin asdf-vm powerpill
 
 
