@@ -65,7 +65,7 @@ load-module module-jackdbus-detect
 
 ### Automatically load driver modules for Bluetooth hardware
 .ifexists module-bluetooth-discover.so
-load-module module-bluetooth-discover a2dp_config="ldac_eqmid=hq ldac_fmt=f32 sbc_min_bp=200"
+load-module module-bluetooth-discover a2dp_config="ldac_eqmid=hq ldac_fmt=f32"
 .endif
 
 ### Load several protocols
