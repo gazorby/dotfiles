@@ -90,7 +90,7 @@ yay -Syyu --needed ripgrep bash git fd fzf exa fish bat neovim yarn fakeroot bin
 
 
 {{ if eq .machine "desktop" -}}
-yay -S --needed cups avahi imwheel profile-cleaner profile-sync-daemon pamac-aur meld ungoogled-chromium materia-gtk-theme gnome-tweaks snapd gnome-shell-extension-pop-shell-git pop-shell-shortcuts-git pcmanfm-gtk3 geany gksu ttf-bitstream-vera noto-fonts visual-studio-code-bin bibata-cursor-theme standardnotes-desktop bitwarden-bin insomnia-bin insomnia-designer ttf-twemoji authy-desktop-win32-bin mellowplayer menulibre
+yay -S --needed cups avahi imwheel profile-cleaner profile-sync-daemon pamac-aur meld ungoogled-chromium materia-gtk-theme gnome-tweaks gnome-shell-extension-pop-shell-git pop-shell-shortcuts-git pcmanfm-gtk3 geany gksu ttf-bitstream-vera noto-fonts visual-studio-code-bin bibata-cursor-theme standardnotes-desktop bitwarden-bin insomnia-bin insomnia-designer ttf-twemoji authy-desktop-win32-bin mellowplayer menulibre
 {{ end -}}
 
 {{ end -}}
@@ -207,7 +207,6 @@ sudo systemctl enable --now cups-browsed.service avahi-daemon.service
 
 {{ if eq .chezmoi.osRelease.id "arch" "manjaro" -}}
 sudo systemctl enable --now org.cups.cupsd.service
-sudo snap install authy --beta
 {{ else -}}
 sudo systemctl enable --now cups.service
 
