@@ -117,8 +117,8 @@
             "state": "true",
             "mode": "IIR",
             "num-bands": "10",
-            "input-gain": "0",
-            "output-gain": "0",
+            "input-gain": "-1",
+            "output-gain": "-1",
             "split-channels": "false",
             "left": {
                 "band0": {
@@ -541,8 +541,8 @@
         },
         "convolver": {
             "state": "true",
-            "input-gain": "-2",
-            "output-gain": "0",
+            "input-gain": "-3",
+            "output-gain": "-3",
             "kernel-path": "\/home\/gazorby\/.config\/PulseEffects\/irs\/Razor Surround ((48k Z-Edition)) 2.Stereo +20 bass.irs",
             "ir-width": "100"
         },
