@@ -74,11 +74,6 @@ aur_install() {
 # ARCHLINUX - MANJARO
 #############################################################
 
-if ! grep --silent "Include = /etc/pacman.d/chaotic-mirrorlist" /etc/pacman.conf; then
-    aur_install https://aur.archlinux.org/chaotic-mirrorlist.git
-    echo -e "\n[chaotic-aur]\nInclude = /etc/pacman.d/chaotic-mirrorlist\n" | sudo tee -a /etc/pacman.conf
-fi
-
 # Install key to enable chaotic-aur repo (https://lonewolf.pedrohlc.com/chaotic-aur/)
 sudo pacman-key --init
 sudo pacman-key --keyserver hkp://keyserver.ubuntu.com -r 3056513887B78AEB 8A9E14A07010F7E3
@@ -90,7 +85,7 @@ yay -Syyu --needed ripgrep bash git fd fzf exa fish bat neovim yarn fakeroot bin
 
 
 {{ if eq .machine "desktop" -}}
-yay -S --needed cups avahi imwheel profile-cleaner profile-sync-daemon pamac-aur meld ungoogled-chromium materia-gtk-theme gnome-tweaks gnome-shell-extension-pop-shell-git pop-shell-shortcuts-git pcmanfm-gtk3 geany gksu ttf-bitstream-vera noto-fonts visual-studio-code-bin bibata-cursor-theme standardnotes-desktop bitwarden-bin insomnia-bin insomnia-designer ttf-twemoji authy-desktop-win32-bin mellowplayer menulibre
+yay -S --needed cups avahi imwheel profile-cleaner profile-sync-daemon pamac-aur meld ungoogled-chromium materia-gtk-theme gnome-tweaks gnome-shell-extension-pop-shell-git pop-shell-shortcuts-git pcmanfm-gtk3 geany gksu ttf-bitstream-vera noto-fonts visual-studio-code-bin bibata-cursor-theme standardnotes-desktop bitwarden-bin insomnia-bin insomnia-designer ttf-twemoji authy-desktop-win32-bin mellowplayer menulibre typora
 {{ end -}}
 
 {{ end -}}
