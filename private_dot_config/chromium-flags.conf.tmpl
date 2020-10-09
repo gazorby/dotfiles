@@ -1,22 +1,43 @@
---cipher-suite-blacklist=0x000a,0x009c,0x009d,0x002f,0x0035
+# ungoogled-chromium flags
 --fingerprinting-canvas-image-data-noise
 --fingerprinting-canvas-measuretext-noise
 --fingerprinting-client-rects-noise
---strict-origin-isolation
+--disable-search-engine-collection
+
+# Needed for chromium-webstore extension
 --extension-mime-request-handling=always-prompt-for-install
+--cipher-suite-blacklist=0x000a,0x009c,0x009d,0x002f,0x0035
+
+
+# Make chrome://gpu all green
 --ignore-gpu-blacklist
+--enable-zero-copy
 --enable-gpu-rasterization
 --enable-accelerated-mjpeg-decode
 --enable-accelerated-video
 --enable-oop-rasterization
---enable-zero-copy
+--enable-gpu-memory-buffer-compositor-resources
+--enable-gpu-memory-buffer-video-frames
+--disable-gpu-driver-bug-workarounds
+--disable-gpu-driver-workarounds
+
 --enable-quic
---force-dark-mode
+--enable-tcp-fastopen
+--enable-smooth-scrolling
 --enable-dom-distiller
 --enable-webgl2-compute-context
---enable-features=WebUIDarkMode,TabGroups,ParallelDownloading,UseDownloadOfflineContentProvider,FocusMode
+--num-raster-threads=4
+
+--use-gl=desktop
+
+# Fonts may be sharper
+--disable-font-subpixel-positioning
+
+--force-dark-mode
+--enable-features=WebUIDarkMode,TabGroups,ParallelDownloading,UseDownloadOfflineContentProvider,FocusMode,StrictOriginIsolation,MarkHttpAs
+
+# Use RAM for caching, to make chromium more responsive
 --disk-cache-dir=/tmp/cache
---remote-debugging-port=9222
 
 {{ if eq .screen_size "laptop" -}}
 --force-device-scale-factor=1.23
@@ -24,4 +45,5 @@
 --force-device-scale-factor=1.15
 {{ end -}}
 
---disable-search-engine-collection
+# Enabling this flag break google login
+#--remote-debugging-port=9222
