@@ -42,3 +42,5 @@
   #   - desktop
   #   - laptop
   screen_size = "laptop"
+
+  filesystem = "btrfs"

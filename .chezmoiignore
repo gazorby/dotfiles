@@ -36,3 +36,7 @@ test/
 .local/chezmoi_system/etc/pacman.conf
 {{ end -}}
 {{ end -}}
+
+{{ if eq .filesystem "btrfs" -}}
+.local/chezmoi_system/etc/snapper
+{{ end -}}
