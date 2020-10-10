@@ -26,6 +26,9 @@ test/
 # Conf needed for printer auto-discovery
 .local/chezmoi_system/etc/nsswitch.conf
 .local/chezmoi_system/etc/systemd/resolved.conf
+
+.local/chezmoi_system/usr/share/libalpm/hooks/99-gdm-use-materia-dark-theme.hook
+.config/variety
 {{ end -}}
 
 {{ if ne .chezmoi.osRelease.id "arch" -}}
