@@ -1,0 +1,12 @@
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = gnome-shell
+
+[Action]
+Description = Replace GDM theme with Materia-compact
+When = PostTransaction
+Exec = /usr/bin/sh -c "cd /usr/share/themes/Materia-dark-compact/gnome-shell && glib-compile-resources --target=/usr/share/gnome-shell/gnome-shell-theme.gresource gnome-shell-theme.gresource.xml"
+Depends = materia-gtk-theme
+Depends = bash
+Depends = glib2
