@@ -1,5 +1,9 @@
 #!/bin/sh
 
+#############################################################
+# Functions
+#############################################################
+
 # Handy yes/no dialog to let the user make some decisions
 dialog_yes_no() {
     echo -e "\n$1 (y/N)? "
@@ -11,33 +15,6 @@ dialog_yes_no() {
     fi
 }
 
-# Install homebrew (ubuntu/debian only)
-install_homebrew() {
-    if dialog_yes_no "$1 cannot be installed with your default pasckage manager. Do you want to install homebrew"; then
-        HOMEBREW=1
-    else
-        HOMEBREW=0
-        return 1
-    fi
-    {{ if eq .chezmoi.osRelease.id "ubuntu" "debian" -}}
-        sudo apt-get install build-essential curl file git
-    {{ end -}}
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-}
-
-# Install a package with homebrew
-# If homebrew is not installed, ask the user if he wants to install it
-brew_wrapper() {
-    if command -v brew; then
-        brew install $1
-    elif [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
-        /home/linuxbrew/.linuxbrew/bin/brew install $1
-    elif [ -f $HOME/.linuxbrew/bin/brew ]; then
-        $HOME/.linuxbrew/bin/brew install $1
-    elif [ "$HOMEBREW" = 1 ] || [ -z "${HOMEBREW+x}" ]; then
-        install_homebrew "$1" && brew_wrapper $1
-    fi
-}
 
 {{ if eq .install_package "ask" -}}
 if ! dialog_yes_no "Do you want to run the install script"; then
@@ -51,24 +28,34 @@ exit 1
 {{ end -}}
 
 
-{{ if eq .chezmoi.osRelease.id "arch" "manjaro" -}}
-
-# Install AUR package
-# ARG : AUR repo link, typically : https://aur.archlinux.org/<package>.git
-aur_install() {
-    local tmp="${1##https://*/}"
-    local package_name="${tmp%.git}"
-    if pacman -Q $package_name; then
-        return
-    else
-        git clone "$1" $HOME/.aur_install
-        cd $HOME/.aur_install
-        makepkg --clean --install --syncdeps
-        cd $HOME
-        rm -rfd $HOME/.aur_install
-    fi
+# Trim leading pattern
+trim_leading() {
+    local pattern="$1"
+    shift 1
+    local res="${@##*$pattern}"
+    echo "$res"
 }
 
+# Trim trailing pattern
+trim_trailing() {
+    local pattern="$1"
+    shift 1
+    local res="${@%$pattern}"
+    echo "$res"
+}
+
+# Only install aur packages if they are not installed
+yay_needed() {
+    local packages="$(yay -Qi $@ 2>&1 >/dev/null)"
+    local needed=""
+
+    while read -r p; do
+        tmp=$(trim_leading "error: package \'" "$p")
+        needed="$needed $(trim_trailing "\' was not found" "$tmp")"
+    done <<< "$packages"
+
+    yay -S --needed $needed
+}
 
 #############################################################
 # ARCHLINUX - MANJARO
@@ -79,109 +66,30 @@ sudo pacman-key --init
 sudo pacman-key --keyserver hkp://keyserver.ubuntu.com -r 3056513887B78AEB 8A9E14A07010F7E3
 sudo pacman-key --lsign-key 3056513887B78AEB
 sudo pacman-key --lsign-key 8A9E14A07010F7E3
+
+# Sync databases
 sudo pacman -Syyu
+
+# Install yay
 sudo pacman -S --needed yay
-yay -Syyu --needed ripgrep bash git fd fzf exa fish bat neovim yarn fakeroot binutils ufw htop yay chaotic-keyring starship-bin asdf-vm powerpill
+
+yay_needed ripgrep bash git fd fzf exa fish bat neovim yarn fakeroot binutils ufw htop yay chaotic-keyring starship-bin asdf-vm powerpill
 
 
 {{ if eq .machine "desktop" -}}
-yay -S --needed cups avahi imwheel profile-cleaner profile-sync-daemon pamac-aur meld ungoogled-chromium materia-gtk-theme gnome-tweaks gnome-shell-extension-pop-shell-git pop-shell-shortcuts-git pcmanfm-gtk3 geany gksu ttf-bitstream-vera noto-fonts visual-studio-code-bin bibata-cursor-theme standardnotes-desktop bitwarden-bin insomnia-bin insomnia-designer ttf-twemoji authy mellowplayer menulibre typora
+yay_needed cups avahi imwheel profile-cleaner profile-sync-daemon pamac-aur meld ungoogled-chromium materia-gtk-theme gnome-tweaks gnome-shell-extension-pop-shell-git pop-shell-shortcuts-git pcmanfm-gtk3 geany gksu ttf-bitstream-vera noto-fonts visual-studio-code-bin bibata-cursor-theme standardnotes-desktop bitwarden-bin insomnia-bin insomnia-designer ttf-twemoji authy mellowplayer menulibre typora
 
+# Enable VP9 hardware video decoding in chromium
 {{ if eq .graphics "nvidia" }}
-yay -S --needed libva-vdpau-driver-vp9-git
+yay_needed libva-vdpau-driver-vp9-git
 {{ end  -}}
 
 {{ end -}}
 
 
+# snap-pac : setup pre/post btrfs snapshots using pacman hooks
 {{ if eq .filesystem "btrfs" -}}
-yay -S --needed snap-pac snapper snapper-gui-git
-{{ end -}}
-
-
-{{ end -}}
-
-
-#############################################################
-# FEDORA
-#############################################################
-
-
-{{ if eq .chezmoi.osRelease.id "fedora" -}}
-sudo dnf update
-
-# Get a more up-to-date fish package
-sudo dnf module disable fish
-sudo dnf distro-sync fish
-
-sudo dnf install bash git ripgrep fd-find exa fish npm bat neovim python3-neovim bash fzf findutils ufw htop
-sudo dnf install starship || curl -fsSL https://starship.rs/install.sh | sudo bash
-sudo npm install -g yarn
-
-{{ if eq .machine "desktop" -}}
-sudo dnf install 'dnf-command(copr)'
-sudo dnf copr enable szasza/Profile-sync-daemon
-sudo dnf update
-sudo dnf install cups avahi imwheel profile-sync-daemon meld gtkhash
-{{ end -}}
-
-{{ end -}}
-
-
-
-#############################################################
-# DEBIAN - UBUNTU
-#############################################################
-
-
-{{ if eq .chezmoi.osRelease.id "ubuntu" "debian" -}}
-sudo apt-get update
-sudo apt-get install git bash fish neovim npm curl unzip ufw htop
-sudo npm install -g yarn
-
-sudo apt-get install fzf || brew_wrapper fzf && $(/home/linuxbrew/.linuxbrew/bin/brew --prefix)/opt/fzf/install --all --no-zsh --no-bash --64
-sudo apt-get install fd-find || brew_wrapper fd
-sudo apt-get install exa || brew_wrapper exa
-sudo apt-get install ripgrep || brew_wrapper ripgrep
-sudo apt-get install bat || brew_wrapper bat
-brew_wrapper starship
-
-{{ if eq .machine "desktop" -}}
-
-{{ if eq .chezmoi.osRelease.id "ubuntu" -}}
-sudo add-apt-repository ppa:graysky/utils
-{{ end -}}
-
-{{ if eq .chezmoi.osRelease.id "debian" -}}
-echo "deb http://ppa.launchpad.net/graysky/utils/ubuntu quantal main" > /etc/apt/sources.list.d/graysky.list
-echo "deb-src http://ppa.launchpad.net/graysky/utils/ubuntu quantal main" >> /etc/apt/sources.list.d/graysky.list
-apt-key adv --keyserver keyserver.ubuntu.com --recv-keys FF7F9516
-{{ end -}}
-
-sudo apt-get update
-sudo apt-get install cups avahi-daemon imwheel profile-sync-daemon meld gtkhash
-sudo apt-get install profile-cleaner
-
-{{ end -}}
-
-{{ end -}}
-
-
-#############################################################
-# OPENSUSE-TUMBLEWEED
-#############################################################
-
-
-{{ if eq .chezmoi.osRelease.id "opensuse-tumbleweed" -}}
-sudo zypper update
-sudo zypper in bash fish git ripgrep fd exa npm bat neovim fzf ufw htop
-sudo npm install -g yarn
-curl -fsSL https://starship.rs/install.sh | sudo bash
-
-{{ if eq .machine "desktop" -}}
-sudo zypper in cups avahi imwheel meld gtkhash
-{{ end -}}
-
+yay_needed snap-pac snapper snapper-gui-git
 {{ end -}}
 
 
@@ -189,48 +97,29 @@ sudo zypper in cups avahi imwheel meld gtkhash
 # POST INSTALL CONFIGURATION
 #############################################################
 
-
-{{ if ne .chezmoi.osRelease.id "arch" -}}
-
-{{ if ne .chezmoi.osRelease.id "manjaro" -}}
-git clone https://github.com/asdf-vm/asdf.git "$HOME"/.asdf
-git --git-dir="$HOME"/.asdf/.git checkout $(git --git-dir="$HOME"/.asdf/.git describe --abbrev=0 --tags)
-mkdir -p "$HOME"/.config/fish/completions && cp "$HOME"/.asdf/completions/asdf.fish "$HOME"/.config/fish/completions
-{{ end -}}
-
-{{ end -}}
-
+# Yarn
 yarn config set prefix $HOME/.yarn
 yarn global add @fabiospampinato/bump
+
 mkdir -p "$HOME/.local/chezmoi_system"
 
+# Enable firewall
 sudo ufw enable
 
+# Enable systemd services, set default applications
 {{ if eq .machine "desktop" -}}
 
 # Enable auto discovery of printers
-sudo systemctl enable --now cups-browsed.service avahi-daemon.service
-
-{{ if eq .chezmoi.osRelease.id "arch" "manjaro" -}}
-sudo systemctl enable --now org.cups.cupsd.service
-{{ else -}}
-sudo systemctl enable --now cups.service
+sudo systemctl enable --now cups-browsed.service avahi-daemon.service org.cups.cupsd.service
+systemctl --user enable profile-cleaner.service profile-cleaner.timer psd.service
 
 # Set PCManFM as default file manager
 xdg-mime default pcmanfm.desktop inode/directory application/x-gnome-saved-search
 
 {{ end -}}
 
-{{ if eq .chezmoi.osRelease.id "arch" "manjaro" -}}
-systemctl --user enable profile-cleaner.service profile-cleaner.timer psd.service
-{{ end -}}
 
-{{ if eq .chezmoi.osRelease.id "fedora" -}}
-systemctl --user enable psd.service
-{{ end -}}
-
-{{ end -}}
-
+# Filesystem stuff
 {{ if eq .filesystem "btrfs" -}}
 sudo systemctl enable snapper-timeline.timer
 {{ end -}}
