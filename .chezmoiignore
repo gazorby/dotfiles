@@ -15,7 +15,7 @@ test/
 .config/autostart/imwheel.desktop
 {{ end -}}
 
-{{ if eq .intel_graphics "false" -}}
+{{ if ne .graphics "intel" -}}
 .local/chezmoi_system/etc/X11/xorg.conf.d/20-intel.conf
 {{ end -}}
 

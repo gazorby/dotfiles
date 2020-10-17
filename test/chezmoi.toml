@@ -17,8 +17,12 @@
   #   - server
   machine = "desktop"
 
-  # If true, copy custom intel graphic conf (20-intel.conf)
-  intel_graphics = "false"
+  # values :
+  #   - intel
+  #   - nvidia
+  # If "intel", copy custom intel graphic conf (20-intel.conf)
+  # If "nvidia", install libva-vdpau-driver-vp9-git on arch to enable VP9 video decoding on chromium
+  graphics = "intel"
 
   # If true, don't copy `.imwheelrc`
   touchpad = "false"
