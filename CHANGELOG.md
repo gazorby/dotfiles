@@ -1,54 +1,25 @@
 ## 3.0.0 (2020-10-18)
-- ✨ feat: add PCManFM
-- ✨ feat(pkg): add geany
-- ✨ feat(pcmanfm): add custom actions
-- ✨ feat(pkg): add gksu
-- ✨ feat: include hidden system file
-- 🐛 fix: root home dir
-- ♻️ ref(fish): improve directory completion
-- ♻️ ref: remove nautilus extensions
-- ✨ feat: add twemoji
-- 🐛 fix: twemoji installation
-- 🐛 fix: black and white emojis
-- ♻️ refactor: scale chromium to 1.25
-- ✨ feat: configure screen size
-- ✨ feat: add pulse default.pa config
-- ♻️ refactor: update default bump config
-- ♻️ refactor: remove -s option on sudo alias
-- ♻️ refactor: (bump): use tag by default
-- ✨ feat(chromium flags): add debugging port
-- ♻️ refactor: update chaotic-aur config
-- ✨ feat: add install_package setting
-- ♻️ refactor: update pacman conf
-- ♻️ refactor: update pulse default.pa config
-- 🐛 fix: fix fishfile
-- ♻️ refactor: update default bump config
-- ♻️ refactor: update pacman installation
-- 🐛 fix: install yay before using it
-- ♻️ refactor: install from chaotic-aur repo
-- 🐛 fix: fix missing sudo and keyserver init
-- ♻️ refactor: remove authy snap
-- ♻️ refactor: update pulse default.pa config
-- ✨ feat: add pulseeffects presets
-- ♻️ refactor: update pulseeffects preset
-- ♻️ refactor: update pacman.conf when copying system files
-- ♻️ refactor: update default bump config
-- ♻️ refactor: update chromium flags
-- ✨ feat: add variety config
-- ✨ feat: add pacman hook to reinstall GDM theme
-- ♻️ refactor: update .chezmoiignore
-- ✨ feat: add snapper config
-- ✨ feat: add Typora conf
-- ♻️ refactor: add vdm variety plugin
-- ✨ feat: add frontend delight tilix theme
-- ♻️ refactor: update pulseeffects perfect EQ
-- ♻️ refactor(packages): switch back to authy package
-- ✨ feat(graphics): use VP9 vdpau driver for nvidia
-- 🐛 fix: snapper gui install
-- ✨ feat(fish plugin): add fish-chezmoi
-- ♻️ refactor: focus on arch install
-- ♻️ refactor: update fishfile
-- 🐛 fix(fishfile): fix plugin order
+### Features
+- Include hidden system file
+- Configure screen size
+
+### Changes
+- Only focus on archlinux installation (drop support for other distros)
+- Switch back to authy package
+- Add PCManFM
+- Add geany
+- Add gksu
+- Add twemoji
+- Add pulse default.pa config
+- Add install_package setting
+- Add pulseeffects presets
+- Add variety config
+- Add pacman hook to reinstall GDM theme
+- Add snapper config
+- Add Typora conf
+- Add frontend delight tilix theme
+- Use VP9 vdpau driver for nvidia
+- Add fish-chezmoi fish plugin
 
 ## 2.1.2 (2020-08-10)
 - 🐛 fix: fix insomnia installation
