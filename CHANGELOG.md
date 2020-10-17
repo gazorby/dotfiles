@@ -1,3 +1,55 @@
+## 3.0.0 (2020-10-18)
+- ✨ feat: add PCManFM
+- ✨ feat(pkg): add geany
+- ✨ feat(pcmanfm): add custom actions
+- ✨ feat(pkg): add gksu
+- ✨ feat: include hidden system file
+- 🐛 fix: root home dir
+- ♻️ ref(fish): improve directory completion
+- ♻️ ref: remove nautilus extensions
+- ✨ feat: add twemoji
+- 🐛 fix: twemoji installation
+- 🐛 fix: black and white emojis
+- ♻️ refactor: scale chromium to 1.25
+- ✨ feat: configure screen size
+- ✨ feat: add pulse default.pa config
+- ♻️ refactor: update default bump config
+- ♻️ refactor: remove -s option on sudo alias
+- ♻️ refactor: (bump): use tag by default
+- ✨ feat(chromium flags): add debugging port
+- ♻️ refactor: update chaotic-aur config
+- ✨ feat: add install_package setting
+- ♻️ refactor: update pacman conf
+- ♻️ refactor: update pulse default.pa config
+- 🐛 fix: fix fishfile
+- ♻️ refactor: update default bump config
+- ♻️ refactor: update pacman installation
+- 🐛 fix: install yay before using it
+- ♻️ refactor: install from chaotic-aur repo
+- 🐛 fix: fix missing sudo and keyserver init
+- ♻️ refactor: remove authy snap
+- ♻️ refactor: update pulse default.pa config
+- ✨ feat: add pulseeffects presets
+- ♻️ refactor: update pulseeffects preset
+- ♻️ refactor: update pacman.conf when copying system files
+- ♻️ refactor: update default bump config
+- ♻️ refactor: update chromium flags
+- ✨ feat: add variety config
+- ✨ feat: add pacman hook to reinstall GDM theme
+- ♻️ refactor: update .chezmoiignore
+- ✨ feat: add snapper config
+- ✨ feat: add Typora conf
+- ♻️ refactor: add vdm variety plugin
+- ✨ feat: add frontend delight tilix theme
+- ♻️ refactor: update pulseeffects perfect EQ
+- ♻️ refactor(packages): switch back to authy package
+- ✨ feat(graphics): use VP9 vdpau driver for nvidia
+- 🐛 fix: snapper gui install
+- ✨ feat(fish plugin): add fish-chezmoi
+- ♻️ refactor: focus on arch install
+- ♻️ refactor: update fishfile
+- 🐛 fix(fishfile): fix plugin order
+
 ## 2.1.2 (2020-08-10)
 - 🐛 fix: fix insomnia installation
 
@@ -18,7 +70,6 @@
 - ✨ feat(package): add gtkhash
 - ✨ feat: add more packages
 - 🐛 fix(pkgs): fix aur repo links
-- 📝 doc: add documentation
 
 ## 2.0.2 (2020-06-05)
 - ♻️ ref(ubuntu): install profile-cleaner last
@@ -26,14 +77,12 @@
 - ♻️ refactor: store chromium cache in ram
 - ♻️ refactor: same chromium scale for all
 - ✨ feat: add option for system config
-- 🎨 style: add newline
 - ♻️ refactor: (fish): print absolute path using alt+d/alt+shift+d
 - ♻️ refactor: add fast scrolling for discord
 - ♻️ refactor: disable search engine scrapping in chromium
 - ♻️ refactor: add fast scrolling for insomnia
 
 ## 2.0.1 (2020-05-27)
-- ✅ test: update dockerfiles
 - ♻️ ref: more compatibility for debian/fedora
 - ✅ test: always clone repo before testing
 - ✅ test: fix find install on ubuntu
@@ -98,7 +147,6 @@
 ## 1.4.1 (2020-04-24)
 - ✨ feat: initial support for opensuse tumbleweed
 - 🐛 fix: typo in .chezmoiignore
-- 🎨 style: rename opensuse dockerfile
 - 🐛 fix(chezmoiignore): template syntax
 
 ## 1.4.0 (2020-04-24)
@@ -135,18 +183,15 @@
 - ♻️ ref: don't use root as default user
 
 ## 1.1.1 (2020-04-21)
-- ✅ test: remove alpine dockerfile
 
 ## 1.1.0 (2020-04-21)
 - ♻️ ref: install starship with aur in arch
 - ✅ test: add arch image
 - 🐛 fix: ensure to install chezmoi using sudo
 - 🐛 fix: fix shell syntax
-- ♻️ refactor: add default commands to dockerfiles
 - ♻️ ref: install starship in install script
 - ✨ feat: add fzf keybindings
 - 🐛 fix: cd ~/ after removing starship build dir
-- 🎨 style: rename monitor.fish to watcher.fish
 - ♻️ ref: try installing fzf with package manager
 - 🐛 fix: enable fzf keybindings on fedora
 - ✅ test: spawn a fish shell to test installation
@@ -200,7 +245,6 @@
 - 🐛 fix: node install again
 - 👷 chore: update .chezmoiignore
 - ♻️ ref: clean exa files after install
-- ✅ test: add docker testing environment
 - ✅ test: remove vim installation from test image
 - 🐛 fix: install latest fosh version on fedora
 - ♻️ ref: assumes yes for fedora commands
