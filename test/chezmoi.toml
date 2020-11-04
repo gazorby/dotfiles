@@ -48,3 +48,20 @@
   screen_size = "laptop"
 
   filesystem = "btrfs"
+
+  # If true, install the proper vulkan driver depending on the graphic card :
+  # - "vulkan-intel" for intel graphics
+  #
+  # - "nvidia-utils" for nvidia cards
+  #
+  # This setting needs "graphics" variable to be either intel or nvidia
+  vulkan = "true"
+
+  # If true, install the proper video acceleration library depending on the graphic card :
+  # - VA-API library for intel graphics (intel-media-driver)
+  #
+  # - VDPAU library for nvidia cards (nvidia-utils).
+  #   In addition, the AUR package "libva-vdpau-driver-vp9-git" will be installed to enable VP9 hardware video decoding in chromium (commonly used in YouTube videos)
+  #
+  # This setting needs "graphics" variable to be either intel or nvidia
+  video_acceleration = "true"
