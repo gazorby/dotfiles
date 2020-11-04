@@ -73,7 +73,7 @@ sudo pacman -Syyu
 # Install yay
 sudo pacman -S --needed yay
 
-yay_needed ripgrep bash git fd fzf exa fish bat neovim yarn fakeroot binutils ufw htop yay chaotic-keyring starship-bin asdf-vm powerpill
+yay_needed ripgrep bash git fd fzf exa fish bat neovim yarn fakeroot binutils ufw htop yay chaotic-keyring starship-bin asdf-vm powerpill screen
 
 
 {{ if eq .machine "desktop" -}}
@@ -111,7 +111,7 @@ sudo ufw enable
 
 # Enable auto discovery of printers
 sudo systemctl enable --now cups-browsed.service avahi-daemon.service org.cups.cupsd.service
-systemctl --user enable profile-cleaner.service profile-cleaner.timer psd.service
+systemctl --user enable profile-cleaner.service profile-cleaner.timer psd.service bridge-cli.service
 
 # Set PCManFM as default file manager
 xdg-mime default pcmanfm.desktop inode/directory application/x-gnome-saved-search
