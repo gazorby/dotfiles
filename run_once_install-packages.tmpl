@@ -89,7 +89,7 @@ yay_needed libva-vdpau-driver-vp9-git
 
 # snap-pac : setup pre/post btrfs snapshots using pacman hooks
 {{ if eq .filesystem "btrfs" -}}
-yay_needed snap-pac snapper snapper-gui-git
+yay_needed snap-pac snapper snapper-gui-git btrfs-du
 {{ end -}}
 
 
