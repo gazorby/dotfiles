@@ -31,8 +31,8 @@ end
 
 # fzf
 if type -q fzf
-    # margin, height and color
-    set -gx FZF_DEFAULT_OPTS "--margin 0,1 --layout reverse --height 60% --color 'fg:#bbccdd,fg+:#ddeeff,bg:#334455,preview-bg:#223344,border:#778899'"
+    # margin, cycle scrolling, layout, height and color
+    set -gx FZF_DEFAULT_OPTS "--cycle --reverse --height 60% --color 'fg:#bbccdd,fg+:#ddeeff,bg:#1B1C1D,preview-bg:#1B1C1D,border:#778899'"
 
     # Default command
     if type -q rg
@@ -90,6 +90,9 @@ if type -q fzf
     set -gx forgit_stash_show vss
     set -gx forgit_cherry_pick vcp
     set -gx forgit_rebase vrb
+
+    set -a FORGIT_FZF_DEFAULT_OPTS "$FZF_DEFAULT_OPTS"
+    set -a FORGIT_LOG_FZF_OPTS "--height 80%"
 end
 
 ###################################
