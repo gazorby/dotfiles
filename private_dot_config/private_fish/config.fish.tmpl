@@ -78,6 +78,18 @@ if type -q fzf
     {{ if eq .chezmoi.osRelease.id "fedora" -}}
     source /usr/share/fzf/shell/key-bindings.fish
     {{ end -}}
+
+    # Forgit plugin
+    set -gx forgit_log vlo
+    set -gx forgit_diff vd
+    set -gx forgit_add va
+    set -gx forgit_reset_head vrh
+    set -gx forgit_ignore vi
+    set -gx forgit_restore vcf
+    set -gx forgit_clean vclean
+    set -gx forgit_stash_show vss
+    set -gx forgit_cherry_pick vcp
+    set -gx forgit_rebase vrb
 end
 
 ###################################
