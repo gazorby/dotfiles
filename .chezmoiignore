@@ -38,7 +38,7 @@ test/
 {{ end -}}
 {{ end -}}
 
-{{ if eq .filesystem "btrfs" -}}
+{{ if ne .filesystem "btrfs" -}}
 .local/chezmoi_system/etc/snapper
 {{ end -}}
 
