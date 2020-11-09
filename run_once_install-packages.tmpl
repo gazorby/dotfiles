@@ -145,3 +145,10 @@ xdg-mime default pcmanfm.desktop inode/directory application/x-gnome-saved-searc
 {{ if eq .filesystem "btrfs" -}}
 sudo systemctl enable snapper-timeline.timer
 {{ end -}}
+
+
+# Activate evo 4 pulseaudio profile
+# https://writepermission.com/evo4-pulseaudio-profile.html
+sudo udevadm control --reload
+sudo udevadm trigger --subsystem-match=sound
+pulseaudio --kill
