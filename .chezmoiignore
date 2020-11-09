@@ -3,7 +3,6 @@ LICENSE
 CHANGELOG.md
 bump.json
 test/
-.config/pulse/daemon.conf
 
 {{ if eq .chezmoi.osRelease.id "opensuse-tumbleweed" -}}
 # Already enabled on opensuse tumbleweed
