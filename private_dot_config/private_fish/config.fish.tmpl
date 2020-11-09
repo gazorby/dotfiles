@@ -11,22 +11,22 @@ set -ag fish_user_paths $HOME/.dotnet
 set -ag fish_user_paths $HOME/.yarn/bin
 set -ag fish_user_paths $HOME/.poetry/bin
 
-set -q fisher_path; or set -Ux fisher_path "$HOME/.config/fish";
+set -q fisher_path; or set -Ux fisher_path "$HOME/.config/fish"
 
 set -gx EDITOR "nvim"
 
 # Go
 if type -q go
-    if ! set -q GOPATH; set -Ux GOPATH "$HOME/go"; end
-    if ! set -q GOBIN; set -Ux GOBIN "$GOPATH/bin"; end
-    if ! set -q GO111MODULE; set -Ux GO111MODULE "on"; end
+    set -q GOPATH; or set -Ux GOPATH "$HOME/go"
+    set -q GOBIN; or set -Ux GOBIN "$GOPATH/bin"
+    set -q GO111MODULE; or set -Ux GO111MODULE "on"
     set -ag fish_user_paths "$GOBIN"
 end
 
 # Colorize manpages using bat
 if type -q bat
-    if ! set -q MANPAGER; set -Ux MANPAGER 'sh -c "col -bx | bat --language=man --style=grid --color=always --decorations=always"'; end
-    if ! set -q MANROFFOPT set -Ux MANROFFOPT '-c'; end
+    set -q MANPAGER; or set -Ux MANPAGER 'sh -c "col -bx | bat --language=man --style=grid --color=always --decorations=always"'
+    set -q MANROFFOPT; or set -Ux MANROFFOPT '-c'
 end
 
 # fzf
@@ -61,7 +61,7 @@ if type -q fzf
     set -gx FZF_OPEN_COMMAND "$FZF_FIND_FILE_COMMAND"
     set -gx FZF_CD_COMMAND "$FZF_ALT_C_COMMAND"
     set -gx FZF_ENABLE_OPEN_PREVIEW 1
-    if ! set -q FZF_COMPLETE; set -Ux FZF_COMPLETE 3; end
+    set -q FZF_COMPLETE; or set -Ux FZF_COMPLETE 3
 
     # preview files on the right side
     set -gx FZF_CTRL_T_OPTS "--preview '"{$FZF_PREVIEW_FILE_CMD}' {}\''
@@ -80,16 +80,16 @@ if type -q fzf
     {{ end -}}
 
     # Forgit plugin
-    set -Ux forgit_log vlo
-    set -Ux forgit_diff vd
-    set -Ux forgit_add va
-    set -Ux forgit_reset_head vrh
-    set -Ux forgit_ignore vi
-    set -Ux forgit_restore vcf
-    set -Ux forgit_clean vclean
-    set -Ux forgit_stash_show vss
-    set -Ux forgit_cherry_pick vcp
-    set -Ux forgit_rebase vrb
+    set -q forgit_log; or set -Ux forgit_log vlo
+    set -q forgit_diff; or set -Ux forgit_diff vd
+    set -q forgit_add; or set -Ux forgit_add va
+    set -q forgit_reset_head; or set -Ux forgit_reset_head vrh
+    set -q forgit_ignore; or set -Ux forgit_ignore vi
+    set -q forgit_restore; or set -Ux forgit_restore vcf
+    set -q forgit_clean; or set -Ux forgit_clean vclean
+    set -q forgit_stash_show; or set -Ux forgit_stash_show vss
+    set -q forgit_cherry_pick; or set -Ux forgit_cherry_pick vcp
+    set -q forgit_rebase; or set -Ux forgit_rebase vrb
 
     set -a FORGIT_FZF_DEFAULT_OPTS "$FZF_DEFAULT_OPTS"
     set -a FORGIT_LOG_FZF_OPTS "--height 80%"
@@ -101,17 +101,17 @@ end
 if status --is-login
     setenv SSH_ENV $HOME/.ssh/environment
 
-    if [ -n "$SSH_AGENT_PID" ]
+    if test -n "$SSH_AGENT_PID"
         ps -ef | grep $SSH_AGENT_PID | grep ssh-agent >/dev/null
         if [ $status -eq 0 ]
             add_identities
         end
     else
-        if [ -f $SSH_ENV ]
+        if test -f $SSH_ENV
             . $SSH_ENV >/dev/null
         end
         ps -ef | grep $SSH_AGENT_PID | grep -v grep | grep ssh-agent >/dev/null
-        if [ $status -eq 0 ]
+        if test $status -eq 0
             add_identities
         else
             start_agent
@@ -125,9 +125,8 @@ end
 # on a fresh install
 ###################################
 if not functions -q fisher
-    set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME $HOME/.config
-    curl https://git.io/fisher --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
-    fish -c fisher
+    curl -sL git.io/fisher | source && fisher install jorgebucaran/fisher
+    fisher update
 end
 
 ###################################
