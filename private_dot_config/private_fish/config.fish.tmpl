@@ -13,6 +13,8 @@ set -ag fish_user_paths /home/linuxbrew/.linuxbrew/bin
 set -ag fish_user_paths $HOME/.linuxbrew/bin
 set -ag fish_user_paths $HOME/.poetry/bin
 
+set -q fisher_path; or set -Ux fisher_path "$HOME/.config/fish";
+
 set -gx EDITOR "nvim"
 
 # Go
