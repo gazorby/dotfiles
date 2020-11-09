@@ -73,7 +73,7 @@ sudo pacman -Syyu
 # Install yay
 sudo pacman -S --needed yay
 
-yay_needed ripgrep bash git fd fzf exa fish bat neovim yarn fakeroot binutils ufw htop yay chaotic-keyring starship-bin asdf-vm powerpill screen bpython git-delta xclip    
+yay_needed ripgrep bash git fd fzf exa fish bat neovim yarn fakeroot binutils ufw htop yay chaotic-keyring starship-bin asdf-vm powerpill screen bpython git-delta xclip
 
 
 {{ if eq .machine "desktop" -}}
@@ -148,7 +148,8 @@ sudo systemctl enable snapper-timeline.timer
 
 
 # Activate evo 4 pulseaudio profile
-# https://writepermission.com/evo4-pulseaudio-profile.html
+{{ if eq .evo4 "true" -}}
 sudo udevadm control --reload
 sudo udevadm trigger --subsystem-match=sound
 pulseaudio --kill
+{{ end -}}

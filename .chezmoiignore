@@ -41,3 +41,8 @@ test/
 {{ if eq .filesystem "btrfs" -}}
 .local/chezmoi_system/etc/snapper
 {{ end -}}
+
+{{ if ne .evo4 "true" -}}
+.local/chezmoi_system/etc/udev/rules.d/91-pulseaudio-custom-profiles.rules
+.local/chezmoi_system/etc/pulse/profile-sets/audient-evo4.conf
+{{ end -}}

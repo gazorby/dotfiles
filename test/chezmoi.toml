@@ -65,3 +65,8 @@
   #
   # This setting needs "graphics" variable to be either intel or nvidia
   video_acceleration = "true"
+
+
+  # Activate evo 4 pulseaudio profile
+  # https://writepermission.com/evo4-pulseaudio-profile.html
+  evo4 = "true"
