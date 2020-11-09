@@ -80,16 +80,16 @@ if type -q fzf
     {{ end -}}
 
     # Forgit plugin
-    set -gx forgit_log vlo
-    set -gx forgit_diff vd
-    set -gx forgit_add va
-    set -gx forgit_reset_head vrh
-    set -gx forgit_ignore vi
-    set -gx forgit_restore vcf
-    set -gx forgit_clean vclean
-    set -gx forgit_stash_show vss
-    set -gx forgit_cherry_pick vcp
-    set -gx forgit_rebase vrb
+    set -Ux forgit_log vlo
+    set -Ux forgit_diff vd
+    set -Ux forgit_add va
+    set -Ux forgit_reset_head vrh
+    set -Ux forgit_ignore vi
+    set -Ux forgit_restore vcf
+    set -Ux forgit_clean vclean
+    set -Ux forgit_stash_show vss
+    set -Ux forgit_cherry_pick vcp
+    set -Ux forgit_rebase vrb
 
     set -a FORGIT_FZF_DEFAULT_OPTS "$FZF_DEFAULT_OPTS"
     set -a FORGIT_LOG_FZF_OPTS "--height 80%"
