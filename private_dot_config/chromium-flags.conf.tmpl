@@ -40,9 +40,9 @@
 --disk-cache-dir=/tmp/cache
 
 {{ if eq .screen_size "laptop" -}}
---force-device-scale-factor=1.23
+--force-device-scale-factor=1.14
 {{ else if eq .screen_size "desktop" -}}
---force-device-scale-factor=1.15
+--force-device-scale-factor=1.1
 {{ end -}}
 
 # Enabling this flag break google login
