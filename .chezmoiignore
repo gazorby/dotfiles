@@ -18,6 +18,10 @@ test/
 .local/chezmoi_system/etc/X11/xorg.conf.d/20-intel.conf
 {{ end -}}
 
+{{ if ne .graphics "nvidia" -}}
+.config/autostart/nvidia-force-full-compositon.desktop
+{{ end -}}
+
 {{ if eq .machine "server" -}}
 # Don't ingore ping request on server by default
 .local/chezmoi_system/etc/sysctl.d/99-ignore-ping.conf
