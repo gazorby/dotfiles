@@ -96,11 +96,7 @@ sudo pacman -S --needed vulkan-intel
 # Provide "vdpauinfo" an "vainfo" commands
 sudo pacman -S --needed libva-utils vdpauinfo
 
-{{ if eq .graphics "nvidia" -}}
-# libva-vdpau-driver-vp9-git :  Enable VP9 hardware video decoding in chromium (commonly used in YouTube videos)
-yay_needed nvidia-utils libva-vdpau-driver-vp9-git
-
-{{ else if eq .graphics "intel" -}}
+{{ if eq .graphics "intel" -}}
 sudo pacman -S --needed intel-media-driver
 {{ end -}}
 
