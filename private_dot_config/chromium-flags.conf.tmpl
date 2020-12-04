@@ -34,7 +34,7 @@
 --disable-font-subpixel-positioning
 
 --force-dark-mode
---enable-features=WebUIDarkMode,TabGroups,ParallelDownloading,UseDownloadOfflineContentProvider,FocusMode,StrictOriginIsolation,MarkHttpAs
+--enable-features=LazyFrameLoading:automatic-lazy-load-frames-enabled/true/restrict-lazy-load-frames-to-data-saver-only/false,LazyImageLoading:automatic-lazy-load-images-enabled/true/restrict-lazy-load-images-to-data-saver-only/false,WebUIDarkMode,TabGroups,ParallelDownloading,UseDownloadOfflineContentProvider,FocusMode,StrictOriginIsolation,MarkHttpAs
 
 # Use RAM for caching, to make chromium more responsive
 --disk-cache-dir=/tmp/cache
@@ -45,5 +45,5 @@
 --force-device-scale-factor=1.1
 {{ end -}}
 
-# Enabling this flag break google login
-#--remote-debugging-port=9222
+# Enabling this flag may break google login
+--remote-debugging-port=9222
