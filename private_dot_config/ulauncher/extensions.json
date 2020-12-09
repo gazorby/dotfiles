@@ -1,0 +1,93 @@
+{
+    "com.github.dhelmr.ulauncher-duckduckgo-bangs": {
+        "id": "com.github.dhelmr.ulauncher-duckduckgo-bangs",
+        "url": "https://github.com/dhelmr/ulauncher-duckduckgo-bangs",
+        "updated_at": "2020-12-09T14:24:36.761440",
+        "last_commit": "efb7b3e6545dedb4d626a085c0480eddc3dd4ed2",
+        "last_commit_time": "2020-02-15T22:17:26"
+    },
+    "com.github.kbialek.ulauncher-bitwarden": {
+        "id": "com.github.kbialek.ulauncher-bitwarden",
+        "url": "https://github.com/kbialek/ulauncher-bitwarden",
+        "updated_at": "2020-12-09T14:31:45.673192",
+        "last_commit": "aaa8f4331b4dad350f1fe4e76e64b3e9d73074d5",
+        "last_commit_time": "2020-11-14T17:09:56"
+    },
+    "com.github.iboyperson.ulauncher-system": {
+        "id": "com.github.iboyperson.ulauncher-system",
+        "url": "https://github.com/iboyperson/ulauncher-system",
+        "updated_at": "2020-12-09T14:33:32.968252",
+        "last_commit": "9268d22afd93748821164e12f806b049533fc873",
+        "last_commit_time": "2020-12-08T21:03:45"
+    },
+    "com.github.friday.ulauncher-clipboard": {
+        "id": "com.github.friday.ulauncher-clipboard",
+        "url": "https://github.com/friday/ulauncher-clipboard",
+        "updated_at": "2020-12-09T14:35:02.409772",
+        "last_commit": "400723532a0fbb413befbf19f6c45debfe38ad84",
+        "last_commit_time": "2020-01-11T20:30:17"
+    },
+    "com.github.brpaz.ulauncher-vscode-projects": {
+        "id": "com.github.brpaz.ulauncher-vscode-projects",
+        "url": "https://github.com/brpaz/ulauncher-vscode-projects",
+        "updated_at": "2020-12-09T14:36:24.245834",
+        "last_commit": "0440018ae304810926154126fe09574bd20fd958",
+        "last_commit_time": "2020-11-15T15:27:31"
+    },
+    "com.github.friday.ulauncher-gnome-settings": {
+        "id": "com.github.friday.ulauncher-gnome-settings",
+        "url": "https://github.com/friday/ulauncher-gnome-settings",
+        "updated_at": "2020-12-09T14:41:02.223927",
+        "last_commit": "12281ba540740ed3f47cf1d49bcfc506ea78fbd1",
+        "last_commit_time": "2019-05-09T21:44:58"
+    },
+    "com.github.noam09.ulauncher-units": {
+        "id": "com.github.noam09.ulauncher-units",
+        "url": "https://github.com/noam09/ulauncher-units",
+        "updated_at": "2020-12-09T14:41:40.576653",
+        "last_commit": "b7cf2e51dbf23854f116a1e2157563d749bfb63c",
+        "last_commit_time": "2020-10-06T08:38:12"
+    },
+    "com.github.friday.ulauncher-hash2": {
+        "id": "com.github.friday.ulauncher-hash2",
+        "url": "https://github.com/friday/ulauncher-hash2",
+        "updated_at": "2020-12-09T14:43:27.023726",
+        "last_commit": "3bdf53e983e662625eb6eb144b3e66605cfffe39",
+        "last_commit_time": "2019-06-19T00:15:58"
+    },
+    "com.github.brpaz.ulauncher-currency": {
+        "id": "com.github.brpaz.ulauncher-currency",
+        "url": "https://github.com/brpaz/ulauncher-currency",
+        "updated_at": "2020-12-09T14:49:50.681020",
+        "last_commit": "1a023875599d333f551e89cc4ec8670ca0460275",
+        "last_commit_time": "2020-11-14T16:55:33"
+    },
+    "com.github.the-lay.ulauncher-spotify-api": {
+        "id": "com.github.the-lay.ulauncher-spotify-api",
+        "url": "https://github.com/the-lay/ulauncher-spotify-api",
+        "updated_at": "2020-12-09T14:56:28.513884",
+        "last_commit": "083b78d6ceb38d50798f476c4a336f650db6f0e4",
+        "last_commit_time": "2020-12-06T16:28:58"
+    },
+    "com.github.brpaz.ulauncher-github": {
+        "id": "com.github.brpaz.ulauncher-github",
+        "url": "https://github.com/brpaz/ulauncher-github",
+        "updated_at": "2020-12-09T15:00:50.950136",
+        "last_commit": "a0db609071863a678c782bd849c10d2d2c763e01",
+        "last_commit_time": "2020-12-08T14:54:43"
+    },
+    "com.github.brpaz.ulauncher-timestamp": {
+        "id": "com.github.brpaz.ulauncher-timestamp",
+        "url": "https://github.com/brpaz/ulauncher-timestamp",
+        "updated_at": "2020-12-09T15:17:55.647389",
+        "last_commit": "09cbed761d1cd6b02080d204e46b79b29f1eb7e3",
+        "last_commit_time": "2019-12-03T20:06:45"
+    },
+    "com.github.dalanicolai.gnome-tracker-extension": {
+        "id": "com.github.dalanicolai.gnome-tracker-extension",
+        "url": "https://github.com/dalanicolai/gnome-tracker-extension",
+        "updated_at": "2020-12-09T15:20:45.370646",
+        "last_commit": "a45f42a50d12a617c2b58067d5d4b97ed6155192",
+        "last_commit_time": "2020-08-31T10:06:27"
+    }
+}
