@@ -22,16 +22,25 @@
 
 --enable-quic
 --enable-tcp-fastopen
---enable-smooth-scrolling
 --enable-dom-distiller
 --enable-webgl2-compute-context
+--enable-smooth-scrolling
 --num-raster-threads=4
+
+# Intel graphic cards have poor rendering path and need driver workarounds
+{{ if ne .graphics "intel" -}}
+--disable-gpu-driver-bug-workarounds
+{{ end -}}
+
+# Webassembly
+--enable-experimental-webassembly-features
 
 # Fonts may be sharper
 --disable-font-subpixel-positioning
 
 --force-dark-mode
---enable-features=LazyFrameLoading:automatic-lazy-load-frames-enabled/true/restrict-lazy-load-frames-to-data-saver-only/false,LazyImageLoading:automatic-lazy-load-images-enabled/true/restrict-lazy-load-images-to-data-saver-only/false,WebUIDarkMode,TabGroups,ParallelDownloading,UseDownloadOfflineContentProvider,FocusMode,StrictOriginIsolation,MarkHttpAs
+
+--enable-features=LazyFrameLoading:automatic-lazy-load-frames-enabled/true/restrict-lazy-load-frames-to-data-saver-only/false,LazyImageLoading:automatic-lazy-load-images-enabled/true/restrict-lazy-load-images-to-data-saver-only/false,WebUIDarkMode,TabGroups,ParallelDownloading,UseDownloadOfflineContentProvider,FocusMode,StrictOriginIsolation,MarkHttpAs,WebAssemblyBaseline,WebAssemblyLazyCompilation,WebAssemblySimd,WebAssemblyThreads,WebAssemblyTiering,OopRasterizationDDL,TabGroupsCollapse,ParallelDownloading,DecodeJpeg420ImagesToYUV,DecodeLossyWebPImagesToYUV
 
 # Use RAM for caching, to make chromium more responsive
 --disk-cache-dir=/tmp/cache
