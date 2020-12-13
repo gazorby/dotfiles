@@ -1,5 +1,5 @@
 function sshsv -d "Save ssh password for a given host"
-    if set -q $argv[2]
+    if not set -q $argv[2]
         set id_rsa "~/.ssh/id_rsa.pub"
     else
         set id_rsa $argv[2]
