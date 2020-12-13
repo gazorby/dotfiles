@@ -20,6 +20,8 @@ test/
 
 {{ if ne .graphics "nvidia" -}}
 .config/autostart/nvidia-force-full-compositon.desktop
+.local/chezmoi_system/lib/udev/rules.d/80-nvidia-pm.rules
+.local/chezmoi_system/etc/modprobe.d/nvidia.conf
 {{ end -}}
 
 {{ if eq .machine "server" -}}
