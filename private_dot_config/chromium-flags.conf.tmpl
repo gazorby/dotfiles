@@ -27,10 +27,8 @@
 --enable-smooth-scrolling
 --num-raster-threads=4
 
-# Intel graphic cards have poor rendering path and need driver workarounds
-{{ if ne .graphics "intel" -}}
+# Intel graphic cards may have poor rendering path and may need driver workarounds
 --disable-gpu-driver-bug-workarounds
-{{ end -}}
 
 # Webassembly
 --enable-experimental-webassembly-features
