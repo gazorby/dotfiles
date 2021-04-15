@@ -117,9 +117,10 @@ yay_needed snap-pac snapper snapper-gui-git btrfs-du
 
 # Yarn
 yarn config set prefix $HOME/.yarn
-yarn global add @fabiospampinato/bump
 
+# Directories
 mkdir -p "$HOME/.local/chezmoi_system"
+mkdir -p "$HOME/.ssh/sockets"
 
 # Enable firewall
 sudo ufw enable
