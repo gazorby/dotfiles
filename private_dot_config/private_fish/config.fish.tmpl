@@ -120,14 +120,6 @@ if status --is-login
 
 end
 
-###################################
-# Auto add fisher and plugins
-# on a fresh install
-###################################
-if not functions -q fisher
-    curl -sL git.io/fisher | source && fisher install jorgebucaran/fisher
-    fisher update
-end
 
 ###################################
 # Keybindings

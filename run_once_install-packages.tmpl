@@ -128,7 +128,7 @@ sudo ufw enable
 {{ if eq .machine "desktop" -}}
 
 # Enable auto discovery of printers
-sudo systemctl enable --now cups-browsed.service avahi-daemon.service org.cups.cupsd.service
+sudo systemctl enable --now cups-browsed.service cups.socket cups.service cups.path avahi-daemon.service
 systemctl --user enable profile-cleaner.service profile-cleaner.timer psd.service bridge-cli.service
 
 # Set PCManFM as default file manager
