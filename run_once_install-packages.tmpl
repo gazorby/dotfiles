@@ -132,9 +132,6 @@ sudo ufw enable
 sudo systemctl enable --now cups-browsed.service cups.socket cups.service cups.path avahi-daemon.service
 systemctl --user enable profile-cleaner.service profile-cleaner.timer psd.service bridge-cli.service
 
-# Set PCManFM as default file manager
-xdg-mime default pcmanfm.desktop inode/directory application/x-gnome-saved-search
-
 {{ end -}}
 
 
