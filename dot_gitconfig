@@ -13,7 +13,7 @@
   autoStash = true
 
 [core]
-  editor = nvim
+  editor = code --wait
   pager = delta
 
 [interactive]
