@@ -142,3 +142,7 @@ source /opt/asdf-vm/asdf.fish
 {{ else }}
 source "$HOME"/.asdf/asdf.fish
 {{ end -}}
+
+if type -q direnv
+    direnv hook fish | source
+end
