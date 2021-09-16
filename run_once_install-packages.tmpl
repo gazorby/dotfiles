@@ -54,7 +54,7 @@ paru_needed() {
         needed="$needed $(trim_trailing "\' was not found" "$tmp")"
     done <<< "$packages"
 
-    yay -S --needed $needed
+    paru -S --needed $needed
 }
 
 #############################################################
@@ -70,7 +70,7 @@ sudo pacman-key --lsign-key 3056513887B78AEB
 sudo pacman -Syyu
 
 # Install keyring and mirrolist
-pacman -U --noconfirm "https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst" "https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst"
+sudo pacman -U --noconfirm "https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst" "https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst"
 
 # Install yay
 sudo pacman -S --needed paru
