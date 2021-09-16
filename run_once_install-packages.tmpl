@@ -70,16 +70,16 @@ sudo pacman-key --lsign-key 3056513887B78AEB
 sudo pacman -Syyu
 
 # Install keyring and mirrolist
-sudo pacman -U --noconfirm "https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst" "https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst"
+sudo pacman -U "https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst" "https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst"
 
-# Install yay
+# Install paru
 sudo pacman -S --needed paru
 
-paru_needed ripgrep bash git fd fzf exa fish bat neovim yarn fakeroot binutils ufw htop yay starship-bin asdf-vm powerpill screen bpython git-delta xclip highlight
+paru_needed ripgrep bash git fd fzf exa fish bat neovim yarn fakeroot binutils ufw htop yay starship asdf-vm powerpill screen bpython git-delta xclip highlight
 
 
 {{ if eq .machine "desktop" -}}
-paru_needed cups avahi imwheel profile-cleaner profile-sync-daemon pamac-aur meld chromium gnome-tweaks geany gksu ttf-bitstream-vera noto-fonts visual-studio-code-bin ttf-twemoji menulibre blueman pulseaudio-modules-bt-git archlinux-appstream-data-pamac gtk2
+paru_needed cups avahi imwheel profile-cleaner profile-sync-daemon pamac-aur ungoogled-chromium gnome-tweaks geany gksu ttf-bitstream-vera noto-fonts visual-studio-code-bin ttf-twemoji menulibre blueman pulseaudio-modules-bt-git archlinux-appstream-data-pamac gtk2
 
 
 {{ if eq .vulkan "true" -}}
@@ -104,6 +104,20 @@ sudo pacman -S --needed intel-media-driver
 
 {{ end -}}
 
+{{ end -}}
+
+
+{{ if eq .hblock "true" -}}
+paru -S --needed hblock curl
+curl -o '/tmp/hblock.#1' 'https://raw.githubusercontent.com/hectorm/hblock/v3.2.2/resources/systemd/hblock.{service,timer}' \
+  && echo '08b736382cb9dfd39df1207a3e90b068f5325a41dc8254d83fde5d4540ba8b5b  /tmp/hblock.service' | shasum -c \
+  && echo '87a7ba5067d4c565aca96659b0dce230471a6ba35fbce1d3e9d02b264da4dc38  /tmp/hblock.timer' | shasum -c \
+  && sudo mv /tmp/hblock.{service,timer} /etc/systemd/system/ \
+  && sudo chown 0:0 /etc/systemd/system/hblock.{service,timer} \
+  && sudo chmod 644 /etc/systemd/system/hblock.{service,timer} \
+  && sudo systemctl daemon-reload \
+  && sudo systemctl enable hblock.timer \
+  && sudo systemctl start hblock.timer
 {{ end -}}
 
 
@@ -148,15 +162,4 @@ sudo systemctl enable snapper-timeline.timer
 sudo udevadm control --reload
 sudo udevadm trigger --subsystem-match=sound
 pulseaudio --kill
-{{ end -}}
-
-{{ if eq .hblock "true" -}}
-paru -S --needed hblock curl
-curl -o '/tmp/hblock.#1' 'https://raw.githubusercontent.com/hectorm/hblock/v3.2.2/resources/systemd/hblock.{service,timer}' \
-  && sudo mv /tmp/hblock.{service,timer} /etc/systemd/system/ \
-  && sudo chown 0:0 /etc/systemd/system/hblock.{service,timer} \
-  && sudo chmod 644 /etc/systemd/system/hblock.{service,timer} \
-  && sudo systemctl daemon-reload \
-  && sudo systemctl enable hblock.timer \
-  && sudo systemctl start hblock.timer
 {{ end -}}
