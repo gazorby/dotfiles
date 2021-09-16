@@ -70,3 +70,7 @@
   # Activate evo 4 pulseaudio profile
   # https://writepermission.com/evo4-pulseaudio-profile.html
   evo4 = "true"
+
+  # Install hblock and schedule a daily update of hosts file using a systemd timer
+  # https://github.com/hectorm/hblock/tree/master/resources/systemd
+  hblock = "true"
