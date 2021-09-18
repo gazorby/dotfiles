@@ -66,6 +66,9 @@ sudo pacman-key --init
 sudo pacman-key --keyserver hkp://keyserver.ubuntu.com -r 3056513887B78AEB 8A9E14A07010F7E3
 sudo pacman-key --lsign-key 3056513887B78AEB
 
+# Install keyring and mirrolist
+sudo pacman --needed -U "https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst" "https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst"
+
 # Edit pacman .conf
 if ! grep --silent "Include = /etc/pacman.d/chaotic-mirrorlist" /etc/pacman.conf; then
     echo -e "\n[chaotic-aur]\nInclude = /etc/pacman.d/chaotic-mirrorlist\n" | sudo tee -a /etc/pacman.conf
@@ -74,13 +77,10 @@ fi
 # Sync databases
 sudo pacman -Syyu
 
-# Install keyring and mirrolist
-sudo pacman --needed -U "https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst" "https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst"
-
 # Install paru
 sudo pacman -S --needed paru
 
-paru_needed ripgrep bash git fd fzf exa fish bat neovim yarn fakeroot binutils ufw htop starship asdf-vm powerpill screen bpython git-delta xclip highlight
+paru_needed ripgrep bash git fd fzf exa fish bat neovim yarn fakeroot binutils ufw htop starship asdf-vm powerpill screen bpython git-delta xclip highlight openssh
 
 
 {{ if eq .machine "desktop" -}}
@@ -148,7 +148,9 @@ mkdir -p "$HOME/.local/chezmoi_system"
 mkdir -p "$HOME/.ssh/sockets"
 
 # Enable firewall
+{{ if ne .wsl "true" -}}
 sudo ufw enable
+{{ end -}}
 
 # Enable systemd services, set default applications
 {{ if and (eq .machine "desktop") (ne .wsl "true") -}}

@@ -149,3 +149,5 @@ source "$HOME"/.asdf/asdf.fish
 if type -q direnv
     direnv hook fish | source
 end
+
+set -gx GPG_TTY (tty)
