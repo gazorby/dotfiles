@@ -74,3 +74,6 @@
   # Install hblock and schedule a daily update of hosts file using a systemd timer
   # https://github.com/hectorm/hblock/tree/master/resources/systemd
   hblock = "true"
+
+  # Make the install compatibe in wsl
+  wsl = "false"

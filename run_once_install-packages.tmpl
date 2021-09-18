@@ -66,11 +66,16 @@ sudo pacman-key --init
 sudo pacman-key --keyserver hkp://keyserver.ubuntu.com -r 3056513887B78AEB 8A9E14A07010F7E3
 sudo pacman-key --lsign-key 3056513887B78AEB
 
+# Edit pacman .conf
+if ! grep --silent "Include = /etc/pacman.d/chaotic-mirrorlist" /etc/pacman.conf; then
+    echo -e "\n[chaotic-aur]\nInclude = /etc/pacman.d/chaotic-mirrorlist\n" | sudo tee -a /etc/pacman.conf
+fi
+
 # Sync databases
 sudo pacman -Syyu
 
 # Install keyring and mirrolist
-sudo pacman -U "https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst" "https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst"
+sudo pacman --needed -U "https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst" "https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst"
 
 # Install paru
 sudo pacman -S --needed paru
@@ -109,6 +114,8 @@ sudo pacman -S --needed intel-media-driver
 
 {{ if eq .hblock "true" -}}
 sudo pacman -S --needed hblock curl perl
+
+{{ if ne .wsl "true" -}}
 curl -o '/tmp/hblock.#1' 'https://raw.githubusercontent.com/hectorm/hblock/v3.2.2/resources/systemd/hblock.{service,timer}' \
   && echo '08b736382cb9dfd39df1207a3e90b068f5325a41dc8254d83fde5d4540ba8b5b  /tmp/hblock.service' | /usr/bin/core_perl/shasum -c \
   && echo '87a7ba5067d4c565aca96659b0dce230471a6ba35fbce1d3e9d02b264da4dc38  /tmp/hblock.timer' | /usr/bin/core_perl/shasum -c \
@@ -118,6 +125,8 @@ curl -o '/tmp/hblock.#1' 'https://raw.githubusercontent.com/hectorm/hblock/v3.2.
   && sudo systemctl daemon-reload \
   && sudo systemctl enable hblock.timer \
   && sudo systemctl start hblock.timer
+{{ end -}}
+
 {{ end -}}
 
 
@@ -142,7 +151,7 @@ mkdir -p "$HOME/.ssh/sockets"
 sudo ufw enable
 
 # Enable systemd services, set default applications
-{{ if eq .machine "desktop" -}}
+{{ if and (eq .machine "desktop") (ne .wsl "true") -}}
 
 # Enable auto discovery of printers
 sudo systemctl enable --now cups-browsed.service cups.socket cups.service cups.path avahi-daemon.service
@@ -152,13 +161,13 @@ systemctl --user enable profile-cleaner.service profile-cleaner.timer psd.servic
 
 
 # Filesystem stuff
-{{ if eq .filesystem "btrfs" -}}
+{{ if and (eq .filesystem "btrfs") (ne .wsl "true") -}}
 sudo systemctl enable snapper-timeline.timer
 {{ end -}}
 
 
 # Activate evo 4 pulseaudio profile
-{{ if eq .evo4 "true" -}}
+{{ if and (eq .evo4 "true") (ne .wsl "true") -}}
 sudo udevadm control --reload
 sudo udevadm trigger --subsystem-match=sound
 pulseaudio --kill
