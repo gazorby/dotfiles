@@ -1,3 +1,5 @@
+# ~/.config/chezmoi/chezmoi.toml
+
 [data]
   # Git config/workflow
   email_perso = "example@pm.me"
@@ -9,6 +11,8 @@
   signing_key_perso = "AZQESDFQSDF654SDFQSDF654QSDFQSDF"
   signing_key_pro = "QSDFQSDFSDFQSD654654QSDFQSDFQSDSDQSD"
   token_github_repo = "65654dsqd54654sdfsds655eef65ef4"
+
+  server = "true"
 
   # values :
   #   - intel
