@@ -1,2 +1,0 @@
-SUBSYSTEM=="sound", SUBSYSTEMS=="usb", ACTION=="change", KERNEL=="card*", ENV{ID_VENDOR}=="Audient", ENV{ID_MODEL}=="EVO4", ENV{PULSE_PROFILE_SET}="/etc/pulse/profile-sets/audient-evo4.conf"
-

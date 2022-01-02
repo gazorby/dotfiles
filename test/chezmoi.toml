@@ -10,18 +10,11 @@
   signing_key_pro = "QSDFQSDFSDFQSD654654QSDFQSDFQSDSDQSD"
   token_github_repo = "65654dsqd54654sdfsds655eef65ef4"
 
-  # Used to install desktop applications on desktop environment
-  # and run server specific commands/scripts
-  # values :
-  #   - desktop
-  #   - server
-  machine = "desktop"
-
   # values :
   #   - intel
   #   - nvidia
   # If "intel", copy custom intel graphic conf (20-intel.conf)
-  # If "nvidia", install libva-vdpau-driver-vp9-git on arch to enable VP9 video decoding on chromium
+  # If "nvidia", force full composition pipeline and enable dynamic power management
   graphics = "intel"
 
   # If true, don't copy `.imwheelrc`
@@ -41,39 +34,7 @@
   #   - ask :       prompt the user to install packages
   install_package = "enabled"
 
-  # Useful to set some scaling values (ex: chromium)
-  # values :
-  #   - desktop
-  #   - laptop
-  screen_size = "laptop"
-
   filesystem = "btrfs"
-
-  # If true, install the proper vulkan driver depending on the graphic card :
-  # - "vulkan-intel" for intel graphics
-  #
-  # - "nvidia-utils" for nvidia cards
-  #
-  # This setting needs "graphics" variable to be either intel or nvidia
-  vulkan = "true"
-
-  # If true, install the proper video acceleration library depending on the graphic card :
-  # - VA-API library for intel graphics (intel-media-driver)
-  #
-  # - VDPAU library for nvidia cards (nvidia-utils).
-  #   In addition, the AUR package "libva-vdpau-driver-vp9-git" will be installed to enable VP9 hardware video decoding in chromium (commonly used in YouTube videos)
-  #
-  # This setting needs "graphics" variable to be either intel or nvidia
-  video_acceleration = "true"
-
-
-  # Activate evo 4 pulseaudio profile
-  # https://writepermission.com/evo4-pulseaudio-profile.html
-  evo4 = "true"
-
-  # Install hblock and schedule a daily update of hosts file using a systemd timer
-  # https://github.com/hectorm/hblock/tree/master/resources/systemd
-  hblock = "true"
 
   # Make the install compatibe in wsl
   wsl = "false"

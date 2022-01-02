@@ -128,4 +128,3 @@ class VDMSource(IQuoteSource):
 
     def get_random(self):
         return self.quotes
-

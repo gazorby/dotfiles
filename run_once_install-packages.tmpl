@@ -82,54 +82,6 @@ sudo pacman -S --needed paru
 
 paru_needed ripgrep bash git fd fzf exa fish bat neovim yarn fakeroot binutils ufw htop starship asdf-vm powerpill screen bpython git-delta xclip highlight openssh
 
-
-{{ if eq .machine "desktop" -}}
-paru_needed cups avahi imwheel profile-cleaner profile-sync-daemon pamac-aur ungoogled-chromium gnome-tweaks geany gksu ttf-bitstream-vera noto-fonts visual-studio-code-bin ttf-twemoji menulibre blueman pulseaudio-modules-bt-git archlinux-appstream-data-pamac gtk2
-
-
-{{ if eq .vulkan "true" -}}
-sudo pacman -S --needed vulkan-icd-loader
-
-{{ if eq .graphics "nvidia" -}}
-paru_needed nvidia-utils
-
-{{ else if eq .graphics "intel" -}}
-sudo pacman -S --needed vulkan-intel
-{{ end -}}
-
-{{ end -}}
-
-{{ if eq .video_acceleration "true" -}}
-# Provide "vdpauinfo" an "vainfo" commands
-sudo pacman -S --needed libva-utils vdpauinfo
-
-{{ if eq .graphics "intel" -}}
-sudo pacman -S --needed intel-media-driver
-{{ end -}}
-
-{{ end -}}
-
-{{ end -}}
-
-
-{{ if eq .hblock "true" -}}
-sudo pacman -S --needed hblock curl perl
-
-{{ if ne .wsl "true" -}}
-curl -o '/tmp/hblock.#1' 'https://raw.githubusercontent.com/hectorm/hblock/v3.2.2/resources/systemd/hblock.{service,timer}' \
-  && echo '08b736382cb9dfd39df1207a3e90b068f5325a41dc8254d83fde5d4540ba8b5b  /tmp/hblock.service' | /usr/bin/core_perl/shasum -c \
-  && echo '87a7ba5067d4c565aca96659b0dce230471a6ba35fbce1d3e9d02b264da4dc38  /tmp/hblock.timer' | /usr/bin/core_perl/shasum -c \
-  && sudo mv /tmp/hblock.{service,timer} /etc/systemd/system/ \
-  && sudo chown 0:0 /etc/systemd/system/hblock.{service,timer} \
-  && sudo chmod 644 /etc/systemd/system/hblock.{service,timer} \
-  && sudo systemctl daemon-reload \
-  && sudo systemctl enable hblock.timer \
-  && sudo systemctl start hblock.timer
-{{ end -}}
-
-{{ end -}}
-
-
 # snap-pac : setup pre/post btrfs snapshots using pacman hooks
 {{ if eq .filesystem "btrfs" -}}
 paru_needed snap-pac snapper snapper-gui-git btrfs-du
@@ -152,25 +104,8 @@ mkdir -p "$HOME/.ssh/sockets"
 sudo ufw enable
 {{ end -}}
 
-# Enable systemd services, set default applications
-{{ if and (eq .machine "desktop") (ne .wsl "true") -}}
-
-# Enable auto discovery of printers
-sudo systemctl enable --now cups-browsed.service cups.socket cups.service cups.path avahi-daemon.service
-systemctl --user enable profile-cleaner.service profile-cleaner.timer psd.service bridge-cli.service
-
-{{ end -}}
-
 
 # Filesystem stuff
 {{ if and (eq .filesystem "btrfs") (ne .wsl "true") -}}
 sudo systemctl enable snapper-timeline.timer
-{{ end -}}
-
-
-# Activate evo 4 pulseaudio profile
-{{ if and (eq .evo4 "true") (ne .wsl "true") -}}
-sudo udevadm control --reload
-sudo udevadm trigger --subsystem-match=sound
-pulseaudio --kill
 {{ end -}}
