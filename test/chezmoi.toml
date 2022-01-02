@@ -12,7 +12,11 @@
   signing_key_pro = "QSDFQSDFSDFQSD654654QSDFQSDFQSDSDQSD"
   token_github_repo = "65654dsqd54654sdfsds655eef65ef4"
 
-  server = "true"
+  ignore_ping = "true"
+  
+  desktop = "false"
+  
+  local_hostname_resolution = "false"
 
   # values :
   #   - intel
