@@ -24,15 +24,18 @@ test/
 .local/chezmoi_system/etc/modprobe.d/nvidia.conf
 {{ end -}}
 
-{{ if eq .server "true" -}}
+{{ if eq .ignore_ping "true" -}}
 # Don't ingore ping request on server by default
 .local/chezmoi_system/etc/sysctl.d/99-ignore-ping.conf
+{{ end -}}
 
+{{ if eq .local_hostname_resolution "true" -}}
 # Conf needed for printer auto-discovery
 .local/chezmoi_system/etc/nsswitch.conf
 .local/chezmoi_system/etc/systemd/resolved.conf
+{{ end -}}
 
-.local/chezmoi_system/usr/share/libalpm/hooks/99-gdm-use-materia-dark-theme.hook
+{{ if eq .desktop "true" -}}
 .config/variety
 .config/Typora
 {{ end -}}
