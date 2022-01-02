@@ -24,7 +24,7 @@ test/
 .local/chezmoi_system/etc/modprobe.d/nvidia.conf
 {{ end -}}
 
-{{ if eq .machine "server" -}}
+{{ if eq .server "true" -}}
 # Don't ingore ping request on server by default
 .local/chezmoi_system/etc/sysctl.d/99-ignore-ping.conf
 
