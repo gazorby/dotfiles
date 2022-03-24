@@ -1,8 +1,3 @@
-[includeIf "gitdir:~/git/perso/"]
-  path = ~/git/perso/.gitconfig
-[includeIf "gitdir:~/git/pro/"]
-  path = ~/git/pro/.gitconfig
-
 [user]
 	name = {{ .git_username }}
 	email = {{ .git_email }}
@@ -20,6 +15,7 @@
 [core]
   editor = code --wait
   pager = delta
+	autocrlf = input
 
 [interactive]
     diffFilter = delta --color-only
