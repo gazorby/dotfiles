@@ -3,6 +3,11 @@
 [includeIf "gitdir:~/git/pro/"]
   path = ~/git/pro/.gitconfig
 
+[user]
+	name = {{ .git_username }}
+	email = {{ .git_email }}
+	signingKey = {{ .git_signing_key }}
+
 [commit]
   gpgSign = true
 

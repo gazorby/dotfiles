@@ -2,21 +2,18 @@
 
 [data]
   # Git config/workflow
-  email_perso = "example@pm.me"
-  email_pro = "example.pro@company.com"
-  username_pro = "FirstName LastName"
-  username_perso = "perso_usnermae"
+  git_email = "example@pm.me"
+  git_username = "username"
 
   # False keys
-  signing_key_perso = "AZQESDFQSDF654SDFQSDF654QSDFQSDF"
-  signing_key_pro = "QSDFQSDFSDFQSD654654QSDFQSDFQSDSDQSD"
+  git_signing_key = "AZQESDFQSDF654SDFQSDF654QSDFQSDF"
   token_github_repo = "65654dsqd54654sdfsds655eef65ef4"
 
   ignore_ping = "true"
-  
+
   desktop = "false"
-  
-  local_hostname_resolution = "false"
+
+  local_hostname_resolution = "true"
 
   # values :
   #   - intel
@@ -35,12 +32,6 @@
   #   - ask :       prompt the user to copy files or not
   system_config = "enabled"
 
-  # Install packages
-  # values :
-  #   - enabled :   enable install package
-  #   - disabled :  disable install package
-  #   - ask :       prompt the user to install packages
-  install_package = "enabled"
 
   filesystem = "btrfs"
 
