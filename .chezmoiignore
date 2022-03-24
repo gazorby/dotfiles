@@ -2,6 +2,7 @@ README.md
 LICENSE
 CHANGELOG.md
 bump.json
+chezmoi_example.toml
 test/
 
 {{ if eq .chezmoi.osRelease.id "opensuse-tumbleweed" -}}
@@ -36,8 +37,13 @@ test/
 {{ end -}}
 
 {{ if eq .desktop "true" -}}
+.config/.geany
+.config/.Typora
 .config/variety
-.config/Typora
+.config/ulauncher
+.config/fontconfig
+.config/autostart
+.config/tilix
 {{ end -}}
 
 {{ if ne .chezmoi.osRelease.id "arch" -}}
