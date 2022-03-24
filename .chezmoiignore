@@ -10,9 +10,11 @@ test/
 .config/fish/functions/fish_user_key_bindings.fish
 {{ end -}}
 
+{{ if eq .desktop "true" -}}
 {{ if eq .touchpad "true" -}}
 # Doesn't work well with touchpad
 .config/autostart/imwheel.desktop
+{{ end -}}
 {{ end -}}
 
 {{ if ne .graphics "intel" -}}
@@ -36,7 +38,7 @@ test/
 .local/chezmoi_system/etc/systemd/resolved.conf
 {{ end -}}
 
-{{ if eq .desktop "true" -}}
+{{ if ne .desktop "true" -}}
 .config/.geany
 .config/.Typora
 .config/variety
@@ -44,6 +46,7 @@ test/
 .config/fontconfig
 .config/autostart
 .config/tilix
+.config/chromium-flags.conf
 {{ end -}}
 
 {{ if ne .chezmoi.osRelease.id "arch" -}}
