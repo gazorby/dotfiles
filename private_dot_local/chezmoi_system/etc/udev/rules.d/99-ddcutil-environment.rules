@@ -1,2 +1,0 @@
-SUBSYSTEM=="i2c-dev",KERNEL=="i2c-[0-9]*", MODE="0666"
-

@@ -10,22 +10,6 @@ test/
 .config/fish/functions/fish_user_key_bindings.fish
 {{ end -}}
 
-{{ if eq .desktop "true" -}}
-{{ if eq .touchpad "true" -}}
-# Doesn't work well with touchpad
-.config/autostart/imwheel.desktop
-{{ end -}}
-{{ end -}}
-
-{{ if ne .graphics "intel" -}}
-.local/chezmoi_system/etc/X11/xorg.conf.d/20-intel.conf
-{{ end -}}
-
-{{ if ne .graphics "nvidia" -}}
-.config/autostart/nvidia-force-full-compositon.desktop
-.local/chezmoi_system/lib/udev/rules.d/80-nvidia-pm.rules
-.local/chezmoi_system/etc/modprobe.d/nvidia.conf
-{{ end -}}
 
 {{ if eq .ignore_ping "true" -}}
 # Don't ingore ping request on server by default
@@ -38,16 +22,6 @@ test/
 .local/chezmoi_system/etc/systemd/resolved.conf
 {{ end -}}
 
-{{ if ne .desktop "true" -}}
-.config/.geany
-.config/.Typora
-.config/variety
-.config/ulauncher
-.config/fontconfig
-.config/autostart
-.config/tilix
-.config/chromium-flags.conf
-{{ end -}}
 
 {{ if ne .chezmoi.osRelease.id "arch" -}}
 {{ if ne .chezmoi.osRelease.id "manjaro" -}}

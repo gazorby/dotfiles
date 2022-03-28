@@ -1,5 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=nvidia-force-full-compositon
-Exec=nvidia-settings --assign CurrentMetaMode="nvidia-auto-select +0+0 {ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}"
-

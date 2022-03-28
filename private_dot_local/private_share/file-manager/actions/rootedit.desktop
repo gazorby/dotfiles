@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Action
-Name=Edit as Root
-Icon=dialog-password
-Profiles=profile-zero;
-
-[X-Action-Profile profile-zero]
-Exec=gksudo geany %f
-Name=Default profile

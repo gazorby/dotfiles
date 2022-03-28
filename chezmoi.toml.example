@@ -11,19 +11,7 @@
 
   ignore_ping = "true"
 
-  desktop = "false"
-
   local_hostname_resolution = "true"
-
-  # values :
-  #   - intel
-  #   - nvidia
-  # If "intel", copy custom intel graphic conf (20-intel.conf)
-  # If "nvidia", force full composition pipeline and enable dynamic power management
-  graphics = "intel"
-
-  # If true, don't copy `.imwheelrc`
-  touchpad = "false"
 
   # Control system files management (outside $HOME)
   # values :
@@ -34,6 +22,3 @@
 
 
   filesystem = "btrfs"
-
-  # Make the install compatibe in wsl
-  wsl = "false"

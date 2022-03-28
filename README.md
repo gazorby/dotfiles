@@ -8,7 +8,7 @@ My personal dotfiles managed using [chezmoi](https://github.com/twpayne/chezmoi)
 
 2) Create `~/.config/chezmoi/chezmoi.toml`:
    ```console
-   curl https://raw.githubusercontent.com/gazorby/dotfiles/feat/master/chezmoi_example.toml --output ~/.config/chezmoi/chezmoi.toml
+   curl https://raw.githubusercontent.com/gazorby/dotfiles/feat/master/chezmoi.toml.example --output ~/.config/chezmoi/chezmoi.toml
    ```
    Adjust according to your needs
 
