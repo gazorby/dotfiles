@@ -1,14 +1,6 @@
 # ~/.config/chezmoi/chezmoi.toml
 
 [data]
-  # Git config/workflow
-  git_email = "example@pm.me"
-  git_username = "username"
-
-  # False keys
-  git_signing_key = "AZQESDFQSDF654SDFQSDF654QSDFQSDF"
-  token_github_repo = "65654dsqd54654sdfsds655eef65ef4"
-
   ignore_ping = "true"
 
   local_hostname_resolution = "true"
@@ -18,7 +10,6 @@
   #   - enabled :   enable system management
   #   - disabled :  disable system management
   #   - ask :       prompt the user to copy files or not
-  system_config = "enabled"
-
+  system_config = "disabled"
 
   filesystem = "btrfs"

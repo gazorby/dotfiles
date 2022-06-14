@@ -1,7 +1,7 @@
 [user]
-	name = {{ .git_username }}
-	email = {{ .git_email }}
-	signingKey = {{ .git_signing_key }}
+	name = {{ (bitwardenFields "item" "chezmoi").git_username.value }}
+	email = {{ (bitwardenFields "item" "chezmoi").git_email.value }}
+	signingKey = {{ (bitwardenFields "item" "chezmoi").git_signing_key.value }}
 
 [commit]
 	gpgSign = true
