@@ -2,17 +2,25 @@
 
 My personal dotfiles managed using [chezmoi](https://github.com/twpayne/chezmoi)
 
-## 🚀 Install
+## 🚀 Usage
 
-1) [Install chezmoi](https://github.com/twpayne/chezmoi/blob/master/docs/INSTALL.md)
+1) Install dependencies
 
-2) Create `~/.config/chezmoi/chezmoi.toml`:
-   ```console
-   curl https://raw.githubusercontent.com/gazorby/dotfiles/feat/master/chezmoi.toml.example --output ~/.config/chezmoi/chezmoi.toml
-   ```
-   Adjust according to your needs
+   - [chezmoi](https://github.com/twpayne/chezmoi/blob/master/docs/INSTALL.md)
+   - [jq](https://stedolan.github.io/jq/)
 
-3) Install dotfiles :
+2) Fork this repository and adjust `chezmoi.default.toml` according to your needs
+
+4) Open a shell and set the following variables:
+    ```bash
+    export GIT_REPO='' # Your fork
+    # The following is only needed if you enabled secret_* config, eg: secret_import_ssh_key
+    export BW_CLIENTID=''
+    export BW_CLIENTSECRET=''
+    export BW_PASSWORD=''
+    ```
+
+5) Install dotfiles :
     ```console
     curl -sSL https://raw.githubusercontent.com/gazorby/dotfiles/master/init.sh | sh -
     ```
