@@ -1,7 +1,12 @@
 # ~/.config/chezmoi/chezmoi.toml
 
 [data]
+  secret_import_ssh_key = "true"
+  secret_import_gpg_key = "true"
+
   ignore_ping = "true"
+
+  git_gpg_sign = "true"
 
   local_hostname_resolution = "true"
 

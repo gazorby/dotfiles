@@ -1,10 +1,14 @@
 [user]
-	name = {{ (bitwardenFields "item" "chezmoi").git_username.value }}
-	email = {{ (bitwardenFields "item" "chezmoi").git_email.value }}
+	name = gazorby
+	email = gazorby@pm.me
+{{ if eq .git_gpg_sign "true" -}}
 	signingKey = {{ (bitwardenFields "item" "chezmoi").git_signing_key.value }}
+{{ end -}}
 
+{{ if eq .git_gpg_sign "true" -}}
 [commit]
 	gpgSign = true
+{{ end -}}
 
 [pull]
 	rebase = true
