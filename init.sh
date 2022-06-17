@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 BW_UNLOCKED=0
-GIT_REPO="$GIT_REPO:-https://github.com/gazorby/dotfiles"
+GIT_REPO="${GIT_REPO:-https://github.com/gazorby/dotfiles}"
 
 # Unlock bitwarden vault to retrieve secrets and files
 unlock_vault() {
