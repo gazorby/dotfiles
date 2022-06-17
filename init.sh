@@ -48,6 +48,7 @@ if [ "$IMPORT_GPG_KEY" = "true" ]; then
     bw get attachment gpg_private.key --itemid $ITEM_ID --output ./gpg_private.key
     gpg_passphrase=$(echo $ITEM | jq -r '.fields[] | select(.name == "gpg_passphrase") | .value')
     gpg --import --passphrase $gpg_passphrase --pinentry-mode=loopback gpg_private.key
+    rm -f gpg_private.key
 fi
 
 chezmoi apply
