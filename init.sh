@@ -54,3 +54,6 @@ fi
 chezmoi apply
 
 unset BW_SESSION
+unset BW_CLIENTID
+unset BW_CLIENTSECRET
+unset BW_PASSWORD
