@@ -1,6 +1,6 @@
 [user]
-	name = gazorby
-	email = gazorby@pm.me
+	name = {{ .git_username }}
+	email = {{ .git_email }}
 {{ if eq .git_gpg_sign "true" -}}
 	signingKey = {{ (bitwardenFields "item" "chezmoi").git_signing_key.value }}
 {{ end -}}

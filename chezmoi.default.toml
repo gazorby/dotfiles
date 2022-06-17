@@ -4,10 +4,12 @@
   secret_import_ssh_key = "true"
   secret_import_gpg_key = "true"
 
-  ignore_ping = "true"
 
+  git_username = "gazorby"
+  git_email = "gazorby@pm.me"
   git_gpg_sign = "true"
 
+  ignore_ping = "true"
   local_hostname_resolution = "true"
 
   # Control system files management (outside $HOME)
