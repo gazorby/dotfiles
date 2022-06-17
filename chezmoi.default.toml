@@ -1,15 +1,26 @@
 # ~/.config/chezmoi/chezmoi.toml
 
 [data]
+  # Import ssh private key from bitwarden
+  # values :
+  #   - true
   secret_import_ssh_key = "true"
+  # Import gpg private key from bitwarden
+  # values :
+  #   - true
   secret_import_gpg_key = "true"
-
 
   git_username = "gazorby"
   git_email = "gazorby@pm.me"
   git_gpg_sign = "true"
 
+  # Ignore ping requests
+  # values :
+  #   - true
   ignore_ping = "true"
+  # Enabled local hostname resolution ("hostname.local" naming scheme)
+  # values :
+  #   - true
   local_hostname_resolution = "true"
 
   # Control system files management (outside $HOME)
@@ -19,4 +30,7 @@
   #   - ask :       prompt the user to copy files or not
   system_config = "disabled"
 
+  # filesystem specific config
+  # values :
+  #   - btrfs: Copy snapper config
   filesystem = "btrfs"
