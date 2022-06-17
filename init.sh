@@ -14,6 +14,13 @@ item_id=$(echo $item | jq -r .id)
 bw get attachment id_rsa --itemid $item_id --output ~/.ssh/id_rsa
 bw get attachment id_rsa.pub --itemid $item_id --output ~/.ssh/id_rsa.pub
 
-chezmoi init --apply https://github.com/gazorby/dotfiles
+chezmoi init https://github.com/gazorby/dotfiles
+
+CM_CONFIG_FILE=$(chezmoi data | jq -r .chezmoi.configFile)
+CM_WORKING_TREE=$(chezmoi data | jq -r .chezmoi.workingTree)
+
+cp $CM_WORKING_TREE/chezmoi.toml.example $CM_CONFIG_FILE
+
+chezmoi apply
 
 unset BW_SESSION
