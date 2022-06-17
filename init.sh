@@ -19,6 +19,7 @@ chezmoi init https://github.com/gazorby/dotfiles
 CM_CONFIG_FILE=$(chezmoi data | jq -r .chezmoi.configFile)
 CM_WORKING_TREE=$(chezmoi data | jq -r .chezmoi.workingTree)
 
+mkdir -p $(dirname $CM_CONFIG_FILE)
 cp $CM_WORKING_TREE/chezmoi.toml.example $CM_CONFIG_FILE
 
 chezmoi apply
