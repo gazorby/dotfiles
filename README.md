@@ -14,7 +14,7 @@ My personal dotfiles managed using [chezmoi](https://github.com/twpayne/chezmoi)
 
 3) Install dotfiles :
     ```console
-    curl -sSL https://raw.githubusercontent.com/gazorby/dotfiles/master/copy_ssh_keys.sh | sh -
+    curl -sSL https://raw.githubusercontent.com/gazorby/dotfiles/master/init.sh | sh -
     ```
 
 ## 📝 License
