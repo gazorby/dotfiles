@@ -31,7 +31,7 @@ My personal dotfiles managed using [chezmoi](https://github.com/twpayne/chezmoi)
 
 4) Install dotfiles :
     ```console
-    curl -sSL https://raw.githubusercontent.com/gazorby/dotfiles/master/init.sh | sh -
+    curl -sSL https://raw.githubusercontent.com/gazorby/dotfiles/master/install.sh | sh -
     ```
 
 
