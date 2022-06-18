@@ -2,7 +2,7 @@
 	name = {{ .git_username }}
 	email = {{ .git_email }}
 {{ if eq .git_gpg_sign "true" -}}
-	signingKey = {{ (bitwardenFields "item" "chezmoi").git_signing_key.value }}
+	signingKey = {{ .git_gpg_key_id }}
 {{ end -}}
 
 {{ if eq .git_gpg_sign "true" -}}
@@ -33,6 +33,11 @@
 	plus-color = "#012800"
 	minus-color = "#340001"
 	syntax-theme = Monokai Extended
+	light = false
+	navigate = true
+
+[merge]
+    conflictstyle = diff3
 
 [delta "unobtrusive-line-numbers"]
 	line-numbers = true

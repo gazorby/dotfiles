@@ -13,6 +13,7 @@
   git_username = "gazorby"
   git_email = "gazorby@pm.me"
   git_gpg_sign = "true"
+  git_gpg_key_id = "C2B1ACDB1D31A11F229816C0E59988ACE9EF0D6B"
 
   # Ignore ping requests
   # values :
