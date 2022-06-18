@@ -57,3 +57,7 @@ unset BW_SESSION
 unset BW_CLIENTID
 unset BW_CLIENTSECRET
 unset BW_PASSWORD
+
+if [ "$BW_UNLOCKED" = 1 ]; then
+    bw logout
+fi
