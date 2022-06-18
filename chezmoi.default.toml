@@ -4,11 +4,11 @@
   # Import ssh private key from bitwarden
   # values :
   #   - true
-  secret_import_ssh_key = "true"
+  secret_import_ssh_key = "false"
   # Import gpg private key from bitwarden
   # values :
   #   - true
-  secret_import_gpg_key = "true"
+  secret_import_gpg_key = "false"
 
   git_username = "gazorby"
   git_email = "gazorby@pm.me"
