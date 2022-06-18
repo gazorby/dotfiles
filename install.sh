@@ -28,7 +28,7 @@ CM_CONFIG_FILE=$(chezmoi data | jq -r .chezmoi.configFile)
 CM_WORKING_TREE=$(chezmoi data | jq -r .chezmoi.workingTree)
 
 mkdir -p $(dirname $CM_CONFIG_FILE)
-cp $CM_WORKING_TREE/chezmoi.default.toml $CM_CONFIG_FILE
+cp -n $CM_WORKING_TREE/chezmoi.default.toml $CM_CONFIG_FILE
 
 IMPORT_SSH_KEY=$(chezmoi data | jq -r .secret_import_ssh_key)
 IMPORT_GPG_KEY=$(chezmoi data | jq -r .secret_import_gpg_key)
