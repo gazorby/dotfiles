@@ -106,6 +106,15 @@ end
 bind \cH backward-kill-path-component
 
 ###################################
+# Abbreviations
+###################################
+
+abbr -a -g gp git push
+abbr -a -g gl git pull
+abbr -a -g gcm git commit -m
+abbr -a -g grs git reset
+
+###################################
 # Aliases
 ###################################
 
