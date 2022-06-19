@@ -158,4 +158,8 @@ if type -q direnv
     direnv hook fish | source
 end
 
+if type -q mcfly
+    mcfly init fish | source
+end
+
 set -gx GPG_TTY (tty)
