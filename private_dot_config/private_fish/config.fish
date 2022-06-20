@@ -48,6 +48,9 @@ if type -q fzf
     if type -q mcfly
         fzf_configure_bindings --history
         mcfly init fish | source
+        set -gx MCFLY_FUZZY 2
+        set -gx MCFLY_RESULTS 20
+        set -gx MCFLY_INTERFACE_VIEW BOTTOM
     else
         fzf_configure_bindings
     end
