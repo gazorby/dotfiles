@@ -74,16 +74,16 @@ if type -q fzf
     set --export fzf_dir_opts --bind "ctrl-o:execute(vim {} &> /dev/tty)"
 
     # Forgit plugin
-    set -g forgit_log glo:
-    set -g forgit_diff gd:
-    set -g forgit_add ga:
-    set -g forgit_reset_head grh:
-    set -g forgit_ignore gi:
-    set -g forgit_restore gcf:
-    set -g forgit_clean gclean:
-    set -g forgit_stash_show gss:
-    set -g forgit_cherry_pick gcp:
-    set -g forgit_rebase grb:
+    set -U forgit_log glo:
+    set -U forgit_diff gd:
+    set -U forgit_add ga:
+    set -U forgit_reset_head grh:
+    set -U forgit_ignore gif
+    set -U forgit_restore gcf:
+    set -U forgit_clean gclean:
+    set -U forgit_stash_show gss:
+    set -U forgit_cherry_pick gcp:
+    set -U forgit_rebase grb:
 end
 
 ###################################
