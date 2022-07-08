@@ -21,21 +21,25 @@ set -ag fish_user_paths $HOME/.poetry/bin
 set -q fisher_path; or set -Ux fisher_path "$HOME/.config/fish"
 
 # Standalone env vars
-set -gx EDITOR "vim"
-set -gx BAT_STYLE "plain"
+set -gx EDITOR vim
+set -gx BAT_STYLE plain
+
+# Colors
+set -x LS_COLORS (vivid generate molokai)
+
 
 # Go
 if type -q go
     set -q GOPATH; or set -Ux GOPATH "$HOME/go"
     set -q GOBIN; or set -Ux GOBIN "$GOPATH/bin"
-    set -q GO111MODULE; or set -Ux GO111MODULE "on"
+    set -q GO111MODULE; or set -Ux GO111MODULE on
     set -ag fish_user_paths "$GOBIN"
 end
 
 # Colorize manpages using bat
 if type -q bat
     set -q MANPAGER; or set -Ux MANPAGER 'sh -c "col -bx | bat --language=man --style=grid --color=always --decorations=always"'
-    set -q MANROFFOPT; or set -Ux MANROFFOPT '-c'
+    set -q MANROFFOPT; or set -Ux MANROFFOPT -c
 end
 
 # fzf
@@ -122,8 +126,8 @@ bind \cH backward-kill-path-component
 # Aliases
 ###################################
 
-alias cl 'clear'
-alias cf 'fzf-bcd-widget'
+alias cl clear
+alias cf fzf-bcd-widget
 
 ###################################
 # Sources
