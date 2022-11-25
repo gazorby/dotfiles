@@ -56,17 +56,8 @@ if type -q fzf
         --bind='?:toggle-preview'
         --bind='ctrl-o:execute(fzf_file_open {+} &> /dev/tty)' --bind='ctrl-v:execute(code {+})'
     "
-    # Use mcfly for searching history, fallback to fzf.fish
-    # both are ctrl-r binded
-    if type -q mcfly
-        fzf_configure_bindings --directory=\cf --processes=\cp
-        mcfly init fish | source
-        set -gx MCFLY_FUZZY 2
-        set -gx MCFLY_RESULTS 20
-        set -gx MCFLY_INTERFACE_VIEW BOTTOM
-    else
-        fzf_configure_bindings --history=\cr --directory=\cf --processes=\cp
-    end
+
+    fzf_configure_bindings --directory=\cf --processes=\cp --git_log=\cg --history=\cr
 
     # Use exa to list files (with colors) if present
     if type -q exa
@@ -180,3 +171,8 @@ fifc \
     -f "--query ''" \
     -o 'batgrep --color (string match -r -g \'.*\*{2}(.*)\' "$fifc_commandline") "$fifc_candidate" | less -R' \
     -O 1
+
+if type -q scw
+    # Scaleway CLI autocomplete initialization.
+    eval (scw autocomplete script shell=fish)
+end
