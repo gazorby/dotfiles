@@ -38,28 +38,3 @@ for d in $(find $CHEZMOI_SYSTEM -type f -iname '***' ! -iname '**.keep'); do
     fi
     sudo cp --force --verbose "${d}" "$real_dir"
 done
-
-{{ if eq .chezmoi.osRelease.id "arch" "manjaro" -}}
-
-# Install AUR package
-# ARG : AUR repo link, typically : https://aur.archlinux.org/<package>.git
-aur_install() {
-    local tmp="${1##https://*/}"
-    local package_name="${tmp%.git}"
-    if pacman -Q $package_name; then
-        return
-    else
-        git clone "$1" $HOME/.aur_install
-        cd $HOME/.aur_install
-        makepkg --clean --install --syncdeps
-        cd $HOME
-        rm -rfd $HOME/.aur_install
-    fi
-}
-# Edit pacman .conf
-if ! grep --silent "Include = /etc/pacman.d/chaotic-mirrorlist" /etc/pacman.conf; then
-    aur_install https://aur.archlinux.org/chaotic-mirrorlist.git
-    echo -e "\n[chaotic-aur]\nInclude = /etc/pacman.d/chaotic-mirrorlist\n" | sudo tee -a /etc/pacman.conf
-fi
-
-{{ end -}}
