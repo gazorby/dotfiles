@@ -1,8 +1,12 @@
+{{ $email := promptStringOnce . "git_email" "git email" }}
+{{ $username := promptStringOnce . "git_username" "git username" }}
+
 [user]
-    name = {{ .git_username }}
-    email = {{ .git_email }}
+    name = {{ $username | quote }}
+    email = {{ $email | quote }}
 {{ if eq .git_gpg_sign "true" -}}
-{{- "    " -}}signingKey = {{ .git_gpg_key_id }}
+{{ $gpg_key_id := promptStringOnce . "git_gpg_key_id" "gpg key id" }}
+{{- "    " -}}signingKey = {{ $gpg_key_id | quote }}
 
 {{ end -}}
 

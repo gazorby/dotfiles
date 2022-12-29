@@ -1,0 +1,36 @@
+# ~/.config/chezmoi/chezmoi.toml
+
+[data]
+bw_chezmoi_item_name = "chezmoi"
+
+# ssh
+bw_ssh_private_key_filename = "id_rsa"
+bw_ssh_public_key_filename = "id_rsa.pub"
+
+# gpg
+git_gpg_sign = "true"
+bw_gpg_private_key_filename = "gpg.key"
+
+# Ignore ping requests
+# values :
+#   - true
+#   - false
+ignore_ping = "true"
+
+# Enabled local hostname resolution ("hostname.local" naming scheme)
+# values :
+#   - true
+#   - false
+local_hostname_resolution = "true"
+
+# Control system files management (outside $HOME)
+# values :
+#   - true :   enable system management
+#   - false :  disable system management
+track_system_config = "false"
+
+# Copy snapper config
+# values :
+#   - true
+#   - false
+enable_snapper = "true"

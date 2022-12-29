@@ -4,26 +4,12 @@
 
 CHEZMOI_SYSTEM="$HOME/.local/chezmoi_system"
 
-dialog_yes_no() {
-    echo -e "\n$1 (y/N)? "
-    read answer
-    if [ "$answer" != "${answer#[Yy]}" ] ;then
-        return 0
-    else
-        return 1
-    fi
-}
-
-{{ if eq .system_config "ask" -}}
-if ! dialog_yes_no "Do you want to install system configuration?"; then
+if {{ promptBoolOnce . "track_system_config" "Track system config?" }} = "false"; then
     exit 0
+else if {{ promptBoolOnce . "track_system_config" "Track system config?" }} != "false"
+    echo "Unrecognized value for \"track_system_config\""
+    exit 1
 fi
-{{ else if eq .system_config "disabled" -}}
-exit 0
-{{ else if ne .system_config "enabled" -}}
-echo "Unrecognized value for \"system_config\""
-exit 1
-{{ end -}}
 
 echo -e "\nCopy system config files\n"
 
