@@ -1,59 +1,61 @@
 [user]
-	name = {{ .git_username }}
-	email = {{ .git_email }}
+    name = {{ .git_username }}
+    email = {{ .git_email }}
 {{ if eq .git_gpg_sign "true" -}}
-	signingKey = {{ .git_gpg_key_id }}
+{{- "    " -}}signingKey = {{ .git_gpg_key_id }}
+
 {{ end -}}
 
 {{ if eq .git_gpg_sign "true" -}}
 [commit]
-	gpgSign = true
+    gpgSign = true
+
 {{ end -}}
 
 [pull]
-	rebase = true
+    rebase = true
 
 [push]
-	autoSetupRemote = true
+    autoSetupRemote = true
 
 [rebase]
-	autoStash = true
+    autoStash = true
 
 [core]
-	editor = code --wait
-	pager = delta
-	autocrlf = input
+    editor = code --wait
+    pager = delta
+    autocrlf = input
 
 [interactive]
-	diffFilter = delta --color-only
+    diffFilter = delta --color-only
 
 [diff]
-	colorMoved = default
+    colorMoved = default
 
 [delta]
-	features = unobtrusive-line-numbers decorations
-	whitespace-error-style = 22 reverse
-	plus-color = "#012800"
-	minus-color = "#340001"
-	syntax-theme = Monokai Extended
-	light = false
-	navigate = true
+    features = unobtrusive-line-numbers decorations
+    whitespace-error-style = 22 reverse
+    plus-color = "#012800"
+    minus-color = "#340001"
+    syntax-theme = Monokai Extended
+    light = false
+    navigate = true
 
 [merge]
     conflictstyle = diff3
 
 [delta "unobtrusive-line-numbers"]
-	line-numbers = true
-	line-numbers-minus-style = "#444444"
-	line-numbers-zero-style = "#444444"
-	line-numbers-plus-style = "#444444"
-	line-numbers-left-format = "{nm:>4}┊"
-	line-numbers-right-format = "{np:>4}│"
-	line-numbers-left-style = blue
-	line-numbers-right-style = blue
+    line-numbers = true
+    line-numbers-minus-style = "#444444"
+    line-numbers-zero-style = "#444444"
+    line-numbers-plus-style = "#444444"
+    line-numbers-left-format = "{nm:>4}┊"
+    line-numbers-right-format = "{np:>4}│"
+    line-numbers-left-style = blue
+    line-numbers-right-style = blue
 
 [delta "decorations"]
-	commit-decoration-style = bold yellow box ul
-	file-style = bold yellow ul
-	file-decoration-style = none
-	hunk-header-decoration-style = yellow box
+    commit-decoration-style = bold yellow box ul
+    file-style = bold yellow ul
+    file-decoration-style = none
+    hunk-header-decoration-style = yellow box
