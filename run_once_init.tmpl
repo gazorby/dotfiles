@@ -1,3 +1,6 @@
 #!/bin/sh
 
-sh -c "chezmoi execute-template < init.tmpl"
+chezmoi execute-template < {{ .chezmoi.sourceDir -}}/init.tmpl.sh > init.sh
+chmod +x init.sh
+./init.sh
+rm init.sh

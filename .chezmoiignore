@@ -2,8 +2,8 @@ README.md
 LICENSE
 CHANGELOG.md
 bump.json
-init.sh
-chezmoi_example.toml
+init.tmpl.sh
+.chezmoi.example.toml
 test/
 
 {{ if eq .chezmoi.osRelease.id "opensuse-tumbleweed" -}}
