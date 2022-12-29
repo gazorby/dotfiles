@@ -22,7 +22,7 @@ My personal dotfiles managed using [chezmoi](https://github.com/twpayne/chezmoi)
 
    ```bash
    export GIT_REPO='' # Your fork. Don't set it if you want to use this repo directly
-   # The following is only needed if you enabled secret_* config, eg: bw_ssh_import_key
+   # The following is only needed if you enabled bw_* config, eg: bw_ssh_import_key
    export BW_CLIENTID=''
    export BW_CLIENTSECRET=''
    export BW_PASSWORD=''
