@@ -4,7 +4,7 @@
 
 CHEZMOI_SYSTEM="$HOME/.local/chezmoi_system"
 
-{{ if ne .track_system_config "true" }}; then
+{{ if ne .track_system_config "true" }}
     exit 0
 {{ end -}}
 
