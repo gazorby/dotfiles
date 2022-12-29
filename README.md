@@ -8,6 +8,7 @@ My personal dotfiles managed using [chezmoi](https://github.com/twpayne/chezmoi)
 
    - [chezmoi](https://github.com/twpayne/chezmoi/blob/master/docs/INSTALL.md)
    - [jq](https://stedolan.github.io/jq/)
+   - [bitwarden-cli](https://github.com/bitwarden/clients) (Optional)
 
 2. Adjust [`chezmoi.default.toml`](<[https://](https://raw.githubusercontent.com/gazorby/dotfiles/master/chezmoi.default.toml)>) according to your needs:
 
