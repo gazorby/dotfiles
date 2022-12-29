@@ -10,6 +10,7 @@ bw_ssh_public_key_filename = "id_rsa.pub"
 # git
 git_username = {{ promptString "git username" | quote }}
 git_email = {{ promptString "git email" | quote }}
+git_signing_key = {{ (bitwardenFields "item" (bitwarden "item" .bw_chezmoi_item_name).id).git_signing_key_id.value | quote }}
 
 # gpg
 bw_gpg_private_key_filename = "gpg.key"
