@@ -22,13 +22,10 @@ My personal dotfiles managed using [chezmoi](https://github.com/twpayne/chezmoi)
 
    ```bash
    export GIT_REPO='' # Your fork. Don't set it if you want to use this repo directly
-   # The following is only needed if you enabled bw_* config, eg: bw_ssh_import_key
-   export BW_CLIENTID=''
-   export BW_CLIENTSECRET=''
-   export BW_PASSWORD=''
+   export BW_PASSWORD='' # Only needed if you enabled bw_* config, eg: bw_ssh_import_key
    ```
 
-   If bitwarden vault is used, these variables will be unset and you will be logged out from the vault after the installation
+   If bitwarden vault is used, `BW_PASSWORD` will be unset and you will be logged out from the vault after the installation
 
 4. Install dotfiles :
    ```console
