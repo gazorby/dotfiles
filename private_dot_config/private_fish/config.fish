@@ -57,7 +57,9 @@ if type -q fzf
         --bind='ctrl-o:execute(fzf_file_open {+} &> /dev/tty)' --bind='ctrl-v:execute(code {+})'
     "
 
-    fzf_configure_bindings --directory=\cf --processes=\cp --git_log=\cg --history=\cr
+    if type -q fzf_configure_bindings
+        fzf_configure_bindings --directory=\cf --processes=\cp --git_log=\cg --history=\cr
+    end
 
     # Use exa to list files (with colors) if present
     if type -q exa
