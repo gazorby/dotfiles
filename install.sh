@@ -30,25 +30,28 @@ CM_WORKING_TREE=$(chezmoi data | jq -r .chezmoi.workingTree)
 mkdir -p $(dirname $CM_CONFIG_FILE)
 cp -n $CM_WORKING_TREE/chezmoi.default.toml $CM_CONFIG_FILE
 
-IMPORT_SSH_KEY=$(chezmoi data | jq -r .secret_import_ssh_key)
-IMPORT_GPG_KEY=$(chezmoi data | jq -r .secret_import_gpg_key)
+IMPORT_SSH_KEY=$(chezmoi data | jq -r .bw_ssh_import_key)
+IMPORT_GPG_KEY=$(chezmoi data | jq -r .bw_gpg_import_key)
 
 # Copy ssh private key
 if [ "$IMPORT_SSH_KEY" = "true" ]; then
+    SSH_PRIVATE_KEY=$(chezmoi data | jq -r .bw_ssh_private_key)
+    SSH_PUBLIC_KEY=$(chezmoi data | jq -r .bw_ssh_public_key)
     unlock_vault
-    bw get attachment id_rsa --itemid $ITEM_ID --output ~/.ssh/id_rsa
-    bw get attachment id_rsa.pub --itemid $ITEM_ID --output ~/.ssh/id_rsa.pub
-    chmod 600 ~/.ssh/id_rsa
-    chmod 600 ~/.ssh/id_rsa.pub
+    bw get attachment "$SSH_PRIVATE_KEY" --itemid $ITEM_ID --output ~/.ssh/"$SSH_PRIVATE_KEY"
+    bw get attachment "$SSH_PUBLIC_KEY" --itemid $ITEM_ID --output ~/.ssh/"$SSH_PUBLIC_KEY"
+    chmod 600 ~/.ssh/"$SSH_PRIVATE_KEY"
+    chmod 600 ~/.ssh/"$SSH_PUBLIC_KEY"
 fi
 
 # Import gpg private key
 if [ "$IMPORT_GPG_KEY" = "true" ]; then
+    GPG_PRIVATE_KEY=$(chezmoi data | jq -r .bw_gpg_private_key)
     unlock_vault
-    bw get attachment gpg_private.key --itemid $ITEM_ID --output ./gpg_private.key
+    bw get attachment "$GPG_PRIVATE_KEY" --itemid $ITEM_ID --output ./"$GPG_PRIVATE_KEY"
     gpg_passphrase=$(echo $ITEM | jq -r '.fields[] | select(.name == "gpg_passphrase") | .value')
-    gpg --import --passphrase $gpg_passphrase --pinentry-mode=loopback gpg_private.key
-    rm -f gpg_private.key
+    gpg --import --passphrase $gpg_passphrase --pinentry-mode=loopback "$GPG_PRIVATE_KEY"
+    rm -f "$GPG_PRIVATE_KEY"
 fi
 
 chezmoi apply
