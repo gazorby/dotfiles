@@ -9,10 +9,10 @@ My personal dotfiles managed using [chezmoi](https://github.com/twpayne/chezmoi)
    Create a bitwarden item called "chezmoi" with the following:
 
    Fields:
-      - git_signing_key_id
+      - `git_signing_key_id`
 
          The gpg signing key id used to fill the `signingKey` git setting
-      - gpg_passphrase
+      - `gpg_passphrase`
 
          The passphrase of the git gpg key
 
