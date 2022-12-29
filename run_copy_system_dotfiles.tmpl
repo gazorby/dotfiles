@@ -4,12 +4,9 @@
 
 CHEZMOI_SYSTEM="$HOME/.local/chezmoi_system"
 
-if {{ promptBoolOnce . "track_system_config" "Track system config?" }} = "false"; then
+{{ if ne .track_system_config "true" }}; then
     exit 0
-else if {{ promptBoolOnce . "track_system_config" "Track system config?" }} != "false"
-    echo "Unrecognized value for \"track_system_config\""
-    exit 1
-fi
+{{ end -}}
 
 echo -e "\nCopy system config files\n"
 
