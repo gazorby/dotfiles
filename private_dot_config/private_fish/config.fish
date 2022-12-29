@@ -3,9 +3,9 @@ if not type -q fisher; and not set -q _installing_fisher
     set -gx _installing_fisher 1
     if test -f "$__fish_config_dir/fish_plugins"
         cp "$__fish_config_dir/fish_plugins" "$__fish_config_dir/fish_plugins.tmp"
-        curl -sL https://git.io/fisher | source
+        curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
         cp "$__fish_config_dir/fish_plugins.tmp" "$__fish_config_dir/fish_plugins"
-        fisher install jorgebucaran/fisher && fisher update
+        fisher update
         rm "$__fish_config_dir/fish_plugins.tmp"
     else
         curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
