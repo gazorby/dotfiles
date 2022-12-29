@@ -157,20 +157,22 @@ end
 set -gx GPG_TTY (tty)
 
 # fifc
-fifc \
-    -r '^(pacman|paru)(\\h*\\-S)?\\h+' \
-    -s 'pacman --color=always -Ss "$fifc_token" | string match -r \'^[^\\h+].*\'' \
-    -e '.*/(.*?)\\h.*' \
-    -f "--query ''" \
-    -p 'pacman -Si "$fifc_extracted"'
+if type -q fifc
+    fifc \
+        -r '^(pacman|paru)(\\h*\\-S)?\\h+' \
+        -s 'pacman --color=always -Ss "$fifc_token" | string match -r \'^[^\\h+].*\'' \
+        -e '.*/(.*?)\\h.*' \
+        -f "--query ''" \
+        -p 'pacman -Si "$fifc_extracted"'
 
-fifc \
-    -r '.*\*{2}.*' \
-    -s 'rg --hidden -l --no-messages (string match -r -g \'.*\*{2}(.*)\' "$fifc_commandline")' \
-    -p 'batgrep --color --paging=never (string match -r -g \'.*\*{2}(.*)\' "$fifc_commandline") "$fifc_candidate"' \
-    -f "--query ''" \
-    -o 'batgrep --color (string match -r -g \'.*\*{2}(.*)\' "$fifc_commandline") "$fifc_candidate" | less -R' \
-    -O 1
+    fifc \
+        -r '.*\*{2}.*' \
+        -s 'rg --hidden -l --no-messages (string match -r -g \'.*\*{2}(.*)\' "$fifc_commandline")' \
+        -p 'batgrep --color --paging=never (string match -r -g \'.*\*{2}(.*)\' "$fifc_commandline") "$fifc_candidate"' \
+        -f "--query ''" \
+        -o 'batgrep --color (string match -r -g \'.*\*{2}(.*)\' "$fifc_commandline") "$fifc_candidate" | less -R' \
+        -O 1
+end
 
 if type -q scw
     # Scaleway CLI autocomplete initialization.
