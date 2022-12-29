@@ -15,7 +15,7 @@ unlock_vault() {
         export BW_SESSION=$(bw unlock --raw)
     fi
     # Retrieve bitwarden item
-    ITEM=$(bw get item chezmoi)
+    ITEM=$(bw get item $(chezmoi data | jq -r .bw_chezmoi_item_name))
     ITEM_ID=$(echo $ITEM | jq -r .id)
 
     BW_UNLOCKED=1
