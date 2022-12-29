@@ -1,20 +1,10 @@
-{{ $email := promptStringOnce . "git_email" "git email" }}
-{{ $username := promptStringOnce . "git_username" "git username" }}
-
 [user]
-    name = {{ $username | quote }}
-    email = {{ $email | quote }}
-{{ if eq .git_gpg_sign "true" -}}
-{{ $gpg_key_id := promptStringOnce . "git_gpg_key_id" "gpg key id" }}
-{{- "    " -}}signingKey = {{ $gpg_key_id | quote }}
+    name = {{ .git_username }}
+    email = {{ .git_email }}
+    signingKey = {{ (bitwardenFields "item" (bitwarden "item" .bw_chezmoi_item_name).id).git_signing_key_id.value }}
 
-{{ end -}}
-
-{{ if eq .git_gpg_sign "true" -}}
 [commit]
     gpgSign = true
-
-{{ end -}}
 
 [pull]
     rebase = true
