@@ -1,7 +1,7 @@
 # Install fisher if not already installed
 if not type -q fisher; and not set -q _installing_fisher
     set -gx _installing_fisher 1
-    curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher update
+    curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher && fisher update
     set -e _installing_fisher
 end
 
