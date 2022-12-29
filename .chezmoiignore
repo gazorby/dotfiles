@@ -2,6 +2,7 @@ README.md
 LICENSE
 CHANGELOG.md
 bump.json
+init.sh
 chezmoi_example.toml
 test/
 
