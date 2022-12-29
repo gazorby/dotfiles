@@ -4,34 +4,55 @@ My personal dotfiles managed using [chezmoi](https://github.com/twpayne/chezmoi)
 
 ## 🚀 Usage
 
-1. Ensure the dependencies are installed:
+1. Create the bitwarden item
+
+   Create a bitwarden item called "chezmoi" with the following:
+
+   Fields:
+      - git_signing_key_id
+
+         The gpg signing key id used to fill the `signingKey` git setting
+      - gpg_passphrase
+
+         The passphrase of the git gpg key
+
+   Attachments:
+      - ssh private key (default to `id_rsa`)
+      - ssh public key (default to `id_rsa.pub`)
+      - gpg key (default to `gpg.key`)
+
+
+2. Ensure the dependencies are installed:
 
    - [chezmoi](https://github.com/twpayne/chezmoi/blob/master/docs/INSTALL.md)
-   - [jq](https://stedolan.github.io/jq/)
-   - [bitwarden-cli](https://github.com/bitwarden/clients) (Optional)
+   - [bitwarden-cli](https://github.com/bitwarden/clients)
 
-2. Adjust [`chezmoi.default.toml`](<[https://](https://raw.githubusercontent.com/gazorby/dotfiles/master/chezmoi.default.toml)>) according to your needs:
 
-   - Fork this repo and edit `chezmoi.default.toml` in your fork (recommended)
-   - Download `chezmoi.default.toml` from this repo and edit it locally
-
-     ```bash
-     mkdir -p ~/.config/chezmoi && curl https://raw.githubusercontent.com/gazorby/dotfiles/master/chezmoi.default.toml --output ~/.config/chezmoi/chezmoi.toml
-     ```
-
-3. Open a shell and set the following variables if you want to retrieve secret keys from [bitwarden](<[https://](https://bitwarden.com/)>):
+3. Init chezmoi repo:
 
    ```bash
-   export GIT_REPO='' # Your fork. Don't set it if you want to use this repo directly
-   export BW_PASSWORD='' # Only needed if you enabled bw_* config, eg: bw_ssh_import_key
+   chezmoi init gazorby/dotfiles
    ```
 
-   If bitwarden vault is used, `BW_PASSWORD` will be unset and you will be logged out from the vault after the installation
+4. Login to bitwarden and set the `BW_SESSION` variable:
 
-4. Install dotfiles :
-   ```console
-   curl -sSL https://raw.githubusercontent.com/gazorby/dotfiles/master/install.sh | sh -
+   ```bash
+   bw login
+   bw unlock
+   set -x BW_SESSION <session-key>
    ```
+
+   session key is displayed when issuing `bw unlock`
+
+
+5. Adjust `~/.config/chezmoi/chezmoi.toml` according to your needs
+
+6. Apply dotfiles
+
+   ```bash
+   chezmoi apply
+   ```
+
 
 ## 📝 License
 
