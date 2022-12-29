@@ -10,14 +10,12 @@ test/
 .config/fish/functions/fish_user_key_bindings.fish
 {{ end -}}
 
-{{ $ignore_ping := promptBoolOnce . "ignore_ping" "Ignore ping requests" }}
-{{ if ne ($ignore_ping | quote) "true" -}}
+{{ if ne .ignore_ping "true" -}}
 # Ignore ping requests
 .local/chezmoi_system/etc/sysctl.d/99-ignore-ping.conf
 {{ end -}}
 
-{{ $local_hostname_resolution := promptBoolOnce . "local_hostname_resolution" "Enabled local hostname resolution ('hostname.local' naming scheme)" }}
-{{ if ne ($local_hostname_resolution | quote) "true" -}}
+{{ if ne .local_hostname_resolution "true" -}}
 # Conf needed for printer auto-discovery
 .local/chezmoi_system/etc/nsswitch.conf
 .local/chezmoi_system/etc/systemd/resolved.conf
@@ -29,7 +27,6 @@ test/
 {{ end -}}
 {{ end -}}
 
-{{ $enable_snapper := promptBoolOnce . "enable_snapper" "Enable snapper" }}
-{{ if ne ($enable_snapper | quote) "true" -}}
+{{ if ne .enable_snapper "true" -}}
 .local/chezmoi_system/etc/snapper
 {{ end -}}
