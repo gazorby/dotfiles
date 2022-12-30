@@ -1,8 +1,10 @@
 #!/bin/sh
-
-#############################################################
-# POST INSTALL CONFIGURATION
-#############################################################
+# Template script executed once at init by run_once_init.tmpl.
+# chezmoi execute run_once* scripts if content after template execution has changed,
+# meaning that template execution is ran on each `chezmoi apply`,
+# and chezmoi will want to use bitwarden cli each time, which takes more time and require the vault to be unlocked.
+# To avoid this, we call this script using `chezmoi execute-template` in run_once_init.tmpl,
+# so run_once_init.tmpl content never change once templated.
 
 # Directories
 mkdir -p "$HOME/.local/chezmoi_system"
