@@ -5,7 +5,7 @@ lewisacidic/fish-poetry
 b4b4r07/enhancd
 gazorby/fish-exa
 gazorby/fish-autols
-gazorby/fish-docker
+lewisacidic/fish-docker
 gazorby/fish-chezmoi
 gazorby/fish-git-emojis
 gazorby/fish-git-check-id
@@ -15,5 +15,5 @@ jorgebucaran/fishtape
 PatrickF1/fzf.fish
 wfxr/forgit
 gazorby/fish-abbreviation-tips
-jhillyerd/plugin-git
+hgibs/plugin-git
 gazorby/fifc
