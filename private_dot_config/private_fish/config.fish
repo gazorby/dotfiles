@@ -188,3 +188,7 @@ if type -q scw
     # Scaleway CLI autocomplete initialization.
     eval (scw autocomplete script shell=fish)
 end
+
+# https://github.com/jhillyerd/plugin-git/issues/90
+set -e __git_plugin_initialized
+__git.init
