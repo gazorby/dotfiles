@@ -32,6 +32,7 @@ set -q fisher_path; or set -Ux fisher_path "$HOME/.config/fish"
 # Standalone env vars
 set -gx EDITOR vim
 set -gx BAT_STYLE plain
+set -gx CARGO_INSTALL_ROOT ~/.cargo
 
 # Colors
 set -x LS_COLORS (vivid generate molokai)
