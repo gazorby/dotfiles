@@ -28,22 +28,22 @@ My personal dotfiles managed using [chezmoi](https://github.com/twpayne/chezmoi)
    - [bitwarden-cli](https://github.com/bitwarden/clients)
 
 
-3. Init chezmoi repo:
-
-   ```bash
-   chezmoi init gazorby/dotfiles
-   ```
-
-4. Login to bitwarden and set the `BW_SESSION` variable:
+3. Login to bitwarden and set the `BW_SESSION` variable:
 
    ```bash
    bw login
    bw unlock
-   set -x BW_SESSION <session-key>
+   export BW_SESSION=<session-key> # bash
+   set -x BW_SESSION <session-key> # fish
    ```
 
    session key is displayed when issuing `bw unlock`
 
+4. Init chezmoi repo:
+
+   ```bash
+   chezmoi init gazorby/dotfiles
+   ```
 
 5. Adjust `~/.config/chezmoi/chezmoi.toml` according to your needs
 
