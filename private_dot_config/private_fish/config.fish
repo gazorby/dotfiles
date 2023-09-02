@@ -48,8 +48,13 @@ end
 
 # Colorize manpages using bat
 if type -q bat
+    abbr b bat
     set -q MANPAGER; or set -Ux MANPAGER 'sh -c "col -bx | bat --language=man --style=grid --color=always --decorations=always"'
     set -q MANROFFOPT; or set -Ux MANROFFOPT -c
+end
+
+if type -q nvim
+    abbr nv nvim
 end
 
 # fzf
