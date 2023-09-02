@@ -1,3 +1,14 @@
+## v4.1.0 (2023-09-02)
+
+### Feat
+
+- **fish**: add bat/nvim abbreviations
+
+### Refactor
+
+- **fish**: add CARGO_INSTALL_ROOT env var
+- **fish**: pin enhancd to v2.3.0
+
 ## 3.0.0 (2020-10-18)
 ### Features
 - Include hidden system file
