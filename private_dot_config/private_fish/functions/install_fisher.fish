@@ -1,5 +1,5 @@
 function install_fisher -d "Install fisher if not already installed"
-    if not type -q fisher; and not set -q _installing_fisher
+    if test -z "$_fisher_installed"; and not set -q _installing_fisher
         set -l fisher_url https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish
         set -gx _installing_fisher 1
         if test -f "$__fish_config_dir/fish_plugins"
@@ -11,7 +11,7 @@ function install_fisher -d "Install fisher if not already installed"
         else
             curl -sL "$fisher_url" | source && fisher install jorgebucaran/fisher
         end
-
+        set -Ux _fisher_installed 1
         set -e _installing_fisher
     end
 end
