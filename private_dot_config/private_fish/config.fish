@@ -52,7 +52,6 @@ set -gx FZF_DEFAULT_OPTS "
     --bind='ctrl-v:execute(code {+})'
 "
 
-# if type -q fzf_configure_bindings
 fzf_configure_bindings --directory=\cf --processes=\cp --git_log=\cg --history=\cr
 
 # Use exa to list files (with colors) if present
@@ -70,7 +69,6 @@ set -a fzf_dir_opts --bind='ctrl-f:reload(fd --type file --color=always --follow
 # Bind ctrl+o to open the current item
 set -a fzf_dir_opts --bind="ctrl-o:execute(nvim {} &> /dev/tty)"
 
-# find -L . \( -path ./.git -prune -path ./node_modules -prune \) -o -print -type f 2> /dev/null
 # Use delta to show git diff when searching through git log
 set -gx fzf_git_log_opts --preview='git show {1} | delta'
 
