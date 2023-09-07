@@ -84,6 +84,8 @@ set -U forgit_stash_show gss:
 set -U forgit_cherry_pick gcp:
 set -U forgit_rebase grb:
 
+set ENHANCD_FILTER_OPTS --preview='$fzf_preview_dir_cmd {}' --bind='ctrl-o:execute(broot {})'
+
 ###################################
 # Auto add ssh keys at login
 ###################################
