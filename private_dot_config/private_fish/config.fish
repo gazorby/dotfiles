@@ -55,7 +55,7 @@ set -gx FZF_DEFAULT_OPTS "
 fzf_configure_bindings --directory=\cf --processes=\cp --git_log=\cg --history=\cr
 
 # Use eza to list files (with colors) if present
-set -gx fzf_preview_dir_cmd eza --all --color=always
+set -gx fzf_preview_dir_cmd eza --all --color=always --icons
 
 set -gx fzf_fd_opts --follow
 # Bind ctrl+h to reload with hidden files
