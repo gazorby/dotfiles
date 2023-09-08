@@ -4,7 +4,7 @@ gazorby/fish-exa
 gazorby/fish-autols
 gazorby/fish-chezmoi
 gazorby/fish-abbreviation-tips
-brgmnn/fish-docker-compose
+gazorby/docker-abbr
 wfxr/forgit
 patrickf1/fzf.fish
 gazorby/fish-poetry
