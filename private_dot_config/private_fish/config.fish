@@ -137,6 +137,9 @@ source /opt/asdf-vm/asdf.fish
 
 set -gx GPG_TTY (tty)
 
+# fifc
+set -gx fifc_exa_opts --all --color=always --icons
+
 fifc \
     -r '^(pacman|paru)(\\h*\\-S)?\\h+' \
     -s 'pacman --color=always -Ss "$fifc_token" | string match -r \'^[^\\h+].*\'' \
