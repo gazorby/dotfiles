@@ -7,7 +7,7 @@ My personal dotfiles managed using [chezmoi](https://github.com/twpayne/chezmoi)
 1. Install dependencies:
 
    ```console
-   openssh fish vivid fzf bat fd ripgrep eza bat-extras broot procs atuin
+   openssh fish vivid fzf bat fd ripgrep eza bat-extras broot procs atuin git-delta bitwarden-cli
    ```
 
 2. Create the bitwarden item
