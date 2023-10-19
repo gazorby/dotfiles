@@ -52,7 +52,7 @@ set -gx FZF_DEFAULT_OPTS "
     --bind='ctrl-v:execute(code {+})'
 "
 
-fzf_configure_bindings --directory=\cf --processes=\cp --git_log=\cg --history=\cr
+fzf_configure_bindings --directory=\cf --processes=\cp --git_log=\cg --git_status=\eg --variables=\cv --history=
 
 # Use eza to list files (with colors) if present
 set -gx fzf_preview_dir_cmd eza --all --color=always --icons
