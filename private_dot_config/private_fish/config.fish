@@ -154,3 +154,11 @@ fifc \
     -f "--query ''" \
     -o 'batgrep --color (string match -r -g \'.*\*{2}(.*)\' "$fifc_commandline") "$fifc_candidate" | less -R' \
     -O 1
+
+
+# atuin
+set -gx ATUIN_NOBIND "true"
+atuin init fish | source
+
+bind \cr _atuin_search
+bind -M insert \cr _atuin_search

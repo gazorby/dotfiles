@@ -4,31 +4,38 @@ My personal dotfiles managed using [chezmoi](https://github.com/twpayne/chezmoi)
 
 ## 🚀 Usage
 
-1. Create the bitwarden item
+1. Install dependencies:
+
+   ```console
+   openssh fish vivid fzf bat fd ripgrep eza bat-extras broot procs atuin
+   ```
+
+2. Create the bitwarden item
 
    Create a bitwarden item called "chezmoi" with the following:
 
    Fields:
-      - `git_signing_key_id`
 
-         The gpg signing key id used to fill the `signingKey` git setting
-      - `gpg_passphrase`
+   - `git_signing_key_id`
 
-         The passphrase of the git gpg key
+     The gpg signing key id used to fill the `signingKey` git setting
+
+   - `gpg_passphrase`
+
+     The passphrase of the git gpg key
 
    Attachments:
-      - ssh private key (default to `id_rsa`)
-      - ssh public key (default to `id_rsa.pub`)
-      - gpg key (default to `gpg.key`)
 
+   - ssh private key (default to `id_rsa`)
+   - ssh public key (default to `id_rsa.pub`)
+   - gpg key (default to `gpg.key`)
 
-2. Ensure the dependencies are installed:
+3. Ensure the dependencies are installed:
 
    - [chezmoi](https://github.com/twpayne/chezmoi/blob/master/docs/INSTALL.md)
    - [bitwarden-cli](https://github.com/bitwarden/clients)
 
-
-3. Login to bitwarden and set the `BW_SESSION` variable:
+4. Login to bitwarden and set the `BW_SESSION` variable:
 
    ```bash
    bw login
@@ -39,20 +46,19 @@ My personal dotfiles managed using [chezmoi](https://github.com/twpayne/chezmoi)
 
    session key is displayed when issuing `bw unlock`
 
-4. Init chezmoi repo:
+5. Init chezmoi repo:
 
    ```bash
    chezmoi init gazorby/dotfiles
    ```
 
-5. Adjust `~/.config/chezmoi/chezmoi.toml` according to your needs
+6. Adjust `~/.config/chezmoi/chezmoi.toml` according to your needs
 
-6. Apply dotfiles
+7. Apply dotfiles
 
    ```bash
    chezmoi apply
    ```
-
 
 ## 📝 License
 
