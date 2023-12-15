@@ -59,15 +59,15 @@ set -gx fzf_preview_dir_cmd eza --all --color=always --icons
 
 set -gx fzf_fd_opts --follow
 # Bind ctrl+h to reload with hidden files
-set -a fzf_dir_opts --bind='ctrl-h:reload(fd --type file --color=always --hidden --follow --exclude .git)'
+set -a fzf_directory_opts --bind='ctrl-h:reload(fd --type file --color=always --hidden --follow --exclude .git)'
 # Bind ctrl+x to reload with executable files
-set -a fzf_dir_opts --bind='ctrl-x:reload(fd --type executable --color=always --hidden --follow --exclude .git)'
+set -a fzf_directory_opts --bind='ctrl-x:reload(fd --type executable --color=always --hidden --follow --exclude .git)'
 # Bind ctrl+d to reload with directories only
-set -a fzf_dir_opts --bind='ctrl-d:reload(fd --type directory --color=always --hidden --follow --exclude .git)'
+set -a fzf_directory_opts --bind='ctrl-d:reload(fd --type directory --color=always --hidden --follow --exclude .git)'
 # Bind ctrl+f to reload with the default search options
-set -a fzf_dir_opts --bind='ctrl-f:reload(fd --type file --color=always --follow)'
+set -a fzf_directory_opts --bind='ctrl-f:reload(fd --type file --color=always --follow)'
 # Bind ctrl+o to open the current item
-set -a fzf_dir_opts --bind="ctrl-o:execute(nvim {} &> /dev/tty)"
+set -a fzf_directory_opts --bind="ctrl-o:execute(nvim {} &> /dev/tty)"
 
 # Use delta to show git diff when searching through git log
 set -gx fzf_git_log_opts --preview='git show {1} | delta'
