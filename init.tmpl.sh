@@ -20,3 +20,22 @@ chmod 600 ~/.ssh/{{- .bw_ssh_public_key_filename }}
 echo -e {{ bitwardenAttachment .bw_gpg_private_key_filename (bitwarden "item" .bw_chezmoi_item_name).id | quote }} > ./{{- .bw_gpg_private_key_filename }}
 gpg --import --passphrase {{ (bitwardenFields "item" (bitwarden "item" .bw_chezmoi_item_name).id).gpg_passphrase.value | quote }} --pinentry-mode=loopback ./{{- .bw_gpg_private_key_filename }}
 rm -f ./{{- .bw_gpg_private_key_filename -}}
+
+# mise fish completions
+mise use -g usage
+mise completion fish > ~/.config/fish/completions/mise.fish
+
+# atuin fish completions
+atuin gen-completions --shell fish --out-dir ~/.config/fish/completions
+
+# starship fish completions
+starship completions fish > ~/.config/fish/completions/starship.fish
+
+# chezmoi fish completions
+chezmoi completion fish --output ~/.config/fish/completions/chezmoi.fish
+
+# procs fish completions
+procs --gen-completion-out fish > ~/.config/fish/completions/procs.fish
+
+# git-delta fish completions
+delta --generate-completion fish > ~/.config/fish/completions/delta.fish

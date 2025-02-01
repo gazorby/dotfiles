@@ -133,8 +133,6 @@ abbr nv nvim
 
 eval (starship init fish)
 
-source /opt/asdf-vm/asdf.fish
-
 set -gx GPG_TTY (tty)
 
 # fifc
@@ -157,8 +155,11 @@ fifc \
 
 
 # atuin
-set -gx ATUIN_NOBIND "true"
+set -gx ATUIN_NOBIND true
 atuin init fish | source
 
 bind \cr _atuin_search
 bind -M insert \cr _atuin_search
+
+# mise
+mise activate fish | source
