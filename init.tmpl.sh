@@ -22,6 +22,7 @@ gpg --import --passphrase {{ (bitwardenFields "item" (bitwarden "item" .bw_chezm
 rm -f ./{{- .bw_gpg_private_key_filename -}}
 
 # mise fish completions
+mkdir -p ~/.config/fish/completions
 mise use -g usage
 mise completion fish > ~/.config/fish/completions/mise.fish
 
