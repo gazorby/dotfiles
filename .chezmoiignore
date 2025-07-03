@@ -6,11 +6,6 @@ init.tmpl.sh
 .chezmoi.example.toml
 test/
 
-{{ if eq .chezmoi.osRelease.id "opensuse-tumbleweed" -}}
-# Already enabled on opensuse tumbleweed
-.config/fish/functions/fish_user_key_bindings.fish
-{{ end -}}
-
 {{ if ne .ignore_ping "true" -}}
 # Ignore ping requests
 .local/chezmoi_system/etc/sysctl.d/99-ignore-ping.conf
@@ -20,12 +15,6 @@ test/
 # Conf needed for printer auto-discovery
 .local/chezmoi_system/etc/nsswitch.conf
 .local/chezmoi_system/etc/systemd/resolved.conf
-{{ end -}}
-
-{{ if ne .chezmoi.osRelease.id "arch" -}}
-{{ if ne .chezmoi.osRelease.id "manjaro" -}}
-.local/chezmoi_system/etc/pacman.conf
-{{ end -}}
 {{ end -}}
 
 {{ if ne .enable_snapper "true" -}}
