@@ -1,0 +1,127 @@
+# Dependencies
+**/node_modules/
+**/.venv/
+**/venv/
+**/__pycache__/
+**/__pypackages__
+**/pip-wheel-metadata/
+**/.Python
+**/dist/
+**/build/
+**/eggs/
+**/.eggs/
+**/lib/
+**/lib64/
+**/parts/
+**/sdist/
+**/var/
+**/wheels/
+**/*.egg-info/
+**/.installed.cfg
+**/*.egg
+
+# IDE and Editor Files
+**/.vscode/
+**/.idea/
+**/.cursor/
+**/.cursor.old/
+**/*.swp
+**/*.swo
+**/*.swn
+**/.DS_Store
+
+# Build outputs
+**/dist/
+**/build/
+**/*.pyc
+**/*.pyo
+**/*.pyd
+**/.so
+**/*.dll
+**/*.dylib
+
+# Test coverage
+**/.coverage
+**/.pytest_cache/
+**/htmlcov/
+**/.tox/
+**/.nox/
+
+# Logs
+**/*.log
+**/logs/
+**/.npm
+
+# Database files
+**/*.db
+**/*.sqlite
+**/*.sqlite3
+
+# Environment files
+**/.env
+**/.direnv
+**/.env.local
+**/.env.*.local
+**/credentials.json
+**/secrets.yaml
+
+# Cache and temporary files
+**/.cache/
+**/tmp/
+**/temp/
+**/*.tmp
+**/.eslintcache
+**/.parcel-cache/
+**/.nuxt/
+**/.output/
+**/.ruff_cache/
+
+# Docker
+**/.docker/
+**/docker-compose.override.yml
+
+# Git
+**/.git/
+**/.gitignore
+
+# CI/CD
+**/.gitlab-ci.yml
+**/.github/
+
+# Lockfiles and dependencies
+**/package-lock.json
+**/yarn.lock
+**/pnpm-lock.yaml
+**/poetry.lock
+**/Pipfile.lock
+**/uv.lock
+
+# Alembic migrations (database migrations can be verbose)
+**/alembic/versions/*.py
+
+# Generated files
+**/*.min.js
+**/*.min.css
+**/*.map
+**/*.bundle.js
+
+# Documentation that might be large
+**/CHANGELOG.md
+**/LICENSE
+
+# Helm charts values (can be large and repetitive)
+**/deployments/values-*.yaml
+
+# Static assets
+**/static/
+**/public/assets/
+**/assets/images/
+**/assets/fonts/
+
+# Test fixtures that might be large
+**/tests/fixtures/data/
+**/tests/integration/data/
+
+# Reports and generated data
+**/coverage/
+**/reports/
