@@ -1,7 +1,25 @@
 [tools]
+actionlint = "latest"
 cocogitto = "latest"
 pre-commit = "latest"
+tombi = "latest"
+yamlfmt = "latest"
 
 [tasks.install]
 alias = "i"
 run = "pre-commit install --install-hooks"
+
+[tasks."tombi:format"]
+alias = "tf"
+description = "Format toml"
+run = "tombi format"
+
+[tasks."yamlfmt:format"]
+alias = "tf"
+description = "Format yaml"
+run = "yamlfmt ."
+
+[tasks.format]
+alias = "f"
+description = "Format files"
+depends = ["tombi:format", "yamlfmt:format"]

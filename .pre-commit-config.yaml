@@ -1,4 +1,23 @@
 repos:
+  # General hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: check-toml
+      - id: check-yaml
+      - id: check-case-conflict
+      - id: check-merge-conflict
+      - id: check-executables-have-shebangs
+      - id: check-shebang-scripts-are-executable
+      - id: detect-private-key
+      - id: debug-statements
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+  - repo: https://github.com/rhysd/actionlint
+    rev: v1.7.12
+    hooks:
+      - id: actionlint
+        args: ["-shellcheck", ""]
   - repo: local
     hooks:
       - id: validate-commit-msg
@@ -6,3 +25,10 @@ repos:
         entry: cog verify --file
         language: system
         stages: [commit-msg]
+  - repo: local
+    hooks:
+      - id: format
+        name: format
+        entry: mise run format
+        language: system
+        require_serial: true
