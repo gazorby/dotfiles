@@ -18,25 +18,25 @@ fish_add_path $HOME/.krew/bin
 set -q fisher_path; or set -Ux fisher_path "$HOME/.config/fish"
 
 # Standalone env vars
-set -gx EDITOR vim
-set -gx BAT_STYLE plain
-set -gx CARGO_INSTALL_ROOT ~/.cargo
+set -q BAT_STYLE; or set -Ux BAT_STYLE plain
+set -q EDITOR; or set -Ux EDITOR vim
+
+# Rust
+set -q CARGO_INSTALL_ROOT; or set -Ux CARGO_INSTALL_ROOT ~/.cargo
 
 # Go
 set -q GOPATH; or set -Ux GOPATH "$HOME/go"
 set -q GOBIN; or set -Ux GOBIN "$GOPATH/bin"
 set -q GO111MODULE; or set -Ux GO111MODULE on
-set -ag fish_user_paths "$GOBIN"
-# end
+fish_add_path "$GOBIN"
 
 # Colorize manpages using bat
 set -q MANPAGER; or set -Ux MANPAGER 'sh -c "col -bx | bat --language=man --style=grid --color=always --decorations=always"'
 set -q MANROFFOPT; or set -Ux MANROFFOPT -c
 
-################################################################
-# fzf
-################################################################
+set -gx GPG_TTY (tty)
 
+# fzf
 set -gx FZF_DEFAULT_OPTS "
     --layout=reverse
     --height=90%
@@ -51,6 +51,7 @@ set -gx FZF_DEFAULT_OPTS "
     --bind='tab:down,shift-tab:up,ctrl-space:toggle+down'
 "
 
+# fzf fish plugin
 fzf_configure_bindings --directory=\cf --processes=\cp --git_log=\cg --git_status=\eg --variables=\cv --history=
 
 # Use eza to list files (with colors) if present
@@ -67,11 +68,10 @@ set -a fzf_directory_opts --bind='ctrl-d:reload(fd --type directory --color=alwa
 set -a fzf_directory_opts --bind='ctrl-f:reload(fd --type file --color=always --follow)'
 # Bind ctrl+o to open the current item
 set -a fzf_directory_opts --bind="ctrl-o:execute(nvim {} &> /dev/tty)"
-
 # Use delta to show git diff when searching through git log
 set -gx fzf_git_log_opts --preview='git show {1} | delta'
 
-# Forgit plugin
+# Forgit fish plugin
 set -U forgit_log glo:
 set -U forgit_diff gd:
 set -U forgit_add ga:
@@ -83,10 +83,15 @@ set -U forgit_stash_show gss:
 set -U forgit_cherry_pick gcp:
 set -U forgit_rebase grb:
 
+# Enhancd fish plugin
 set ENHANCD_FILTER_OPTS --preview='$fzf_preview_dir_cmd {}' --bind='ctrl-o:execute(broot {})'
 
+# fifc fish plugin
+set -gx fifc_exa_opts --all --color=always --icons
+set -gx fifc_editor nvim
+
 ################################################################
-# Login
+# Login shell config
 ################################################################
 
 if status --is-login
@@ -135,7 +140,7 @@ abbr pc pre-commit
 abbr cl claude
 
 ################################################################
-# Sources
+# Interactive shell config
 ################################################################
 
 if status is-interactive
@@ -168,9 +173,3 @@ if status is-interactive
     # Colors
     set -x LS_COLORS (vivid generate molokai)
 end
-
-set -gx GPG_TTY (tty)
-
-# fifc
-set -gx fifc_exa_opts --all --color=always --icons
-set -gx fifc_editor nvim
