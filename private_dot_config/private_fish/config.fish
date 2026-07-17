@@ -48,6 +48,7 @@ set -gx FZF_DEFAULT_OPTS "
     --bind='?:toggle-preview'
     --bind='ctrl-o:execute(nvim {+} &> /dev/tty)'
     --bind='ctrl-v:execute(code {+})'
+    --bind='tab:down,shift-tab:up,ctrl-space:toggle+down'
 "
 
 fzf_configure_bindings --directory=\cf --processes=\cp --git_log=\cg --git_status=\eg --variables=\cv --history=
