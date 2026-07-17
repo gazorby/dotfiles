@@ -1,8 +1,8 @@
 repos:
-- hooks:
-  - id: commitizen
-  - id: commitizen-branch
-    stages:
-    - pre-push
-  repo: https://github.com/commitizen-tools/commitizen
-  rev: v4.1.1
+  - repo: local
+    hooks:
+      - id: validate-commit-msg
+        name: Validate commit message
+        entry: cog verify --file
+        language: system
+        stages: [commit-msg]
