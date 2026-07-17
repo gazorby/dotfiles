@@ -1,19 +1,19 @@
 # Install fisher if not already installed
 install_fisher
 
-###################################
+################################################################
 # Variables
-###################################
+################################################################
 
 # Sometimes this is not in PATH
-set -ag fish_user_paths "$HOME"/.local/bin
-set -ag fish_user_paths /lib/passenger/bin
-set -ag fish_user_paths /usr/lib/passenger/bin
-set -ag fish_user_paths $HOME/.cargo/bin
-set -ag fish_user_paths $HOME/.dotnet
-set -ag fish_user_paths $HOME/.yarn/bin
-set -ag fish_user_paths $HOME/.poetry/bin
-set -ag fish_user_paths $HOME/.krew/bin
+fish_add_path "$HOME"/.local/bin
+fish_add_path /lib/passenger/bin
+fish_add_path /usr/lib/passenger/bin
+fish_add_path $HOME/.cargo/bin
+fish_add_path $HOME/.dotnet
+fish_add_path $HOME/.yarn/bin
+fish_add_path $HOME/.poetry/bin
+fish_add_path $HOME/.krew/bin
 
 set -q fisher_path; or set -Ux fisher_path "$HOME/.config/fish"
 
@@ -21,9 +21,6 @@ set -q fisher_path; or set -Ux fisher_path "$HOME/.config/fish"
 set -gx EDITOR vim
 set -gx BAT_STYLE plain
 set -gx CARGO_INSTALL_ROOT ~/.cargo
-
-# Colors
-set -x LS_COLORS (vivid generate molokai)
 
 # Go
 set -q GOPATH; or set -Ux GOPATH "$HOME/go"
@@ -36,9 +33,10 @@ set -ag fish_user_paths "$GOBIN"
 set -q MANPAGER; or set -Ux MANPAGER 'sh -c "col -bx | bat --language=man --style=grid --color=always --decorations=always"'
 set -q MANROFFOPT; or set -Ux MANROFFOPT -c
 
-###################################
+################################################################
 # fzf
-###################################
+################################################################
+
 set -gx FZF_DEFAULT_OPTS "
     --layout=reverse
     --height=90%
@@ -55,7 +53,7 @@ set -gx FZF_DEFAULT_OPTS "
 fzf_configure_bindings --directory=\cf --processes=\cp --git_log=\cg --git_status=\eg --variables=\cv --history=
 
 # Use eza to list files (with colors) if present
-set -gx fzf_preview_dir_cmd eza --all --color=always --icons
+set fzf_preview_dir_cmd eza --all --color=always --icons
 
 set -gx fzf_fd_opts --follow
 # Bind ctrl+h to reload with hidden files
@@ -86,10 +84,12 @@ set -U forgit_rebase grb:
 
 set ENHANCD_FILTER_OPTS --preview='$fzf_preview_dir_cmd {}' --bind='ctrl-o:execute(broot {})'
 
-###################################
-# Auto add ssh keys at login
-###################################
+################################################################
+# Login
+################################################################
+
 if status --is-login
+    # Auto add ssh keys at login
     setenv SSH_ENV $HOME/.ssh/environment
 
     if test -n "$SSH_AGENT_PID"
@@ -109,43 +109,47 @@ if status --is-login
         end
     end
 
+    # Mise
+    mise activate fish | source
 end
 
-###################################
-# Keybindings
-###################################
+################################################################
+# User keybindings
+################################################################
 
-bind \cH backward-kill-path-component
+if status is-interactive
+    bind \cH backward-kill-path-component
+end
 
-###################################
-# Aliases/Abbreviations
-###################################
+################################################################
+# User aliases/Abbreviations
+################################################################
 
-alias cl clear
 alias cf fzf-bcd-widget
 
 abbr b bat
 abbr nv nvim
+abbr m mise
+abbr pc pre-commit
+abbr cl claude
 
-###################################
+################################################################
 # Sources
-###################################
+################################################################
 
-eval (starship init fish)
+if status is-interactive
+    # Starship
+    eval (starship init fish)
 
-set -gx GPG_TTY (tty)
-
-# fifc
-set -gx fifc_exa_opts --all --color=always --icons
-
-fifc \
+    # fifc
+    fifc \
     -r '^(pacman|paru)(\\h*\\-S)?\\h+' \
     -s 'pacman --color=always -Ss "$fifc_token" | string match -r \'^[^\\h+].*\'' \
     -e '.*/(.*?)\\h.*' \
     -f "--query ''" \
     -p 'pacman -Si "$fifc_extracted"'
 
-fifc \
+    fifc \
     -r '.*\*{2}.*' \
     -s 'rg --hidden -l --no-messages (string match -r -g \'.*\*{2}(.*)\' "$fifc_commandline")' \
     -p 'batgrep --color --paging=never (string match -r -g \'.*\*{2}(.*)\' "$fifc_commandline") "$fifc_candidate"' \
@@ -153,13 +157,19 @@ fifc \
     -o 'batgrep --color (string match -r -g \'.*\*{2}(.*)\' "$fifc_commandline") "$fifc_candidate" | less -R' \
     -O 1
 
+    # Atuin
+    set -gx ATUIN_NOBIND true
+    atuin init fish | source
 
-# atuin
-set -gx ATUIN_NOBIND true
-atuin init fish | source
+    bind \cr _atuin_search
+    bind -M insert \cr _atuin_search
 
-bind \cr _atuin_search
-bind -M insert \cr _atuin_search
+    # Colors
+    set -x LS_COLORS (vivid generate molokai)
+end
 
-# mise
-mise activate fish | source
+set -gx GPG_TTY (tty)
+
+# fifc
+set -gx fifc_exa_opts --all --color=always --icons
+set -gx fifc_editor nvim
