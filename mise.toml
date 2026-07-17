@@ -1,0 +1,3 @@
+[tools]
+cocogitto = "latest"
+pre-commit = "latest"

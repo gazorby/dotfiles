@@ -1,0 +1,34 @@
+tag_prefix = "v"
+branch_whitelist = ["master"]
+ignore_merge_commits = true
+post_bump_hooks = [
+  "git push",
+  "git push origin {{version_tag}}",
+]
+
+[changelog]
+path = "CHANGELOG.md"
+template = ".github/changelog.tera"
+remote = "github.com"
+owner = "gazorby"
+repository = "chezmoi"
+
+authors = [
+  { signature = "gazorby", username = "gazorby" },
+  { signature = "Matthieu", username = "gazorby" }
+]
+
+[commit_types]
+feat = { changelog_title = "🚀 Features" }
+fix = { changelog_title = "🐛 Bug Fixes" }
+docs = { changelog_title = "📚 Documentation" }
+perf = { changelog_title = "⚡ Performance" }
+refactor = { changelog_title = "🚜 Refactor" }
+ref = { changelog_title = "🚜 Refactor" }
+style = { changelog_title = "🎨 Styling" }
+build = { changelog_title = "⚙️ Miscellaneous Tasks" }
+ci = { changelog_title = "⚙️ Miscellaneous Tasks" }
+revert = { changelog_title = "◀️ Revert" }
+
+chore = { omit_from_changelog = true }
+test = { omit_from_changelog = true }
