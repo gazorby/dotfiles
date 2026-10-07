@@ -1,19 +1,10 @@
 # ~/.config/chezmoi/chezmoi.toml
 
 [data]
-bw_chezmoi_item_name = "chezmoi"
-
-# ssh
-bw_ssh_private_key_filename = "id_rsa"
-bw_ssh_public_key_filename = "id_rsa.pub"
-
 # git
-git_username = {{ promptString "git username" | quote }}
-git_email = {{ promptString "git email" | quote }}
-git_signing_key = {{ (bitwardenFields "item" (bitwarden "item" "chezmoi").id).git_signing_key_id.value | quote }}
-
-# gpg
-bw_gpg_private_key_filename = "gpg.key"
+git_username = {{ promptStringOnce . "git_username" "git username" | quote }}
+git_email = {{ promptStringOnce . "git_email" "git email" | quote }}
+git_signing_key = {{ promptStringOnce . "git_signing_key" "git signing key (empty to skip)" | quote }}
 
 # Ignore ping requests
 # values :

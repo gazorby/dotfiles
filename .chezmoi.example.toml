@@ -1,19 +1,10 @@
 # ~/.config/chezmoi/chezmoi.toml
 
 [data]
-bw_chezmoi_item_name = "chezmoi"
-
-# ssh
-bw_ssh_private_key_filename = "id_rsa"
-bw_ssh_public_key_filename = "id_rsa.pub"
-
 # git
-git_email = "gazorby@pm.me"
 git_username = "gazorby"
-
-# gpg
-git_gpg_key_id = "C2B1ACDB1D31A11F229816C0E59988ACE9EF0D6B"
-bw_gpg_private_key_filename = "gpg.key"
+git_email = "gazorby@pm.me"
+git_signing_key = "C2B1ACDB1D31A11F229816C0E59988ACE9EF0D6B"
 
 # Ignore ping requests
 # values :

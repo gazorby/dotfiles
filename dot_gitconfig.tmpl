@@ -1,10 +1,12 @@
 [user]
     name = {{ .git_username }}
     email = {{ .git_email }}
+{{- if .git_signing_key }}
     signingKey = {{ .git_signing_key }}
 
 [commit]
     gpgSign = true
+{{- end }}
 
 [pull]
     rebase = true
