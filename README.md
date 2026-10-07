@@ -7,7 +7,7 @@ My personal dotfiles managed using [chezmoi](https://github.com/twpayne/chezmoi)
 1. Install dependencies:
 
    ```console
-   openssh chezmoi fish starship vivid fzf bat fd ripgrep eza bat-extras broot procs atuin git-delta awk mise
+   openssh chezmoi fish starship vivid fzf bat fd ripgrep eza bat-extras broot procs atuin git-delta awk mise zoxide
    ```
 
 2. Init and apply:
