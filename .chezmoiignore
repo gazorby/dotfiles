@@ -5,7 +5,7 @@ bump.json
 .chezmoi.example.toml
 test/
 
-{{ if eq .chezmoi.osRelease.id "opensuse-tumbleweed" -}}
+{{ if eq (get .chezmoi.osRelease "id") "opensuse-tumbleweed" -}}
 # Already enabled on opensuse tumbleweed
 .config/fish/functions/fish_user_key_bindings.fish
 {{ end -}}
@@ -21,8 +21,8 @@ test/
 .local/chezmoi_system/etc/systemd/resolved.conf
 {{ end -}}
 
-{{ if ne .chezmoi.osRelease.id "arch" -}}
-{{ if ne .chezmoi.osRelease.id "manjaro" -}}
+{{ if ne (get .chezmoi.osRelease "id") "arch" -}}
+{{ if ne (get .chezmoi.osRelease "id") "manjaro" -}}
 .local/chezmoi_system/etc/pacman.conf
 {{ end -}}
 {{ end -}}
