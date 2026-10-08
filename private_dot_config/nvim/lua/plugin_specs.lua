@@ -26,6 +26,7 @@ vim.pack.add({
   { src = 'https://github.com/lukas-reineke/indent-blankline.nvim' },
   { src = 'https://github.com/MeanderingProgrammer/render-markdown.nvim' },
   { src = 'https://github.com/chrisgrieser/nvim-origami' },
+  { src = 'https://github.com/nvim-mini/mini.move' },
 })
 
 require("config.fzf-lua")
@@ -40,3 +41,4 @@ require("config.gitsigns")
 require("config.lualine")
 require("config.render-markdown")
 require("config.origami")
+require("config.mini-move")
