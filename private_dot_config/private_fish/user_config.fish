@@ -131,7 +131,7 @@ abbr m mise
 abbr pc pre-commit
 abbr cl claude
 abbr lzg lazygit
-
+abbr lzgf lazygit -sm full
 
 ###################################
 # Sources
