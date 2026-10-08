@@ -14,6 +14,10 @@
       "src": "https://github.com/saghen/blink.pairs",
       "version": ">=0.0.0"
     },
+    "conform.nvim": {
+      "rev": "016802de402556da54c36bd7359b441266b01cdd",
+      "src": "https://github.com/stevearc/conform.nvim"
+    },
     "diffview-plus.nvim": {
       "rev": "875d16dd8c8aa86f1a5c3b5cef49e1133980ae94",
       "src": "https://github.com/dlyongemallo/diffview-plus.nvim"
@@ -25,6 +29,10 @@
     "fzf-lua": {
       "rev": "ed0e0ead1789ee349cbf025900931fb402b1e05e",
       "src": "https://github.com/ibhagwan/fzf-lua"
+    },
+    "gitlab.nvim": {
+      "rev": "0af8e71fd508fe755ee9a7c9dba6d709b17a8842",
+      "src": "https://github.com/harrisoncramer/gitlab.nvim"
     },
     "gitsigns.nvim": {
       "rev": "851a051e2bd2caba97e23314c68d69f1b1cf5d19",
@@ -42,6 +50,10 @@
       "rev": "221ce6b2d999187044529f49da6554a92f740a96",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
     },
+    "mini.clue": {
+      "rev": "02bde369582d2dd9af3195cde70310733856b79a",
+      "src": "https://github.com/nvim-mini/mini.clue"
+    },
     "mini.move": {
       "rev": "48fcaac289a19b8eff2fd5fe203267d478a8abdc",
       "src": "https://github.com/nvim-mini/mini.move"
@@ -49,6 +61,14 @@
     "monokai-pro.nvim": {
       "rev": "a68e38b8e55d69a215d0f02598900a79c356da9d",
       "src": "https://github.com/loctvl842/monokai-pro.nvim"
+    },
+    "nui.nvim": {
+      "rev": "10fc361835c856ba4233ef5ea135b919bf3dce97",
+      "src": "https://github.com/MunifTanjim/nui.nvim"
+    },
+    "nvim-dap": {
+      "rev": "cfa2d58f4537aca6ca83e2de1a0d9f1491121264",
+      "src": "https://github.com/mfussenegger/nvim-dap"
     },
     "nvim-lspconfig": {
       "rev": "db68de3575fff9dd9bb78b34c8371759ed35fe34",
@@ -66,9 +86,17 @@
       "rev": "58447c1fca354bbf184425e4a8d01deecbd6f3c4",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
     },
+    "plenary.nvim": {
+      "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
+      "src": "https://github.com/nvim-lua/plenary.nvim"
+    },
     "render-markdown.nvim": {
       "rev": "245956d67572c137df375dbf256e96bdb07e0937",
       "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim"
+    },
+    "todo-comments.nvim": {
+      "rev": "31e3c38ce9b29781e4422fc0322eb0a21f4e8668",
+      "src": "https://github.com/folke/todo-comments.nvim"
     },
     "venv-selector.nvim": {
       "rev": "cc4bb3975de8835291f9bb45889e96c6b2795fc4",

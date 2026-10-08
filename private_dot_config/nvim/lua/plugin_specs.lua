@@ -27,6 +27,13 @@ vim.pack.add({
   { src = 'https://github.com/MeanderingProgrammer/render-markdown.nvim' },
   { src = 'https://github.com/chrisgrieser/nvim-origami' },
   { src = 'https://github.com/nvim-mini/mini.move' },
+  { src = 'https://github.com/nvim-mini/mini.clue' },
+  { src = 'https://github.com/MunifTanjim/nui.nvim' },
+  { src = 'https://github.com/harrisoncramer/gitlab.nvim' },
+  { src = 'https://github.com/mfussenegger/nvim-dap' },
+  { src = 'https://github.com/stevearc/conform.nvim' },
+  { src = 'https://github.com/nvim-lua/plenary.nvim' },
+  { src = 'https://github.com/folke/todo-comments.nvim' },
 })
 
 require("config.fzf-lua")
@@ -42,3 +49,9 @@ require("config.lualine")
 require("config.render-markdown")
 require("config.origami")
 require("config.mini-move")
+require("config.mini-clue")
+require("config.gitlab")
+require("config.dap")
+require("config.conform")
+require("config.todo-comments")
+require("config.undotree")

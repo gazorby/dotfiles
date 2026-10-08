@@ -1,4 +1,5 @@
 require('blink.cmp').setup({
+  keymap = { preset = 'super-tab' },
   completion = {
     trigger = { prefetch_on_insert = true, show_on_backspace_in_keyword = true },
     menu = { draw = { treesitter = { 'lsp' } } },
