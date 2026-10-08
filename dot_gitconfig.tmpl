@@ -22,7 +22,7 @@
     autoStash = true
 
 [core]
-    editor = code --wait
+    editor = nvim
     pager = delta
     autocrlf = input
     excludesfile = ~/.config/git/ignore
@@ -44,6 +44,18 @@
 
 [merge]
     conflictstyle = diff3
+    tool = diffview
+
+[mergetool]
+    prompt = false
+    keepBackup = false
+
+[mergetool "diffview"]
+    cmd = nvim -n -c DiffviewOpen \"$MERGED\"
+
+[alias]
+    dv = "!f() { nvim -c \"DiffviewOpen $*\"; }; f"
+    dvh = "!f() { nvim -c \"DiffviewFileHistory $*\"; }; f"
 
 [delta "unobtrusive-line-numbers"]
     line-numbers = true
