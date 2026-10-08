@@ -12,6 +12,7 @@ config.initial_cols = 120
 config.initial_rows = 28
 
 -- Theme
+config.font = wezterm.font 'MonoLisa Nerd Font'
 config.font_size = 13
 config.color_scheme = 'Monokai Pro (Gogh)'
 
