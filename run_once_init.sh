@@ -15,7 +15,7 @@ atuin gen-completions --shell fish --out-dir ~/.config/fish/completions || true
 starship completions fish > ~/.config/fish/completions/starship.fish || true
 
 # chezmoi fish completions
-chezmoi completion fish --output ~/.config/fish/completions/chezmoi.fish || true
+"$CHEZMOI_EXECUTABLE" completion fish --output ~/.config/fish/completions/chezmoi.fish || true
 
 # procs fish completions
 procs --gen-completion-out fish > ~/.config/fish/completions/procs.fish || true
