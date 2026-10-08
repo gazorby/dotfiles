@@ -1,0 +1,4 @@
+#!/bin/sh
+{{- $work_dir := regexReplaceAll "^~" (.git_work_dir | trimSuffix "/") .chezmoi.homeDir }}
+mkdir -p {{ $work_dir | quote }}
+[ -e {{ printf "%s/.gitconfig" $work_dir | quote }} ] || touch {{ printf "%s/.gitconfig" $work_dir | quote }}
