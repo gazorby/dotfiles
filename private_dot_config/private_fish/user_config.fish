@@ -138,8 +138,6 @@ abbr lzg lazygit
 ###################################
 
 if status is-interactive
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-
     # Starship
     eval (starship init fish)
 
