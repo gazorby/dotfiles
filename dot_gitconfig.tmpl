@@ -1,3 +1,7 @@
+{{- $work_dir := .git_work_dir | trimSuffix "/" }}
+[includeIf "gitdir:{{ $work_dir }}/"]
+    path = {{ $work_dir }}/.gitconfig
+
 [user]
     name = {{ .git_username }}
     email = {{ .git_email }}

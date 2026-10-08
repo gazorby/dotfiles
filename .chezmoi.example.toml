@@ -5,6 +5,7 @@
 git_username = "gazorby"
 git_email = "gazorby@pm.me"
 git_signing_key = "C2B1ACDB1D31A11F229816C0E59988ACE9EF0D6B"
+git_work_dir = "~/.config/project/work"
 
 # Ignore ping requests
 # values :
