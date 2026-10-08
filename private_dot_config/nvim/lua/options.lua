@@ -24,3 +24,6 @@ opt.confirm = true
 
 opt.list = true
 opt.listchars = { tab = "» ", trail = "•", nbsp = "␣", extends = "»", precedes = "«" }
+
+opt.foldlevel = 99
+opt.foldlevelstart = 99

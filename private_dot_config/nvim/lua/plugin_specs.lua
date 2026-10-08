@@ -25,6 +25,7 @@ vim.pack.add({
   { src = 'https://github.com/linux-cultist/venv-selector.nvim' },
   { src = 'https://github.com/lukas-reineke/indent-blankline.nvim' },
   { src = 'https://github.com/MeanderingProgrammer/render-markdown.nvim' },
+  { src = 'https://github.com/chrisgrieser/nvim-origami' },
 })
 
 require("config.fzf-lua")
@@ -38,3 +39,4 @@ require("config.lazygit")
 require("config.gitsigns")
 require("config.lualine")
 require("config.render-markdown")
+require("config.origami")
