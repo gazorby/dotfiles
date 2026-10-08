@@ -1,0 +1,12 @@
+os:
+  editPreset: nvim-remote
+git:
+  diffRenderers:
+    - command: delta --{{colorScheme}} --paging=never
+    - type: extDiff
+      command: difft --color=always --background={{colorScheme}} --context={{diffContext}}
+    - type: rawGit
+      args: [--color-words]
+      name: color-words
+    - type: rawGit # git's default diff
+      name: default

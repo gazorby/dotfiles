@@ -5,6 +5,12 @@ bump.json
 .chezmoi.example.toml
 test/
 
+{{ if eq .chezmoi.os "darwin" -}}
+.config/lazygit
+{{ else -}}
+Library
+{{ end -}}
+
 {{ if eq (get .chezmoi.osRelease "id") "opensuse-tumbleweed" -}}
 # Already enabled on opensuse tumbleweed
 .config/fish/functions/fish_user_key_bindings.fish
