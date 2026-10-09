@@ -18,7 +18,7 @@ fish_add_path $HOME/.krew/bin
 set -q fisher_path; or set -Ux fisher_path "$HOME/.config/fish"
 
 # Standalone env vars
-set -gx EDITOR vim
+set -gx EDITOR nvim
 set -gx BAT_STYLE plain
 set -gx CARGO_INSTALL_ROOT ~/.cargo
 
@@ -125,13 +125,14 @@ alias gpgunlock 'echo test | gpg --clearsign > /dev/null && echo unlocked'
 alias typora 'open -a typora'
 
 
-abbr b bat
-abbr nv nvim
-abbr m mise
-abbr pc pre-commit
-abbr cl claude
-abbr lzg lazygit
+abbr b    bat
+abbr nv   nvim
+abbr m    mise
+abbr pc   pre-commit
+abbr cl   claude
+abbr lzg  lazygit
 abbr lzgf lazygit -sm full
+abbr gt   glab-tui
 
 ###################################
 # Sources
