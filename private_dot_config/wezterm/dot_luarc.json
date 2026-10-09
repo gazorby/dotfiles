@@ -1,0 +1,6 @@
+{
+  "$schema": "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json",
+  "runtime.version": "Lua 5.4",
+  "workspace.library": ["/Users/matthieu.macnab/.local/share/nvim/site/pack/core/opt/wezterm-types"],
+  "workspace.checkThirdParty": false
+}

@@ -1,0 +1,88 @@
+# Font & theme
+font-family = MonoLisa Nerd Font
+font-size = 13
+# Follows macOS appearance
+theme = light:Monokai Pro Light,dark:Monokai Pro
+
+# Window
+# Initial size, in cells
+window-width = 120
+window-height = 28
+maximize = true
+window-padding-x = 8
+window-padding-y = 8
+# Spread leftover pixels evenly instead of piling them bottom-right
+window-padding-balance = true
+# Restore windows, tabs and splits after quitting
+window-save-state = always
+# New tabs and splits start in the current directory
+window-inherit-working-directory = true
+# Dim inactive splits
+unfocused-split-opacity = 0.85
+
+# Cursor
+cursor-style = block
+cursor-style-blink = false
+
+# Behaviour
+# Left Option acts as Alt for keybinds; right Option still composes characters
+macos-option-as-alt = left
+# Selecting text copies it to the system clipboard, not only the selection buffer
+copy-on-select = clipboard
+mouse-hide-while-typing = true
+# no-cursor: keep the block cursor at the prompt (shell integration forces a bar otherwise)
+# ssh-terminfo, ssh-env: avoid "unknown terminal xterm-ghostty" on remote hosts
+shell-integration-features = no-cursor,ssh-terminfo,ssh-env
+
+# Cmd+Shift+K/J: vim style (overrides the default write_screen_file on J)
+keybind = super+shift+k=scroll_page_fractional:-0.5
+keybind = super+shift+j=scroll_page_fractional:0.5
+
+# Line editing
+# Opt+Up/Down: jump to line start/end (Home/End)
+keybind = alt+up=text:\x1b[H
+keybind = alt+down=text:\x1b[F
+# Cmd+Backspace: delete to line start (Ctrl+U)
+keybind = super+backspace=text:\x15
+# Shift+Enter: newline without submitting, e.g. in Claude Code
+keybind = shift+enter=text:\x1b\r
+
+# Config: Cmd+R reloads, like WezTerm (Cmd+Shift+, still works)
+keybind = super+r=reload_config
+
+# Clipboard
+keybind = super+shift+c=copy_to_clipboard
+
+# Tabs
+keybind = super+shift+h=previous_tab
+keybind = super+shift+l=next_tab
+
+# Splits
+# Cmd+D: split right; Cmd+Shift+D: split down
+keybind = super+d=new_split:right
+keybind = super+shift+d=new_split:down
+# Cmd+Ctrl+H/J/K/L: split left/down/up/right, vim style
+keybind = super+ctrl+h=new_split:left
+keybind = super+ctrl+j=new_split:down
+keybind = super+ctrl+k=new_split:up
+keybind = super+ctrl+l=new_split:right
+# Cmd+Opt+H/J/K/L: move between splits, vim style (Cmd+Opt+arrows also work by default)
+keybind = super+alt+h=goto_split:left
+keybind = super+alt+j=goto_split:down
+keybind = super+alt+k=goto_split:up
+keybind = super+alt+l=goto_split:right
+# Cmd+Shift+Enter: maximise the focused split, press again to restore
+keybind = super+shift+enter=toggle_split_zoom
+
+# Quick terminal: drop-down terminal from any app (needs Accessibility permission)
+# backquote is a physical key position, which may differ on AZERTY
+keybind = global:super+backquote=toggle_quick_terminal
+quick-terminal-position = top
+
+# French keyboard: left Option is Alt, so these characters need explicit binds
+# Opt+Shift+L: |
+keybind = alt+shift+l=text:|
+# Opt+N: ~
+keybind = alt+n=text:~
+# Opt+Shift+/: \
+keybind = alt+shift+/=text:\\
