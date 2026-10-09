@@ -43,6 +43,8 @@ esc = ["collapse_selection", "keep_primary_selection"]
 C-s = ":write"
 X = "extend_line_above"
 C-g = [":write-all", ":new", ":insert-output lazygit", ":buffer-close!", ":redraw", ":reload-all"]
+A-j = ["extend_to_line_bounds", "delete_selection", "paste_after"]
+A-k = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
 
 [keys.insert]
 C-s = ":write"
@@ -50,6 +52,8 @@ C-s = ":write"
 [keys.select]
 C-s = ":write"
 X = "extend_line_above"
+A-j = ["extend_to_line_bounds", "delete_selection", "paste_after"]
+A-k = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
 
 [keys.normal.space]
 R = ":reload-all"
