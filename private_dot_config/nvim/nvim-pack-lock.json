@@ -101,6 +101,10 @@
     "venv-selector.nvim": {
       "rev": "cc4bb3975de8835291f9bb45889e96c6b2795fc4",
       "src": "https://github.com/linux-cultist/venv-selector.nvim"
+    },
+    "wezterm-types": {
+      "rev": "998639c5c5dd4513912966465772af80e7005f32",
+      "src": "https://github.com/DrKJeff16/wezterm-types"
     }
   }
 }

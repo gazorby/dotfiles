@@ -34,6 +34,7 @@ vim.pack.add({
   { src = 'https://github.com/stevearc/conform.nvim' },
   { src = 'https://github.com/nvim-lua/plenary.nvim' },
   { src = 'https://github.com/folke/todo-comments.nvim' },
+  { src = 'https://github.com/DrKJeff16/wezterm-types' },
 })
 
 require("config.fzf-lua")
