@@ -1,4 +1,4 @@
-# dotfiles [![Generic badge](https://img.shields.io/badge/Version-v3.0.0-<COLOR>.svg)](https://shields.io/)
+# dotfiles
 
 My personal dotfiles managed using [chezmoi](https://github.com/twpayne/chezmoi)
 
