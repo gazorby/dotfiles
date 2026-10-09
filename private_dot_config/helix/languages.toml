@@ -1,0 +1,53 @@
+[language-server.vtsls]
+command = "vtsls"
+args = ["--stdio"]
+
+[[language]]
+name = "python"
+language-servers = ["ty", { name = "ruff", except-features = ["hover"] }]
+formatter = { command = "sh", args = [
+  "-c",
+  "ruff check --fix --force-exclude --select=I001 --exit-zero --no-cache --stdin-filename \"$1\" - | ruff format --force-exclude --stdin-filename \"$1\" -",
+  "sh",
+  "%{buffer_name}",
+] }
+auto-format = true
+
+[[language]]
+name = "lua"
+formatter = { command = "stylua", args = ["--stdin-filepath", "%{buffer_name}", "-"] }
+auto-format = true
+
+[[language]]
+name = "toml"
+language-servers = ["tombi"]
+auto-format = true
+
+[[language]]
+name = "yaml"
+language-servers = ["yaml-language-server"]
+auto-format = true
+
+[[language]]
+name = "json"
+auto-format = true
+
+[[language]]
+name = "javascript"
+language-servers = ["vtsls"]
+auto-format = true
+
+[[language]]
+name = "jsx"
+language-servers = ["vtsls"]
+auto-format = true
+
+[[language]]
+name = "typescript"
+language-servers = ["vtsls"]
+auto-format = true
+
+[[language]]
+name = "tsx"
+language-servers = ["vtsls"]
+auto-format = true
