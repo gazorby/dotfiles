@@ -7,18 +7,18 @@ install_fisher
 
 # Sometimes this is not in PATH
 fish_add_path $HOME/.local/bin
-fish_add_path /lib/passenger/bin
-fish_add_path /usr/lib/passenger/bin
 fish_add_path $HOME/.cargo/bin
 fish_add_path $HOME/.dotnet
 fish_add_path $HOME/.yarn/bin
 fish_add_path $HOME/.poetry/bin
 fish_add_path $HOME/.krew/bin
+fish_add_path /usr/lib/passenger/bin
+fish_add_path /lib/passenger/bin
 
 set -q fisher_path; or set -Ux fisher_path "$HOME/.config/fish"
 
 # Standalone env vars
-set -gx EDITOR nvim
+set -gx EDITOR hx
 set -gx BAT_STYLE plain
 set -gx CARGO_INSTALL_ROOT ~/.cargo
 
@@ -40,7 +40,7 @@ set -gx FZF_DEFAULT_OPTS "
     --bind='ctrl-y:execute-silent(echo {+} | xclip)'
     --bind='ctrl-a:select-all'
     --bind='?:toggle-preview'
-    --bind='ctrl-o:execute(nvim {+} &> /dev/tty)'
+    --bind='ctrl-o:execute(hx {+} &> /dev/tty)'
     --bind='ctrl-v:execute(code {+})'
     --bind='tab:down,shift-tab:up,ctrl-space:toggle+down'
 "
@@ -61,7 +61,7 @@ set -a fzf_directory_opts --bind='ctrl-d:reload(fd --type directory --color=alwa
 # Bind ctrl+f to reload with the default search options
 set -a fzf_directory_opts --bind='ctrl-f:reload(fd --type file --color=always --follow)'
 # Bind ctrl+o to open the current item
-set -a fzf_directory_opts --bind="ctrl-o:execute(nvim {} &> /dev/tty)"
+set -a fzf_directory_opts --bind="ctrl-o:execute(hx {} &> /dev/tty)"
 
 # Use delta to show git diff when searching through git log
 set -gx fzf_git_log_opts --preview='git show {1} | delta'
@@ -87,25 +87,18 @@ set -g autopair_complete_command _fifc
 if status --is-login
     setenv SSH_ENV $HOME/.ssh/environment
 
-    if test -n "$SSH_AGENT_PID"
-        ps -ef | grep $SSH_AGENT_PID | grep ssh-agent >/dev/null
-        if [ $status -eq 0 ]
-            add_identities
-        end
-    else
-        if test -f $SSH_ENV
-            . $SSH_ENV >/dev/null
-        end
-        ps -ef | grep $SSH_AGENT_PID | grep -v grep | grep ssh-agent >/dev/null
-        if test $status -eq 0
-            add_identities
-        else
-            start_agent
-        end
+    if test -z "$SSH_AGENT_PID"; and test -f $SSH_ENV
+        . $SSH_ENV >/dev/null
     end
 
-    # mise
-    mise activate fish | source
+    # ssh-add -l exits 1 when the agent holds no keys, 2 when it is unreachable
+    ssh-add -l >/dev/null 2>&1
+    switch $status
+        case 1
+            add_identities
+        case 2
+            start_agent
+    end
 end
 
 ###################################
@@ -124,15 +117,14 @@ alias cf fzf-bcd-widget
 alias gpgunlock 'echo test | gpg --clearsign > /dev/null && echo unlocked'
 alias typora 'open -a typora'
 
-
-abbr b    bat
-abbr nv   nvim
-abbr m    mise
-abbr pc   pre-commit
-abbr cl   claude
-abbr lzg  lazygit
+abbr b bat
+abbr nv nvim
+abbr m mise
+abbr pc pre-commit
+abbr cl claude
+abbr lzg lazygit
 abbr lzgf lazygit -sm full
-abbr gt   glab-tui
+abbr gt glab-tui
 
 ###################################
 # Sources
@@ -140,7 +132,7 @@ abbr gt   glab-tui
 
 if status is-interactive
     # Starship
-    eval (starship init fish)
+    starship init fish --print-full-init | source
 
     # Atuin
     atuin init fish | source
@@ -176,5 +168,4 @@ set -gx GPG_TTY (tty)
 
 # fifc config
 set -gx fifc_exa_opts --all --color=always --icons
-set -gx fifc_editor nvim
-
+set -gx fifc_editor hx
