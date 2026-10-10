@@ -6,27 +6,3 @@ git_username = {{ promptStringOnce . "git_username" "git username" | quote }}
 git_email = {{ promptStringOnce . "git_email" "git email" | quote }}
 git_signing_key = {{ promptStringOnce . "git_signing_key" "git signing key (empty to skip)" | quote }}
 git_work_dir = {{ promptStringOnce . "git_work_dir" "work projects directory" "~/.config/project/work" | quote }}
-
-# Ignore ping requests
-# values :
-#   - true
-#   - false
-ignore_ping = "true"
-
-# Enabled local hostname resolution ("hostname.local" naming scheme)
-# values :
-#   - true
-#   - false
-local_hostname_resolution = "true"
-
-# Control system files management (outside $HOME)
-# values :
-#   - true :   enable system management
-#   - false :  disable system management
-track_system_config = "false"
-
-# Copy snapper config
-# values :
-#   - true
-#   - false
-enable_snapper = "true"

@@ -6,27 +6,3 @@ git_username = "gazorby"
 git_email = "gazorby@pm.me"
 git_signing_key = "C2B1ACDB1D31A11F229816C0E59988ACE9EF0D6B"
 git_work_dir = "~/.config/project/work"
-
-# Ignore ping requests
-# values :
-#   - true
-#   - false
-ignore_ping = "true"
-
-# Enabled local hostname resolution ("hostname.local" naming scheme)
-# values :
-#   - true
-#   - false
-local_hostname_resolution = "true"
-
-# Control system files management (outside $HOME)
-# values :
-#   - true :   enable system management
-#   - false :  disable system management
-track_system_config = "false"
-
-# Copy snapper config
-# values :
-#   - true
-#   - false
-enable_snapper = "true"

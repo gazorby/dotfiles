@@ -1,7 +1,6 @@
 README.md
 LICENSE
 CHANGELOG.md
-bump.json
 .chezmoi.example.toml
 test/
 
@@ -9,30 +8,4 @@ test/
 .config/lazygit
 {{ else -}}
 Library
-{{ end -}}
-
-{{ if eq (get .chezmoi.osRelease "id") "opensuse-tumbleweed" -}}
-# Already enabled on opensuse tumbleweed
-.config/fish/functions/fish_user_key_bindings.fish
-{{ end -}}
-
-{{ if ne .ignore_ping "true" -}}
-# Ignore ping requests
-.local/chezmoi_system/etc/sysctl.d/99-ignore-ping.conf
-{{ end -}}
-
-{{ if ne .local_hostname_resolution "true" -}}
-# Conf needed for printer auto-discovery
-.local/chezmoi_system/etc/nsswitch.conf
-.local/chezmoi_system/etc/systemd/resolved.conf
-{{ end -}}
-
-{{ if ne (get .chezmoi.osRelease "id") "arch" -}}
-{{ if ne (get .chezmoi.osRelease "id") "manjaro" -}}
-.local/chezmoi_system/etc/pacman.conf
-{{ end -}}
-{{ end -}}
-
-{{ if ne .enable_snapper "true" -}}
-.local/chezmoi_system/etc/snapper
 {{ end -}}

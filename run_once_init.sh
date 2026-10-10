@@ -1,6 +1,5 @@
 #!/bin/sh
 
-mkdir -p "$HOME/.local/chezmoi_system"
 mkdir -p "$HOME/.ssh/sockets"
 
 # mise fish completions
