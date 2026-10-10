@@ -36,7 +36,7 @@ set -gx FZF_DEFAULT_OPTS "
     --prompt='~ ' --pointer='▶' --marker='✓'
     --multi
     --cycle
-    --color='hl:148,hl+:154,pointer:214,marker:010,fg+:231:bold,bg+:24,gutter:008'
+    --color='$(fzf_theme_colors)'
     --bind='ctrl-y:execute-silent(echo {+} | xclip)'
     --bind='ctrl-a:select-all'
     --bind='?:toggle-preview'

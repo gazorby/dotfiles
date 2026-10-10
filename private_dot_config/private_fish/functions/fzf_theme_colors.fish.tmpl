@@ -1,0 +1,15 @@
+function fzf_theme_colors -d "fzf --color value matching the macOS light/dark appearance"
+  # Generated from .chezmoidata/theme.toml
+  set -l variant dark
+  if test (uname) = Darwin; and not defaults read -g AppleInterfaceStyle &>/dev/null
+    set variant light
+  end
+  switch $variant
+{{- range $variant := list "dark" "light" }}
+{{- with index $.theme $variant }}
+    case {{ $variant }}
+      echo '{{ $variant }},fg:-1,bg:-1,hl:{{ .yellow }},fg+:{{ .fg }}:bold,bg+:{{ .selection }},hl+:{{ .yellow }},gutter:-1,info:{{ .muted }},prompt:{{ .cyan }},pointer:{{ .orange }},marker:{{ .green }},spinner:{{ .purple }},header:{{ .comment }},border:{{ .border }}'
+{{- end }}
+{{- end }}
+  end
+end
