@@ -2,6 +2,10 @@
 command = "vtsls"
 args = ["--stdio"]
 
+[language-server.rumdl]
+command = "rumdl"
+args = ["server"]
+
 [[language]]
 name = "python"
 language-servers = ["ty", { name = "ruff", except-features = ["hover"] }]
@@ -50,4 +54,16 @@ auto-format = true
 [[language]]
 name = "tsx"
 language-servers = ["vtsls"]
+auto-format = true
+
+[[language]]
+name = "markdown"
+language-servers = ["marksman", "rumdl"]
+formatter = { command = "rumdl", args = [
+  "check",
+  "--fix",
+  "--fail-on=never",
+  "--stdin",
+  "--stdin-filename=%{buffer_name}",
+] }
 auto-format = true
