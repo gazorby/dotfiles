@@ -1,0 +1,31 @@
+# chezmoi:template:left-delimiter="[[" right-delimiter="]]"
+os:
+  editPreset: helix (hx)
+gui:
+[[- range $variant := list "dark" "light" ]]
+[[- with index $.theme $variant ]]
+  [[ $variant ]]Theme:
+    activeBorderColor: ['[[ .yellow ]]', bold]
+    searchingActiveBorderColor: ['[[ .cyan ]]', bold]
+    inactiveBorderColor: ['[[ .border ]]']
+    optionsTextColor: ['[[ .cyan ]]']
+    selectedLineBgColor: ['[[ .selection ]]']
+    inactiveViewSelectedLineBgColor: ['[[ .selection_dim ]]']
+    cherryPickedCommitFgColor: ['[[ .cyan ]]']
+    cherryPickedCommitBgColor: ['[[ .cyan_bg ]]']
+    markedBaseCommitFgColor: ['[[ .yellow ]]']
+    markedBaseCommitBgColor: ['[[ .yellow_bg ]]']
+    unstagedChangesColor: ['[[ .red ]]']
+    defaultFgColor: ['[[ .fg ]]']
+[[- end ]]
+[[- end ]]
+git:
+  diffRenderers:
+    - command: delta --{{colorScheme}} --paging=never
+    - type: extDiff
+      command: difft --color=always --background={{colorScheme}} --context={{diffContext}}
+    - type: rawGit
+      args: [--color-words]
+      name: color-words
+    - type: rawGit # git's default diff
+      name: default
