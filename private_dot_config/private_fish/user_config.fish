@@ -126,6 +126,7 @@ abbr lzg lazygit
 abbr gdv "git -c core.pager='delta --side-by-side' diff"
 abbr lzgf lazygit -sm full
 abbr gt glab-tui
+abbr glt glab-tui
 
 ###################################
 # Sources
