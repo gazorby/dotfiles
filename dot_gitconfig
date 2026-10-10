@@ -1,16 +1,5 @@
-{{- $work_dir := .git_work_dir | trimSuffix "/" }}
-[includeIf "gitdir:{{ $work_dir }}/"]
-    path = {{ $work_dir }}/.gitconfig
-
-[user]
-    name = {{ .git_username }}
-    email = {{ .git_email }}
-{{- if .git_signing_key }}
-    signingKey = {{ .git_signing_key }}
-
-[commit]
-    gpgSign = true
-{{- end }}
+[include]
+    path = ~/.config/git/identity
 
 [pull]
     rebase = true

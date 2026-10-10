@@ -1,0 +1,13 @@
+{{- $work_dir := .git_work_dir | trimSuffix "/" -}}
+[user]
+    name = {{ .git_username }}
+    email = {{ .git_email }}
+{{- if .git_signing_key }}
+    signingKey = {{ .git_signing_key }}
+
+[commit]
+    gpgSign = true
+{{- end }}
+
+[includeIf "gitdir:{{ $work_dir }}/"]
+    path = {{ $work_dir }}/.gitconfig
