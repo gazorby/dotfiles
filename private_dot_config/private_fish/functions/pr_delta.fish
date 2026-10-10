@@ -1,5 +1,9 @@
 function pr_delta -d "Show a GitHub PR or GitLab MR diff in delta"
-  # usage: pr_delta [number] [delta options...]; number defaults to glab-tui's row, then the current branch
+  # usage: pr_delta [-s|--side-by-side] [number] [delta options...]; number defaults to glab-tui's row, then the current branch
+  argparse --ignore-unknown s/side-by-side -- $argv; or return
+  set -l delta_opts --paging=always
+  set -q _flag_side_by_side; and set -a delta_opts --side-by-side
+
   set -l number $argv[1]
   set -e argv[1]
   test -n "$number"; or set number $GLAB_TUI_PR_NUMBER
@@ -9,5 +13,5 @@ function pr_delta -d "Show a GitHub PR or GitLab MR diff in delta"
     gh pr diff $number --color=never
   else
     glab mr diff $number --color=never
-  end | delta --paging=always $argv
+  end | delta $delta_opts $argv
 end
