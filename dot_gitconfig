@@ -25,12 +25,8 @@
 [delta]
     features = unobtrusive-line-numbers decorations
     whitespace-error-style = 22 reverse
-    plus-color = "#012800"
-    minus-color = "#340001"
-    syntax-theme = Monokai Extended
     true-color = always
     hyperlinks = true
-    light = false
     navigate = true
 
 [merge]
