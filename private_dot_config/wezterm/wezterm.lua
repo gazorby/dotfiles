@@ -1,6 +1,7 @@
 local wezterm = require 'wezterm' ---@type Wezterm
 
 require 'status'
+require 'hyperlinks'
 
 local config = wezterm.config_builder()
 
