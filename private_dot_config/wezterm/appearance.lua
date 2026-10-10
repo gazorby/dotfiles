@@ -1,4 +1,5 @@
 local wezterm = require 'wezterm' ---@type Wezterm
+local theme = require 'theme'
 
 local M = {}
 
@@ -16,7 +17,8 @@ end)
 function M.apply_to_config(config)
   config.font = wezterm.font 'MonoLisa Nerd Font'
   config.font_size = 13
-  config.color_scheme = 'Monokai Pro (Gogh)'
+  config.color_schemes = theme.schemes
+  config.color_scheme = theme.scheme_for_appearance()
 
   config.initial_cols = 120
   config.initial_rows = 28

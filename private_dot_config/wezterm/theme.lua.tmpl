@@ -1,0 +1,30 @@
+-- Generated from .chezmoidata/theme.toml
+local wezterm = require 'wezterm' ---@type Wezterm
+
+local M = {}
+
+M.schemes = {
+{{- range $name, $variant := dict "Monokai Pro Terminal" "dark" "Monokai Pro Terminal Light" "light" }}
+{{- with index $.theme $variant }}
+  ['{{ $name }}'] = {
+    foreground = '{{ .fg }}',
+    background = '{{ .bg }}',
+    cursor_bg = '{{ .cursor }}',
+    cursor_fg = '{{ .cursor_text }}',
+    cursor_border = '{{ .cursor }}',
+    selection_bg = '{{ .border }}',
+    selection_fg = '{{ .fg }}',
+    ansi = { '{{ .ansi_black }}', '{{ .red }}', '{{ .green }}', '{{ .yellow }}', '{{ .orange }}', '{{ .purple }}', '{{ .cyan }}', '{{ .fg }}' },
+    brights = { '{{ .ansi_bright_black }}', '{{ .red }}', '{{ .green }}', '{{ .yellow }}', '{{ .orange }}', '{{ .purple }}', '{{ .cyan }}', '{{ .fg }}' },
+  },
+{{- end }}
+{{- end }}
+}
+
+-- wezterm.gui is unavailable when the config is loaded by the mux server
+function M.scheme_for_appearance()
+  local appearance = wezterm.gui and wezterm.gui.get_appearance() or 'Dark'
+  return appearance:find 'Dark' and 'Monokai Pro Terminal' or 'Monokai Pro Terminal Light'
+end
+
+return M
