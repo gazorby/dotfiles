@@ -34,7 +34,6 @@ Tools the configs call or configure. A missing optional tool only disables the f
 | [procs](https://github.com/dalance/procs)         | Process viewer, completions in `run_once_init.sh`           |
 | awk                                               | `pathclean`                                                 |
 | [highlight](http://www.andre-simon.de)            | `fif` preview (optional, falls back to ripgrep)             |
-| [thefuck](https://github.com/nvbn/thefuck)        | `fuck` function                                             |
 
 ### Git
 
