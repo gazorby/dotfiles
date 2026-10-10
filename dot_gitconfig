@@ -11,7 +11,6 @@
     autoStash = true
 
 [core]
-    editor = hx
     pager = delta
     autocrlf = input
     excludesfile = ~/.config/git/ignore
@@ -28,7 +27,7 @@
     whitespace-error-style = 22 reverse
     true-color = always
     hyperlinks = true
-    # WezTerm opens these in helix at the line; other terminals ignore the fragment
+    # WezTerm opens these in $EDITOR at the line; other terminals ignore the fragment
     hyperlinks-file-link-format = "file://{path}#{line}"
     navigate = true
 

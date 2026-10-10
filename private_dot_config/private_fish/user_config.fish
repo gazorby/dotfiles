@@ -18,7 +18,7 @@ fish_add_path /lib/passenger/bin
 set -q fisher_path; or set -Ux fisher_path "$HOME/.config/fish"
 
 # Standalone env vars
-set -gx EDITOR hx
+set -gx EDITOR ms
 set -gx BAT_STYLE plain
 set -gx CARGO_INSTALL_ROOT ~/.cargo
 
@@ -40,7 +40,7 @@ set -gx FZF_DEFAULT_OPTS "
     --bind='ctrl-y:execute-silent(echo {+} | xclip)'
     --bind='ctrl-a:select-all'
     --bind='?:toggle-preview'
-    --bind='ctrl-o:execute(hx {+} &> /dev/tty)'
+    --bind='ctrl-o:execute(\$EDITOR {+} &> /dev/tty)'
     --bind='ctrl-v:execute(code {+})'
     --bind='tab:down,shift-tab:up,ctrl-space:toggle+down'
 "
@@ -61,7 +61,7 @@ set -a fzf_directory_opts --bind='ctrl-d:reload(fd --type directory --color=alwa
 # Bind ctrl+f to reload with the default search options
 set -a fzf_directory_opts --bind='ctrl-f:reload(fd --type file --color=always --follow)'
 # Bind ctrl+o to open the current item
-set -a fzf_directory_opts --bind="ctrl-o:execute(hx {} &> /dev/tty)"
+set -a fzf_directory_opts --bind='ctrl-o:execute($EDITOR {} &> /dev/tty)'
 
 # --width=20 lets delta fill the preview pane, whose width it cannot detect
 set -gx fzf_diff_highlighter delta --paging=never --width=20
@@ -170,4 +170,3 @@ set -gx GPG_TTY (tty)
 
 # fifc config
 set -gx fifc_exa_opts --all --color=always --icons
-set -gx fifc_editor hx

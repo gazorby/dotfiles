@@ -1,6 +1,10 @@
 # chezmoi:template:left-delimiter="[[" right-delimiter="]]"
 os:
-  editPreset: helix (hx)
+  edit: $EDITOR -- {{filename}}
+  editAtLine: $EDITOR -- {{filename}}:{{line}}
+  editAtLineAndWait: $EDITOR -- {{filename}}:{{line}}
+  openDirInEditor: $EDITOR -- {{dir}}
+  editInTerminal: true
 gui:
 [[- range $variant := list "dark" "light" ]]
 [[- with index $.theme $variant ]]

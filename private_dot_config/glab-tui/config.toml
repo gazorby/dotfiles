@@ -3,8 +3,8 @@ theme_preset = "monokai-pro"
 
 [[custom_keybindings.diff]]
 key = "o"
-name = "open file in hx"
-command = 'cd "$GLAB_TUI_REPO_PATH" && hx "+$GLAB_TUI_LINE_NUMBER" "$GLAB_TUI_FILE_PATH"'
+name = "open file in editor"
+command = 'cd "$GLAB_TUI_REPO_PATH" && $EDITOR "+$GLAB_TUI_LINE_NUMBER" "$GLAB_TUI_FILE_PATH"'
 
 [[custom_keybindings.mrs]]
 key = "w"
