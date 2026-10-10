@@ -67,3 +67,7 @@ formatter = { command = "rumdl", args = [
   "--stdin-filename=%{buffer_name}",
 ] }
 auto-format = true
+
+[[language]]
+name = "fish"
+auto-format = true
