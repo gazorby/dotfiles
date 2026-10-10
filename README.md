@@ -6,7 +6,7 @@ My personal dotfiles managed using [chezmoi](https://github.com/twpayne/chezmoi)
 
 - **Shell**: fish with fisher plugins, starship prompt, atuin history, zoxide, fzf pickers (files, git log/status, processes) and completions generated on first apply
 - **Git**: delta as pager with clickable file links, zdiff3 conflicts, rebase on pull, optional commit signing, separate identity for a work directory, lazygit and `pr_delta` to read GitHub PR / GitLab MR diffs
-- **Editors**: [helix](https://helix-editor.com), [mitos](https://github.com/mitos-editor/mitos) (default `$EDITOR`) and [neovim](https://neovim.io), with LSPs and format on save for Python, Lua, TOML, YAML, JSON and TypeScript
+- **Editors**: [helix](https://helix-editor.com), [mitos](https://github.com/mitos-editor/mitos) (default `$EDITOR`) and [neovim](https://neovim.io), with LSPs and format on save for Python, Lua, TOML, YAML, JSON and TypeScript. helix and mitos also cover Markdown (marksman, rumdl), fish, Bash, SQL (postgres-language-server, sqruff) and GraphQL (LSP only)
 - **Terminals**: [WezTerm](https://wezterm.org) (pane splits, most-recently-used tab cycling, delta links opened in `$EDITOR`) and [Ghostty](https://ghostty.org)
 - **Theme**: one Monokai Pro palette (`.chezmoidata/theme.toml`) rendered into WezTerm, Ghostty, helix, mitos, lazygit, glab-tui and fzf, following macOS light/dark appearance
 - **SSH**: agent started at login with keys loaded, connection multiplexing
