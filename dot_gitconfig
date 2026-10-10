@@ -20,7 +20,8 @@
     diffFilter = delta --color-only
 
 [diff]
-    colorMoved = default
+    colorMoved = dimmed-zebra
+    colorMovedWS = allow-indentation-change
 
 [delta]
     features = unobtrusive-line-numbers decorations
