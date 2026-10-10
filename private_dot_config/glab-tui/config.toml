@@ -15,3 +15,13 @@ command = 'pr_delta'
 key = "w"
 name = "diff in delta"
 command = 'pr_delta'
+
+[[custom_keybindings.mrs]]
+key = "W"
+name = "side-by-side diff in delta"
+command = 'pr_delta -s'
+
+[[custom_keybindings.diff]]
+key = "W"
+name = "side-by-side diff in delta"
+command = 'pr_delta -s'
