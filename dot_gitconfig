@@ -28,11 +28,13 @@
     plus-color = "#012800"
     minus-color = "#340001"
     syntax-theme = Monokai Extended
+    true-color = always
+    hyperlinks = true
     light = false
     navigate = true
 
 [merge]
-    conflictstyle = diff3
+    conflictstyle = zdiff3
     tool = diffview
 
 [mergetool]
