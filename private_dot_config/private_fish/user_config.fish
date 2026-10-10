@@ -63,8 +63,8 @@ set -a fzf_directory_opts --bind='ctrl-f:reload(fd --type file --color=always --
 # Bind ctrl+o to open the current item
 set -a fzf_directory_opts --bind="ctrl-o:execute(hx {} &> /dev/tty)"
 
-# Use delta to show git diff when searching through git log
-set -gx fzf_git_log_opts --preview='git show {1} | delta'
+# --width=20 lets delta fill the preview pane, whose width it cannot detect
+set -gx fzf_diff_highlighter delta --paging=never --width=20
 
 # Forgit fish plugin
 set -U forgit_log glo:
