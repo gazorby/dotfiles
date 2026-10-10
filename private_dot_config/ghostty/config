@@ -2,7 +2,7 @@
 font-family = MonoLisa Nerd Font
 font-size = 13
 # Follows macOS appearance
-theme = light:Monokai Pro Light,dark:Monokai Pro WezTerm
+theme = light:Monokai Pro Terminal Light,dark:Monokai Pro Terminal
 
 # Window
 # Initial size, in cells
