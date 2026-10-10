@@ -6,6 +6,10 @@ args = ["--stdio"]
 command = "rumdl"
 args = ["server"]
 
+[language-server.postgres-language-server]
+command = "postgres-language-server"
+args = ["lsp-proxy"]
+
 [[language]]
 name = "python"
 language-servers = ["ty", { name = "ruff", except-features = ["hover"] }]
@@ -74,4 +78,15 @@ auto-format = true
 
 [[language]]
 name = "bash"
+auto-format = true
+
+[[language]]
+name = "sql"
+language-servers = ["postgres-language-server"]
+formatter = { command = "sqruff", args = [
+  "fix",
+  "--dialect=postgres",
+  "--stdin-filename=%{buffer_name}",
+  "-",
+] }
 auto-format = true
