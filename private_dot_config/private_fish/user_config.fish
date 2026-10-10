@@ -123,6 +123,7 @@ abbr m mise
 abbr pc pre-commit
 abbr cl claude
 abbr lzg lazygit
+abbr gdv "git -c core.pager='delta --side-by-side' diff"
 abbr lzgf lazygit -sm full
 abbr gt glab-tui
 
