@@ -1,0 +1,21 @@
+# Generated from .chezmoidata/theme.toml; helix has no light/dark switching
+inherits = "monokai_pro"
+
+[palette]
+{{- with .theme.dark }}
+red = "{{ .red }}"
+orange = "{{ .orange }}"
+yellow = "{{ .yellow }}"
+green = "{{ .green }}"
+blue = "{{ .cyan }}"
+purple = "{{ .purple }}"
+base1 = "{{ .cursorline }}"
+base2 = "{{ .editor_bg }}"
+base3 = "{{ .surface }}"
+base4 = "{{ .border }}"
+base5 = "{{ .comment }}"
+base6 = "{{ .muted }}"
+base7 = "{{ .cursor }}"
+base8 = "{{ .fg }}"
+base8x0c = "{{ .statusline_inactive }}"
+{{- end }}
