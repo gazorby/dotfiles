@@ -35,7 +35,6 @@ Tools the configs call or configure. A missing optional tool only disables the f
 | awk                                               | `pathclean`                                                 |
 | [highlight](http://www.andre-simon.de)            | `fif` preview (optional, falls back to ripgrep)             |
 | [thefuck](https://github.com/nvbn/thefuck)        | `fuck` function                                             |
-| [xclip](https://github.com/astrand/xclip)         | fzf `ctrl-y` copy binding (Linux)                           |
 
 ### Git
 

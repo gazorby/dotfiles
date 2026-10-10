@@ -37,7 +37,6 @@ set -gx FZF_DEFAULT_OPTS "
     --multi
     --cycle
     --color='$(fzf_theme_colors)'
-    --bind='ctrl-y:execute-silent(echo {+} | xclip)'
     --bind='ctrl-a:select-all'
     --bind='?:toggle-preview'
     --bind='ctrl-o:execute(\$EDITOR {+} &> /dev/tty)'
