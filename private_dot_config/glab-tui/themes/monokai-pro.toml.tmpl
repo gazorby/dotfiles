@@ -1,0 +1,60 @@
+{{- with .theme.dark -}}
+# Generated from .chezmoidata/theme.toml; glab-tui has no light/dark switching
+bg = "{{ .bg }}"
+border = "{{ .border }}"
+border_focused = "{{ .yellow }}"
+header_fg = "{{ .green }}"
+highlight_bg = "{{ .selection }}"
+inactive_bg = "{{ .editor_bg }}"
+text_normal = "{{ .fg }}"
+text_muted = "{{ .muted }}"
+checked_bg = "{{ .border }}"
+green = "{{ .green }}"
+green_bg = "{{ .green_bg }}"
+red = "{{ .red }}"
+red_bg = "{{ .red_bg }}"
+blue = "{{ .cyan }}"
+blue_bg = "{{ .cyan_bg }}"
+yellow = "{{ .yellow }}"
+yellow_bg = "{{ .yellow_bg }}"
+purple = "{{ .purple }}"
+purple_bg = "{{ .purple_bg }}"
+
+# ── Diff ──
+diff_addition_fg = "{{ .green }}"
+diff_addition_bg = "{{ .green_bg }}"
+diff_deletion_fg = "{{ .red }}"
+diff_deletion_bg = "{{ .red_bg }}"
+diff_gutter_bg = "{{ .bg }}"
+diff_sep = "{{ .border }}"
+
+# ── Comments ──
+comment_bg = "{{ .bg }}"
+comment_draft_bg = "{{ .yellow_bg }}"
+
+# ── Modals ──
+modal_border = "{{ .yellow }}"
+
+# ── Pipelines ──
+pipeline_success = "{{ .green }}"
+pipeline_failed = "{{ .red }}"
+pipeline_running = "{{ .cyan }}"
+pipeline_pending = "{{ .yellow }}"
+pipeline_canceled = "{{ .muted }}"
+pipeline_skipped = "{{ .comment }}"
+
+# ── Badges ──
+badge_group_bg = "{{ .orange }}"
+
+# ── Label palette ──
+label_palette_0 = "{{ .purple }}"
+label_palette_1 = "{{ .cyan }}"
+label_palette_2 = "{{ .green }}"
+label_palette_3 = "{{ .yellow }}"
+label_palette_4 = "{{ .red }}"
+label_palette_5 = "{{ .orange }}"
+label_palette_6 = "{{ .purple_soft }}"
+label_palette_7 = "{{ .cyan_soft }}"
+label_palette_8 = "{{ .green_soft }}"
+label_palette_9 = "{{ .red_soft }}"
+{{- end }}

@@ -1,5 +1,5 @@
-# Pick a built-in theme preset
-theme_preset = "monokai"
+# Built-in preset or a file in themes/
+theme_preset = "monokai-pro"
 
 [[custom_keybindings.diff]]
 key = "o"
