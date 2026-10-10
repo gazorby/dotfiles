@@ -1,0 +1,17 @@
+# Pick a built-in theme preset
+theme_preset = "monokai"
+
+[[custom_keybindings.diff]]
+key = "o"
+name = "open file in hx"
+command = 'cd "$GLAB_TUI_REPO_PATH" && hx "+$GLAB_TUI_LINE_NUMBER" "$GLAB_TUI_FILE_PATH"'
+
+[[custom_keybindings.mrs]]
+key = "w"
+name = "diff in delta"
+command = 'pr_delta'
+
+[[custom_keybindings.diff]]
+key = "w"
+name = "diff in delta"
+command = 'pr_delta'
