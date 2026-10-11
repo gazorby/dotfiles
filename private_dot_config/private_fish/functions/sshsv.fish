@@ -1,8 +1,4 @@
-function sshsv -d "Save ssh password for a given host"
-    if not set -q $argv[2]
-        set id_rsa "~/.ssh/id_rsa.pub"
-    else
-        set id_rsa $argv[2]
-    end
-    ssh "$argv[1]" mkdir -p .ssh && cat "$id_rsa" | ssh "$argv[1]" 'cat >> ~/.ssh/authorized_keys'
+function sshsv -d "Install a public key on a host" -a host key
+    set -q key[1]; or set key ~/.ssh/id_rsa.pub
+    ssh-copy-id -i $key $host
 end
