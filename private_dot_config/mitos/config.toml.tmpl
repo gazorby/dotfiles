@@ -1,3 +1,7 @@
+{{- $copy := "pbcopy" -}}
+{{- if ne .chezmoi.os "darwin" -}}
+{{-   $copy = `{ if [ -n \"$WAYLAND_DISPLAY\" ]; then wl-copy; else xclip -selection clipboard; fi; }` -}}
+{{- end -}}
 theme = "monokai_pro_custom"
 
 [editor]
@@ -7,7 +11,6 @@ color-modes = true
 bufferline = "multiple"
 completion-trigger-len = 1
 completion-timeout = 5
-popup-border = "all"
 jump-label-alphabet = "asdfghjklqwertyuiopzxcvbnm"
 
 [editor.whitespace.render]
@@ -22,7 +25,7 @@ nbsp = "␣"
 enable = true
 
 [editor.statusline]
-left = ["mode", "spinner", "version-control", "file-name", "read-only-indicator", "file-modification-indicator"]
+left = ["mode", "spinner", "branch", "file-name", "read-only-indicator", "file-modification-indicator"]
 right = ["diagnostics", "selections", "register", "position", "position-percentage", "file-encoding"]
 
 [editor.auto-save]
@@ -57,3 +60,6 @@ A-k = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_befor
 
 [keys.normal.space]
 R = ":reload-all"
+o = ":sh echo \"%{buffer_name}\" | tr -d '\\n' | {{ $copy }}"
+O = ":sh echo \"%{file_path_absolute}\" | tr -d '\\n' | {{ $copy }}"
+C-o = ":sh for f in \"%{file_path_absolute}\" ; do echo \"$(git -C \"$(dirname \"$f\")\" rev-parse --show-prefix)$(basename \"$f\")\" ; done | tr -d '\\n' | {{ $copy }}"
