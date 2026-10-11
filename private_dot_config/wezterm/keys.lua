@@ -69,6 +69,8 @@ function M.apply_to_config(config)
     -- Tabs
     { key = 'h', mods = 'SUPER|SHIFT', action = act.ActivateTabRelative(-1) },
     { key = 'l', mods = 'SUPER|SHIFT', action = act.ActivateTabRelative(1) },
+    { key = 'h', mods = 'SUPER|SHIFT|ALT', action = act.MoveTabRelative(-1) },
+    { key = 'l', mods = 'SUPER|SHIFT|ALT', action = act.MoveTabRelative(1) },
     { key = 'Tab', mods = 'CTRL', action = mru_tabs.action },
 
     -- French keyboard: left Option is Alt, so these characters need explicit binds
