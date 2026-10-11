@@ -1,6 +1,6 @@
 #!/bin/sh
 
-mkdir -p "$HOME/.ssh/sockets"
+mkdir -p -m 700 "$HOME/.ssh/sockets" "$HOME/.ssh/config.d"
 
 # mise fish completions
 mkdir -p ~/.config/fish/completions
