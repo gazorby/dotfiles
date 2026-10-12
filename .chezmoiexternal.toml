@@ -1,0 +1,14 @@
+{{- $libreoffice := "https://raw.githubusercontent.com/LibreOffice/dictionaries/master" -}}
+{{- $mitosDictionaries := ".config/mitos/runtime/dictionaries" -}}
+
+{{- range $ext := list "aff" "dic" }}
+["{{ $mitosDictionaries }}/fr/fr.{{ $ext }}"]
+type = "file"
+url = "{{ $libreoffice }}/fr_FR/dictionaries/fr.{{ $ext }}"
+refreshPeriod = "720h"
+
+["{{ $mitosDictionaries }}/en_GB/en_GB.{{ $ext }}"]
+type = "file"
+url = "{{ $libreoffice }}/en/en_GB.{{ $ext }}"
+refreshPeriod = "720h"
+{{ end }}
