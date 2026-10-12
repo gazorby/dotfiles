@@ -63,3 +63,6 @@ R = ":reload-all"
 o = ":sh echo \"%{buffer_name}\" | tr -d '\\n' | {{ $copy }}"
 O = ":sh echo \"%{file_path_absolute}\" | tr -d '\\n' | {{ $copy }}"
 C-o = ":sh for f in \"%{file_path_absolute}\" ; do echo \"$(git -C \"$(dirname \"$f\")\" rev-parse --show-prefix)$(basename \"$f\")\" ; done | tr -d '\\n' | {{ $copy }}"
+
+[commands]
+":f" = ":format"
