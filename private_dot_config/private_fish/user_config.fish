@@ -117,6 +117,7 @@ alias gpgunlock 'echo test | gpg --clearsign > /dev/null && echo unlocked'
 alias typora 'open -a typora'
 
 abbr b bat
+abbr bt btop
 abbr nv nvim
 abbr m mise
 abbr pc pre-commit
