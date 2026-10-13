@@ -21,6 +21,16 @@
 [diff]
     colorMoved = dimmed-zebra
     colorMovedWS = allow-indentation-change
+    tool = difftastic
+
+[difftool]
+    prompt = false
+
+[difftool "difftastic"]
+    cmd = difft "$MERGED" "$LOCAL" "abcdef1" "100644" "$REMOTE" "abcdef2" "100644"
+
+[pager]
+    difftool = true
 
 [delta]
     features = unobtrusive-line-numbers decorations
@@ -43,8 +53,26 @@
     cmd = nvim -n -c DiffviewOpen \"$MERGED\"
 
 [alias]
-    dv = "!f() { nvim -c \"DiffviewOpen $*\"; }; f"
-    dvh = "!f() { nvim -c \"DiffviewFileHistory $*\"; }; f"
+    dlog = -c diff.external=difft log --ext-diff
+    dshow = -c diff.external=difft show --ext-diff
+    ddiff = -c diff.external=difft diff
+    # git delta-sbs [width] [delta args]: side-by-side above 160 columns, only for files with both removals and additions
+    delta-sbs = "!f() { \
+        case $1 in \
+            ''|*[!0-9]*) w=$(tput cols) ;; \
+            *) w=$1; shift ;; \
+        esac; \
+        d=$(cat); s=; \
+        if [ \"$w\" -gt 160 ] && printf '%s\\n' \"$d\" | awk ' \
+            { gsub(/\\033.[0-9;]*m/, \"\") } \
+            /^diff --git/ { a = r = 0 } \
+            /^-/ && !/^--- / { r = 1 } \
+            /^\\+/ && !/^\\+\\+\\+ / { a = 1 } \
+            a && r { f = 1; exit } \
+            END { exit !f }'; \
+        then s=--side-by-side; fi; \
+        printf '%s\\n' \"$d\" | delta $s \"$@\"; \
+    }; f"
 
 [delta "unobtrusive-line-numbers"]
     line-numbers = true

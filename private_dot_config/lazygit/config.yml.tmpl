@@ -5,7 +5,16 @@ os:
   editAtLineAndWait: $EDITOR -- {{filename}}:{{line}}
   openDirInEditor: $EDITOR -- {{dir}}
   editInTerminal: true
+promptToReturnFromSubprocess: false
 gui:
+  sidePanelWidth: 0.2
+  nerdFontsVersion: "3"
+  showNumstatInFilesView: true
+  showDivergenceFromBaseBranch: arrowAndNumber
+  showBranchCommitHash: true
+  showRandomTip: false
+  skipRewordInEditorWarning: true
+  switchTabsWithPanelJumpKeys: true
 [[- range $variant := list "dark" "light" ]]
 [[- with index $.theme $variant ]]
   [[ $variant ]]Theme:
@@ -24,12 +33,56 @@ gui:
 [[- end ]]
 [[- end ]]
 git:
+  autoForwardBranches: allBranches
+  parseEmoji: true
   diffRenderers:
-    - command: delta --{{colorScheme}} --paging=never
+    - command: >-
+        git delta-sbs {{width}} --{{colorScheme}} --paging=never
+        --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
+      name: delta
     - type: extDiff
-      command: difft --color=always --background={{colorScheme}} --context={{diffContext}}
+      command: >-
+        difft --color=always --background={{colorScheme}} --context={{diffContext}}
+        --display={{if gt .width 160}}side-by-side{{else}}inline{{end}} --width={{width}}
     - type: rawGit
       args: [--color-words]
       name: color-words
     - type: rawGit # git's default diff
       name: default
+customCommands:
+  - key: t
+    context: files
+    description: Conventional commit
+    prompts:
+      - type: menu
+        title: Type
+        key: Type
+        options:
+          - value: feat
+          - value: fix
+          - value: refactor
+          - value: docs
+          - value: chore
+          - value: test
+          - value: perf
+          - value: style
+          - value: build
+          - value: ci
+      - type: input
+        title: Scope (optional)
+        key: Scope
+      - type: input
+        title: Description
+        key: Message
+    command: >-
+      {{ $scope := "" }}{{ if .Form.Scope }}{{ $scope = printf "(%s)" .Form.Scope }}{{ end }}
+      git commit -m {{ printf "%s%s: %s" .Form.Type $scope .Form.Message | quote }}
+  - key: <c-a>
+    context: files
+    description: Absorb staged changes into fixup commits
+    command: git absorb --and-rebase
+    loadingText: Absorbing
+  - key: <c-v>
+    context: global
+    description: Open MR/PR of current branch in browser
+    command: glab mr view --web || gh pr view --web
