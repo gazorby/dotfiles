@@ -1,0 +1,4 @@
+default_profile = "default"
+
+[profiles.default]
+theme = "monokai"

@@ -3,6 +3,7 @@ LICENSE
 CHANGELOG.md
 .chezmoi.example.toml
 test/
+docs/
 
 {{ if eq .chezmoi.os "darwin" -}}
 .config/lazygit

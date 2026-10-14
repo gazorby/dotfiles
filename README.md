@@ -46,6 +46,12 @@ Tools the configs call or configure. A missing optional tool only disables the f
 | [glab](https://gitlab.com/gitlab-org/cli)               | `pr_delta` on GitLab repos, nvim gitlab plugin             |
 | [glab-tui](https://github.com/rcieri/glab-tui)          | `gt`/`glt` abbrs, `~/.config/glab-tui`                     |
 
+### Databases
+
+| Tool                              | Used by                                                                                    |
+| --------------------------------- | ------------------------------------------------------------------------------------------ |
+| [harlequin](https://harlequin.sh) | `hq` abbr, `~/Library/Application Support/harlequin`; monokai theme in the default profile |
+
 ### Repo development
 
 Installed by `mise install` from `mise.toml`: actionlint, cocogitto, pre-commit, tombi, yamlfmt. Run `mise run install` to set up the pre-commit hooks.
