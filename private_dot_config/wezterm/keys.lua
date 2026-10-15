@@ -1,5 +1,6 @@
 local wezterm = require 'wezterm' ---@type Wezterm
 local mru_tabs = require 'mru_tabs'
+local window_names = require 'window_names'
 
 local act = wezterm.action
 
@@ -72,6 +73,9 @@ function M.apply_to_config(config)
     { key = 'h', mods = 'SUPER|SHIFT|ALT', action = act.MoveTabRelative(-1) },
     { key = 'l', mods = 'SUPER|SHIFT|ALT', action = act.MoveTabRelative(1) },
     { key = 'Tab', mods = 'CTRL', action = mru_tabs.action },
+
+    -- Windows
+    { key = 'n', mods = 'SUPER|CTRL', action = window_names.rename_action },
 
     -- French keyboard: left Option is Alt, so these characters need explicit binds
     { key = 'l', mods = 'ALT|SHIFT', action = act.SendString '|' },
