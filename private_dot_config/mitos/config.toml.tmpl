@@ -44,6 +44,28 @@ render = true
 [editor.file-picker]
 hidden = false
 
+# No `languages` here: spell checking stays opt-in per language in languages.toml,
+# which inherits these filters.
+[editor.spelling]
+min-word-length = 3
+ignore-regexes = [
+  "\\p{Lu}", # names, PascalCase, camelCase, ACRONYMS
+  "\\d",
+  "_",
+]
+words = [
+  "apis", "args", "argv", "backend", "backends", "bool", "cli", "csv", "ctx", "cwd",
+  "datetime", "dedupe", "deserialize", "destructure", "dict", "dicts", "docstring", "docstrings",
+  "dockerfile", "dotfiles", "formatter", "formatters", "frontmatter", "func", "gitignore", "gpu",
+  "hotfix", "impl", "init", "iterable", "iterables", "json", "jwt", "keybinding", "keybindings",
+  "kubectl", "kwargs", "linting", "lockfile", "lsp", "mixin", "mixins", "monorepo", "neovim",
+  "npm", "nullable", "oauth", "param", "params", "pid", "pids", "pytest", "regex", "regexes",
+  "rustup", "serialize", "serializer", "sql", "stacktrace", "stderr", "stdin", "stdout", "struct",
+  "structs", "sudo", "tmp", "tmux", "todo", "tokenize", "tokenizer", "toml", "typedef", "uri",
+  "url", "urls", "utf", "uuid", "uuids", "venv", "webhook", "webhooks", "whitespace", "yaml",
+  "yml", "zsh",
+]
+
 [keys.normal]
 esc = ["collapse_selection", "keep_primary_selection"]
 C-s = ":write"
