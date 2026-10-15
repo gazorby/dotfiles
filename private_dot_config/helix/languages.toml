@@ -62,7 +62,7 @@ auto-format = true
 
 [[language]]
 name = "markdown"
-language-servers = ["marksman", "rumdl"]
+language-servers = ["marksman", { name = "rumdl", except-features = ["diagnostics"] }]
 formatter = { command = "rumdl", args = [
   "check",
   "--fix",

@@ -6,13 +6,16 @@ args = ["--stdio"]
 command = "rumdl"
 args = ["server"]
 
+[language-server.lspr]
+command = "lspr"
+
 [language-server.postgres-language-server]
 command = "postgres-language-server"
 args = ["lsp-proxy"]
 
 [[language]]
 name = "python"
-language-servers = ["ty", { name = "ruff", except-features = ["hover"] }]
+language-servers = ["ty", { name = "ruff", except-features = ["hover"] }, "lspr"]
 formatter = { command = "sh", args = [
   "-c",
   "ruff check --fix --force-exclude --select=I001 --exit-zero --no-cache --stdin-filename \"$1\" - | ruff format --force-exclude --stdin-filename \"$1\" -",
@@ -23,46 +26,48 @@ auto-format = true
 
 [[language]]
 name = "lua"
+language-servers = ["lua-language-server", "lspr"]
 formatter = { command = "stylua", args = ["--stdin-filepath", "%{buffer_name}", "-"] }
 auto-format = true
 
 [[language]]
 name = "toml"
-language-servers = ["tombi"]
+language-servers = ["tombi", "lspr"]
 auto-format = true
 
 [[language]]
 name = "yaml"
-language-servers = ["yaml-language-server"]
+language-servers = ["yaml-language-server", "lspr"]
 auto-format = true
 
 [[language]]
 name = "json"
+language-servers = ["vscode-json-language-server", "lspr"]
 auto-format = true
 
 [[language]]
 name = "javascript"
-language-servers = ["vtsls"]
+language-servers = ["vtsls", "lspr"]
 auto-format = true
 
 [[language]]
 name = "jsx"
-language-servers = ["vtsls"]
+language-servers = ["vtsls", "lspr"]
 auto-format = true
 
 [[language]]
 name = "typescript"
-language-servers = ["vtsls"]
+language-servers = ["vtsls", "lspr"]
 auto-format = true
 
 [[language]]
 name = "tsx"
-language-servers = ["vtsls"]
+language-servers = ["vtsls", "lspr"]
 auto-format = true
 
 [[language]]
 name = "markdown"
-language-servers = ["marksman", "rumdl"]
+language-servers = ["marksman", { name = "rumdl", except-features = ["diagnostics"] }, "lspr"]
 formatter = { command = "rumdl", args = [
   "check",
   "--fix",
@@ -75,23 +80,27 @@ spelling.languages = ["fr", "en_GB"]
 
 [[language]]
 name = "rst"
+language-servers = ["lspr"]
 spelling.languages = ["fr", "en_GB"]
 
 [[language]]
 name = "typst"
+language-servers = ["tinymist", "lspr"]
 spelling.languages = ["fr", "en_GB"]
 
 [[language]]
 name = "fish"
+language-servers = ["fish-lsp", "lspr"]
 auto-format = true
 
 [[language]]
 name = "bash"
+language-servers = ["bash-language-server", "lspr"]
 auto-format = true
 
 [[language]]
 name = "sql"
-language-servers = ["postgres-language-server"]
+language-servers = ["postgres-language-server", "lspr"]
 formatter = { command = "sqruff", args = [
   "fix",
   "--dialect=postgres",
