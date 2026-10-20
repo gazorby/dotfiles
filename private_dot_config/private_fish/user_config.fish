@@ -21,6 +21,7 @@ set -q fisher_path; or set -Ux fisher_path "$HOME/.config/fish"
 set -gx EDITOR ms
 set -gx BAT_STYLE plain
 set -gx CARGO_INSTALL_ROOT ~/.cargo
+set -gx MITOS_RUNTIME ~/.local/share/mitos/runtime
 
 # Colorize manpages using bat
 set -q MANPAGER; or set -Ux MANPAGER 'sh -c "col -bx | bat --language=man --style=grid --color=always --decorations=always"'
