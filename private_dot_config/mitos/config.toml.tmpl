@@ -6,15 +6,13 @@ theme = "monokai_pro_custom"
 
 [editor]
 line-number = "relative"
-cursorline = true
-color-modes = true
-bufferline = "multiple"
-completion-trigger-len = 1
-completion-timeout = 5
 jump-label-alphabet = "asdfghjklqwertyuiopzxcvbnm"
 
-[editor.inline-diagnostics]
+[editor.diagnostics.inline]
 cursor-line = "hint"
+
+[editor.bufferline]
+show = "multiple"
 
 [editor.whitespace.render]
 tab = "all"
@@ -31,12 +29,22 @@ enable = true
 left = ["mode", "spinner", "branch", "file-name", "read-only-indicator", "file-modification-indicator"]
 right = ["diagnostics", "selections", "register", "position", "position-percentage", "file-encoding"]
 
-[editor.auto-save]
+[editor.statusline.mode]
+color = true
+
+[editor.files.auto-save]
 focus-lost = true
 
-[editor.cursor-shape]
+[editor.cursor]
+highlight-line = true
+
+[editor.cursor.shape]
 insert = "bar"
 select = "underline"
+
+[editor.completion]
+trigger-delay = 5
+trigger-length = 1
 
 [editor.indent-guides]
 render = true
@@ -49,21 +57,96 @@ hidden = false
 [editor.spelling]
 min-word-length = 3
 ignore-regexes = [
-  "\\p{Lu}", # names, PascalCase, camelCase, ACRONYMS
+  "\\p{Lu}",  # names, PascalCase, camelCase, ACRONYMS
   "\\d",
   "_",
 ]
 words = [
-  "apis", "args", "argv", "backend", "backends", "bool", "cli", "csv", "ctx", "cwd",
-  "datetime", "dedupe", "deserialize", "destructure", "dict", "dicts", "docstring", "docstrings",
-  "dockerfile", "dotfiles", "formatter", "formatters", "frontmatter", "func", "gitignore", "gpu",
-  "hotfix", "impl", "init", "iterable", "iterables", "json", "jwt", "keybinding", "keybindings",
-  "kubectl", "kwargs", "linting", "lockfile", "lsp", "mixin", "mixins", "monorepo", "neovim",
-  "npm", "nullable", "oauth", "param", "params", "pid", "pids", "pytest", "regex", "regexes",
-  "rustup", "serialize", "serializer", "sql", "stacktrace", "stderr", "stdin", "stdout", "struct",
-  "structs", "sudo", "tmp", "tmux", "todo", "tokenize", "tokenizer", "toml", "typedef", "uri",
-  "url", "urls", "utf", "uuid", "uuids", "venv", "webhook", "webhooks", "whitespace", "yaml",
-  "yml", "zsh",
+  "apis",
+  "args",
+  "argv",
+  "backend",
+  "backends",
+  "bool",
+  "cli",
+  "csv",
+  "ctx",
+  "cwd",
+  "datetime",
+  "dedupe",
+  "deserialize",
+  "destructure",
+  "dict",
+  "dicts",
+  "docstring",
+  "docstrings",
+  "dockerfile",
+  "dotfiles",
+  "formatter",
+  "formatters",
+  "frontmatter",
+  "func",
+  "gitignore",
+  "gpu",
+  "hotfix",
+  "impl",
+  "init",
+  "iterable",
+  "iterables",
+  "json",
+  "jwt",
+  "keybinding",
+  "keybindings",
+  "kubectl",
+  "kwargs",
+  "linting",
+  "lockfile",
+  "lsp",
+  "mixin",
+  "mixins",
+  "monorepo",
+  "neovim",
+  "npm",
+  "nullable",
+  "oauth",
+  "param",
+  "params",
+  "pid",
+  "pids",
+  "pytest",
+  "regex",
+  "regexes",
+  "rustup",
+  "serialize",
+  "serializer",
+  "sql",
+  "stacktrace",
+  "stderr",
+  "stdin",
+  "stdout",
+  "struct",
+  "structs",
+  "sudo",
+  "tmp",
+  "tmux",
+  "todo",
+  "tokenize",
+  "tokenizer",
+  "toml",
+  "typedef",
+  "uri",
+  "url",
+  "urls",
+  "utf",
+  "uuid",
+  "uuids",
+  "venv",
+  "webhook",
+  "webhooks",
+  "whitespace",
+  "yaml",
+  "yml",
+  "zsh",
 ]
 
 [keys.normal]
@@ -75,6 +158,12 @@ C-g = [":write-all", ":new", ":insert-output lazygit", ":buffer-close!", ":redra
 A-j = ["extend_to_line_bounds", "delete_selection", "paste_after"]
 A-k = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
 
+[keys.normal.space]
+R = ":reload-all"
+o = ":sh echo \"%{buffer_name}\" | tr -d '\\n' | {{ $copy }}"
+O = ":sh echo \"%{file_path_absolute}\" | tr -d '\\n' | {{ $copy }}"
+C-o = ":sh for f in \"%{file_path_absolute}\" ; do echo \"$(git -C \"$(dirname \"$f\")\" rev-parse --show-prefix)$(basename \"$f\")\" ; done | tr -d '\\n' | {{ $copy }}"
+
 [keys.insert]
 C-s = ":write"
 
@@ -83,12 +172,6 @@ C-s = ":write"
 X = "extend_line_above"
 A-j = ["extend_to_line_bounds", "delete_selection", "paste_after"]
 A-k = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
-
-[keys.normal.space]
-R = ":reload-all"
-o = ":sh echo \"%{buffer_name}\" | tr -d '\\n' | {{ $copy }}"
-O = ":sh echo \"%{file_path_absolute}\" | tr -d '\\n' | {{ $copy }}"
-C-o = ":sh for f in \"%{file_path_absolute}\" ; do echo \"$(git -C \"$(dirname \"$f\")\" rev-parse --show-prefix)$(basename \"$f\")\" ; done | tr -d '\\n' | {{ $copy }}"
 
 [commands]
 ":f" = ":format"
