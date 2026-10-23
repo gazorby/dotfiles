@@ -22,7 +22,7 @@ formatter = { command = "sh", args = [
   "sh",
   "%{buffer_name}",
 ] }
-auto-format = true
+auto-format = false
 
 [[language]]
 name = "lua"
@@ -76,7 +76,6 @@ formatter = { command = "rumdl", args = [
   "--stdin-filename=%{buffer_name}",
 ] }
 auto-format = true
-spelling.languages = ["fr", "en_GB"]
 
 [[language]]
 name = "rst"
