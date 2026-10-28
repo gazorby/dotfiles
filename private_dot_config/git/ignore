@@ -105,3 +105,9 @@ mise/*.local.toml
 
 # Built Visual Studio Code Extensions
 *.vsix
+
+####################
+# Rope
+####################
+
+.ropeproject/
