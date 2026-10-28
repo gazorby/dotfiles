@@ -9,13 +9,33 @@ args = ["server"]
 [language-server.lspr]
 command = "lspr"
 
+[language-server.pylsp.config.pylsp.plugins]
+rope_autoimport = { enabled = true }
+rope_completion = { enabled = true }
+# Covered by ruff
+autopep8 = { enabled = false }
+yapf = { enabled = false }
+pyflakes = { enabled = false }
+pycodestyle = { enabled = false }
+mccabe = { enabled = false }
+# Covered by ty
+jedi_completion = { enabled = false }
+jedi_definition = { enabled = false }
+jedi_type_definition = { enabled = false }
+jedi_hover = { enabled = false }
+jedi_highlight = { enabled = false }
+jedi_references = { enabled = false }
+jedi_rename = { enabled = false }
+jedi_signature_help = { enabled = false }
+jedi_symbols = { enabled = false }
+
 [language-server.postgres-language-server]
 command = "postgres-language-server"
 args = ["lsp-proxy"]
 
 [[language]]
 name = "python"
-language-servers = ["ty", { name = "ruff", except-features = ["hover"] }, "lspr"]
+language-servers = ["ty", { name = "ruff", except-features = ["hover"] }, { name = "pylsp", except-features = ["hover"] }, "lspr"]
 formatter = { command = "sh", args = [
   "-c",
   "ruff check --fix --force-exclude --select=I001 --exit-zero --no-cache --stdin-filename \"$1\" - | ruff format --force-exclude --stdin-filename \"$1\" -",
