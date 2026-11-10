@@ -111,3 +111,9 @@ mise/*.local.toml
 ####################
 
 .ropeproject/
+
+####################
+# Superpowers
+# ##################
+docs/superpowers
+.superpowers
