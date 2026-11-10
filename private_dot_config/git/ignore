@@ -112,6 +112,12 @@ mise/*.local.toml
 
 .ropeproject/
 
+
+####################
+# Claude
+# ##################
+CLAUDE.local.md
+
 ####################
 # Superpowers
 # ##################
